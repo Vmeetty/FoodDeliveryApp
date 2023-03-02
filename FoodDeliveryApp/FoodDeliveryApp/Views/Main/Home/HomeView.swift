@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var hasScrolled = false
     @Namespace var namespace
-    @State var show = false
-    @State var showStatusBar = true
     @State var selectedCourse = courses[0]
     @State var selectedFeaturedCourse = featuredCourses[0]
-    @State var showFeaturedCourse = false
     @State var selectedCategoryId = categories[0].id
-    @State var selectedCategoryIndex = 0
     @EnvironmentObject var model: Model
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         ZStack {
@@ -34,12 +30,12 @@ struct HomeView: View {
                 Text("courses".uppercased())
                     .titleStyle()
                 
-                if !show {
+                if !viewModel.show {
                     ForEach(courses) { course in
-                        CourseItem(namespace: namespace, course: course, show: $show)
+                        CourseItem(namespace: namespace, course: course, show: $viewModel.show)
                             .onTapGesture {
                                 withAnimation(.openCard) {
-                                    show.toggle()
+                                    viewModel.show.toggle()
                                     selectedCourse = course
                                     model.showDetail = true
                                 }
@@ -63,13 +59,13 @@ struct HomeView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay {
-                NavigationBar(hasScrolled: $hasScrolled, title: "Featured")
+                NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Featured")
             }
             
-            if show {
+            if viewModel.show {
                 ForEach(courses) { course in
                     if selectedCourse.id == course.id {
-                        CourseDetaileView(namespace: namespace, course: $selectedCourse, show: $show)
+                        CourseDetaileView(namespace: namespace, course: $selectedCourse, show: $viewModel.show)
                             .zIndex(1)
                             .transition(.asymmetric(
                                 insertion: .opacity.animation(.easeInOut(duration: 0.1)),
@@ -79,13 +75,13 @@ struct HomeView: View {
                 }
             }
         }
-        .statusBarHidden(!showStatusBar)
-        .onChange(of: show) { newValue in
+        .statusBarHidden(!viewModel.showStatusBar)
+        .onChange(of: viewModel.show) { newValue in
             withAnimation(.closeCard) {
                 if newValue {
-                    showStatusBar = false
+                    viewModel.showStatusBar = false
                 } else {
-                    showStatusBar = true
+                    viewModel.showStatusBar = true
                 }
             }
         }
@@ -98,7 +94,7 @@ struct HomeView: View {
         .frame(height: 0)
         .onPreferenceChange(ScrollPreferenceKey.self ,perform: { value in
             withAnimation(.easeInOut(duration: 0.2)) {
-                hasScrolled = value < 0 ? true : false
+                viewModel.hasScrolled = value < 0 ? true : false
             }
         })
     }
@@ -123,7 +119,7 @@ struct HomeView: View {
                         }
                         .onTapGesture {
                             selectedFeaturedCourse = course
-                            showFeaturedCourse = true
+                            viewModel.showFeaturedCourse = true
                         }
                 }
             }
@@ -134,8 +130,8 @@ struct HomeView: View {
             Image("Blob 1")
                 .offset(x: 250, y: -100)
         )
-        .sheet(isPresented: $showFeaturedCourse) {
-            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $showFeaturedCourse)
+        .sheet(isPresented: $viewModel.showFeaturedCourse) {
+            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
         }
     }
     
@@ -147,8 +143,8 @@ struct HomeView: View {
                         .onTapGesture {
                             withAnimation {
                                 selectedCategoryId = category.id
-                                if selectedCategoryIndex != index {
-                                    selectedCategoryIndex = index
+                                if viewModel.selectedCategoryIndex != index {
+                                    viewModel.selectedCategoryIndex = index
                                 }
                             }
                         }
