@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FoodModel: Identifiable {
+struct Food: Identifiable {
     let id = UUID()
     var title: String
     var weight: String

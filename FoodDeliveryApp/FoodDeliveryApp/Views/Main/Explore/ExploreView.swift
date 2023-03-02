@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    @State var hasScrolled = false
+    @StateObject var viewModel = ExploreViewModel()
     
     var body: some View {
         ZStack {

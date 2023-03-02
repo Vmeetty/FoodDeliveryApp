@@ -85,7 +85,11 @@ struct HomeView: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.fullMenu = viewModel.getMenu()
+        }
     }
+
     
     var scrollDetaction: some View {
         GeometryReader { proxy in
