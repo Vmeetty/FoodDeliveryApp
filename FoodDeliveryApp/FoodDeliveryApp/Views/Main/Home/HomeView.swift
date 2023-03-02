@@ -11,7 +11,6 @@ struct HomeView: View {
     @Namespace var namespace
     @State var selectedCourse = courses[0]
     @State var selectedFeaturedCourse = featuredCourses[0]
-    @State var selectedCategoryId = categories[0].id
     @EnvironmentObject var model: Model
     @StateObject var viewModel = HomeViewModel()
     
@@ -87,6 +86,7 @@ struct HomeView: View {
         }
         .onAppear {
             viewModel.fullMenu = viewModel.getMenu()
+            viewModel.categories = viewModel.getCategories()
         }
     }
 
@@ -142,14 +142,14 @@ struct HomeView: View {
     var categoriesSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(Array(categories.enumerated()), id: \.offset) { index, category in
-                    CategoryItem(category: category, selectedId: $selectedCategoryId)
+                ForEach(Array(viewModel.categories.enumerated()), id: \.offset) { index, category in
+                    CategoryItem(category: category, selectedId: $viewModel.categories[viewModel.selectedCategoryIndex].id)
                         .onTapGesture {
                             withAnimation {
-                                selectedCategoryId = category.id
-                                if viewModel.selectedCategoryIndex != index {
-                                    viewModel.selectedCategoryIndex = index
-                                }
+//                                selectedCategoryId = category.id
+                                viewModel.selectedCategoryIndex = index
+//                                if viewModel.selectedCategoryIndex != index {
+//                                }
                             }
                         }
                 }

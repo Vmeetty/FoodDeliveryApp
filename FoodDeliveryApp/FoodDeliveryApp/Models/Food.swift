@@ -14,4 +14,11 @@ struct Food: Identifiable {
     var text: String
     var image: String
     var price: String
+    var category: String
+    var options: [Option]
+}
+
+struct Option {
+    var title: String
+    var values: [String]
 }

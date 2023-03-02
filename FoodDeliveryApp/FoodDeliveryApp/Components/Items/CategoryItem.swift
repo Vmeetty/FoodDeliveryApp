@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryItem: View {
     
-    var category: Category = categories[0]
+    var category: Category
     @Binding var selectedId: UUID
     
     var body: some View {
@@ -41,6 +41,6 @@ struct CategoryItem: View {
 
 struct CategoryItem_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryItem(selectedId: .constant(UUID()))
+        CategoryItem(category: Category(title: "Pizza", icon: "eyedropper"), selectedId: .constant(UUID()))
     }
 }
