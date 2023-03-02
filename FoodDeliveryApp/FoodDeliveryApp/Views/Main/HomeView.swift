@@ -15,6 +15,8 @@ struct HomeView: View {
     @State var selectedCourse = courses[0]
     @State var selectedFeaturedCourse = featuredCourses[0]
     @State var showFeaturedCourse = false
+    @State var selectedCategoryId = categories[0].id
+    @State var selectedCategoryIndex = 0
     @EnvironmentObject var model: Model
     
     var body: some View {
@@ -27,6 +29,7 @@ struct HomeView: View {
                 
                 scrollDetaction
                 featured
+                categoriesSection
                 
                 Text("courses".uppercased())
                     .titleStyle()
@@ -133,6 +136,26 @@ struct HomeView: View {
         )
         .sheet(isPresented: $showFeaturedCourse) {
             CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $showFeaturedCourse)
+        }
+    }
+    
+    var categoriesSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(Array(categories.enumerated()), id: \.offset) { index, category in
+                    CategoryItem(category: category, selectedId: $selectedCategoryId)
+                        .onTapGesture {
+                            withAnimation {
+                                selectedCategoryId = category.id
+                                if selectedCategoryIndex != index {
+                                    selectedCategoryIndex = index
+                                }
+                            }
+                        }
+                }
+            }
+            .padding(.horizontal, 20)
+            Spacer()
         }
     }
 }

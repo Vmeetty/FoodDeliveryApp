@@ -55,6 +55,8 @@
 		843AFDAC29B0E6B600026273 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDAB29B0E6B600026273 /* ModalView.swift */; };
 		843AFDAF29B0E6DF00026273 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDAE29B0E6DF00026273 /* AccountView.swift */; };
 		843AFDB129B0E6F300026273 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDB029B0E6F300026273 /* SearchView.swift */; };
+		843AFDC329B0E9F600026273 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDC229B0E9F600026273 /* CategoryItem.swift */; };
+		843AFDC529B0EA2200026273 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDC429B0EA2200026273 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +109,8 @@
 		843AFDAB29B0E6B600026273 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		843AFDAE29B0E6DF00026273 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		843AFDB029B0E6F300026273 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		843AFDC229B0E9F600026273 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		843AFDC429B0EA2200026273 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 				843AFD5129B0CB1400026273 /* Topic.swift */,
 				843AFD4D29B0C69800026273 /* Model.swift */,
 				843AFD7929B0E35B00026273 /* CoinViewModel.swift */,
+				843AFDC429B0EA2200026273 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				843AFD8429B0E43900026273 /* TopicItem.swift */,
 				843AFD8629B0E44F00026273 /* SectionRow.swift */,
 				843AFD8829B0E49C00026273 /* CertificateView.swift */,
+				843AFDC229B0E9F600026273 /* CategoryItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843AFD5829B0CB1400026273 /* AddressModel.swift in Sources */,
+				843AFDC329B0E9F600026273 /* CategoryItem.swift in Sources */,
 				843AFD8329B0E42000026273 /* HandbookItem.swift in Sources */,
 				843AFD5B29B0CB1400026273 /* Course.swift in Sources */,
 				843AFD5E29B0CB1400026273 /* TabBarItemModel.swift in Sources */,
@@ -395,6 +402,7 @@
 				843AFD5D29B0CB1400026273 /* PreferenceKeys.swift in Sources */,
 				843AFD9629B0E52C00026273 /* CircularView.swift in Sources */,
 				843AFD9229B0E50600026273 /* HexagonView.swift in Sources */,
+				843AFDC529B0EA2200026273 /* Category.swift in Sources */,
 				843AFDAC29B0E6B600026273 /* ModalView.swift in Sources */,
 				843AFD8929B0E49C00026273 /* CertificateView.swift in Sources */,
 				843AFDAF29B0E6DF00026273 /* AccountView.swift in Sources */,
