@@ -9,38 +9,38 @@ import SwiftUI
 
 struct CourseItem: View {
     var namespace: Namespace.ID
-    var course: Course = courses[0]
+    var dish: Food
     @Binding var show: Bool
     
     var body: some View {
         VStack {
             Spacer()
             VStack(alignment: .leading, spacing: 12) {
-                Text(course.title)
+                Text(dish.title)
                     .font(.largeTitle.weight(.bold))
-                    .matchedGeometryEffect(id: "title\(course.id)", in: namespace)
+                    .matchedGeometryEffect(id: "title\(dish.id)", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(course.subtitle.uppercased())
-                    .font(.footnote.weight(.semibold))
-                    .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
-                Text(course.text)
-                    .font(.footnote)
-                    .matchedGeometryEffect(id: "text\(course.id)", in: namespace)
+//                Text(dish.price)
+//                    .font(.title2.weight(.semibold))
+//                    .matchedGeometryEffect(id: "subtitle\(dish.id)", in: namespace)
+//                Text(dish.text)
+//                    .font(.footnote)
+//                    .matchedGeometryEffect(id: "text\(dish.id)", in: namespace)
 //                Divider()
 //                    .frame(height: 0)
 //                    .opacity(0)
 //                    .matchedGeometryEffect(id: "divider", in: namespace)
-//                HStack {
-//                    Image("Avatar Default")
+                HStack {
+                    Image(systemName: "hryvniasign")
 //                        .resizable()
 //                        .frame(width: 26, height: 26)
 //                        .cornerRadius(10)
-//                        .padding(8)
-//                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-//                        .strokeStyle(cornerRadius: 18)
-//                    Text("Vlad Chuvashov")
-//                        .font(.footnote)
-//                }
+                        .padding(8)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                        .strokeStyle(cornerRadius: 18)
+                    Text(dish.price)
+                        .font(.title2)
+                }
 //
 //                .opacity(0)
 //                .frame(height: 0)
@@ -49,30 +49,31 @@ struct CourseItem: View {
             .padding(20)
             .background(
                 Rectangle()
-                    .fill(.ultraThinMaterial)
+                    .fill(.black)
+                    .opacity(0.3)
                     .mask({
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                     })
                     .blur(radius: 30)
-                    .matchedGeometryEffect(id: "blur\(course.id)", in: namespace)
+                    .matchedGeometryEffect(id: "blur\(dish.id)", in: namespace)
             )
         }
         .foregroundColor(.white)
         .background(
-            Image(course.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
-        )
-        .background(
-            Image(course.background)
+            Image(dish.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
+                .matchedGeometryEffect(id: "image\(dish.id)", in: namespace)
         )
+//        .background(
+//            Image(course.background)
+//                .resizable()
+//                .aspectRatio(contentMode: .fill)
+//                .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
+//        )
         .mask {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
+                .matchedGeometryEffect(id: "mask\(dish.id)", in: namespace)
         }
         .frame(height: 300)
         .padding(20)
@@ -81,8 +82,7 @@ struct CourseItem: View {
 
 struct CourseItem_Previews: PreviewProvider {
     @Namespace static var namespace
-    
     static var previews: some View {
-        CourseItem(namespace: namespace, show: .constant(true))
+        CourseItem(namespace: namespace, dish: Food(title: "Маргарита", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "margarita", price: "185", category: "Pizza", options: [Option(title: "Гострий", values: ["Так", "Ні"])]), show: .constant(true))
     }
 }

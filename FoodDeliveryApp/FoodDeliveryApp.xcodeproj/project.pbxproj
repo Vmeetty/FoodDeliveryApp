@@ -150,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				843AFD2429B0C0FC00026273 /* FoodDeliveryAppApp.swift */,
+				843AFDD129B2240F00026273 /* Managers */,
 				843AFD9729B0E59F00026273 /* Views */,
 				843AFD7B29B0E3B100026273 /* Components */,
 				843AFD7229B0CF6600026273 /* Extentions */,
@@ -332,6 +333,29 @@
 				843AFDCF29B0F44700026273 /* ExploreViewModel.swift */,
 			);
 			path = Explore;
+			sourceTree = "<group>";
+		};
+		843AFDD129B2240F00026273 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				843AFDD229B2241F00026273 /* Networking */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		843AFDD229B2241F00026273 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				843AFDD329B2242D00026273 /* Models */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		843AFDD329B2242D00026273 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -39,7 +39,7 @@ struct NavigationBar: View {
                     .strokeStyle(cornerRadius: 14)
                 }
                 .sheet(isPresented: $showSerch) {
-                    SearchView()
+//                    SearchView()
                 }
                 
                 Button {

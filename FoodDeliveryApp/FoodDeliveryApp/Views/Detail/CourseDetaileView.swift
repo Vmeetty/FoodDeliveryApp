@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CourseDetaileView: View {
     var namespace: Namespace.ID
-    @Binding var course: Course
+    @Binding var food: Food
     @Binding var show: Bool
     @State var appear = [false, false, false]
     @EnvironmentObject var model: Model
@@ -59,24 +59,24 @@ struct CourseDetaileView: View {
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .foregroundColor(.black)
             .background(
-                Image(course.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
-                    .offset(y: scrollY > 0 ? scrollY * -0.8 : scrollY / 5)
-            )
-            .background(
-                Image(course.background)
+                Image(food.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
-                    .offset(y: scrollY > 0 ? -scrollY : 0)
-                    .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
-                    .blur(radius: scrollY / 10)
+                    .matchedGeometryEffect(id: "image\(food.id)", in: namespace)
+                    .offset(y: scrollY > 0 ? scrollY * -0.8 : scrollY / 5)
             )
+//            .background(
+//                Image(course.background)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//                    .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
+//                    .offset(y: scrollY > 0 ? -scrollY : 0)
+//                    .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
+//                    .blur(radius: scrollY / 10)
+//            )
             .mask {
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
+                    .matchedGeometryEffect(id: "mask\(food.id)", in: namespace)
                     .offset(y: scrollY > 0 ? -scrollY : 0)
             }
             .overlay(content: {
@@ -125,19 +125,19 @@ struct CourseDetaileView: View {
     
     var overlayContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(course.title)
+            Text(food.title)
                 .font(.largeTitle.weight(.bold))
-                .matchedGeometryEffect(id: "title\(course.id)", in: namespace)
+                .matchedGeometryEffect(id: "title\(food.id)", in: namespace)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(course.subtitle.uppercased())
-                .font(.footnote.weight(.semibold))
-                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
-            Text(course.text)
+//            Text(course.subtitle.uppercased())
+//                .font(.footnote.weight(.semibold))
+//                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
+            Text(food.text)
                 .font(.footnote)
-                .matchedGeometryEffect(id: "text\(course.id)", in: namespace)
+                .matchedGeometryEffect(id: "text\(food.id)", in: namespace)
             Divider()
                 .opacity(appear[0] ? 1 : 0)
-                .matchedGeometryEffect(id: "divider\(course.id)", in: namespace)
+                .matchedGeometryEffect(id: "divider\(food.id)", in: namespace)
             HStack {
                 Image("Avatar Default")
                     .resizable()
@@ -150,7 +150,7 @@ struct CourseDetaileView: View {
                     .font(.footnote)
             }
             .opacity(appear[1] ? 1 : 0)
-            .matchedGeometryEffect(id: "nameAndAvatar\(course.id)", in: namespace)
+            .matchedGeometryEffect(id: "nameAndAvatar\(food.id)", in: namespace)
         }
         .padding(20)
         .background(
@@ -159,7 +159,7 @@ struct CourseDetaileView: View {
                 .mask({
                     RoundedRectangle(cornerRadius: 30, style: .continuous)
                 })
-                .matchedGeometryEffect(id: "blur\(course.id)", in: namespace)
+                .matchedGeometryEffect(id: "blur\(food.id)", in: namespace)
         )
         .offset(y: 250)
         .padding(20)
@@ -217,7 +217,7 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        CourseDetaileView(namespace: namespace, course: .constant(courses[0]), show: .constant(true))
+        CourseDetaileView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])])), show: .constant(true))
             .environmentObject(Model())
     }
 }

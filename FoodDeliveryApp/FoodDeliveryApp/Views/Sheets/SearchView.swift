@@ -10,9 +10,10 @@ import SwiftUI
 struct SearchView: View {
     @State var text = ""
     @State var show = false
-    @State var selectedCourse = courses[0]
+    @State var selectedDish: Food
     @Namespace var namespace
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var model: Model
     
     var body: some View {
         NavigationView {
@@ -48,23 +49,23 @@ struct SearchView: View {
     
     var content: some View {
         VStack {
-            ForEach (Array(results.enumerated()), id: \.offset) { index, course in
+            ForEach (Array(results.enumerated()), id: \.offset) { index, dish in
                 if index != 0 { Divider() }
                 Button {
                     show = true
-                    selectedCourse = course
+                    selectedDish = dish
                 } label: {
                     HStack(alignment: .top, spacing: 12) {
-                        Image(course.image)
+                        Image(dish.image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 44, height: 44)
                             .background(Color("Background"))
                             .mask(Circle())
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(course.title).bold()
+                            Text(dish.title).bold()
                                 .foregroundColor(.primary)
-                            Text(course.text)
+                            Text(dish.text)
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -98,15 +99,15 @@ struct SearchView: View {
                 .accessibilityHidden(true)
         )
         .sheet(isPresented: $show) {
-            CourseDetaileView(namespace: namespace, course: $selectedCourse, show: $show)
+            CourseDetaileView(namespace: namespace, food: $selectedDish, show: $show)
         }
     }
     
-    var results: [Course] {
+    var results: [Food] {
         if text.isEmpty {
-            return courses
+            return model.fullMenu
         } else {
-            return courses.filter { $0.title.contains(text) }
+            return model.fullMenu.filter { $0.title.contains(text) }
         }
     }
     
@@ -121,6 +122,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchView(selectedDish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])]))
     }
 }

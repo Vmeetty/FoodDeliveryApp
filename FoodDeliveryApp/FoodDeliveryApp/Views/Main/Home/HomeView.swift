@@ -9,10 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @Namespace var namespace
-    @State var selectedCourse = courses[0]
-    @State var selectedFeaturedCourse = featuredCourses[0]
     @EnvironmentObject var model: Model
     @StateObject var viewModel = HomeViewModel()
+    @State var selectedFeaturedCourse = featuredCourses[0]
     
     var body: some View {
         ZStack {
@@ -30,12 +29,12 @@ struct HomeView: View {
                     .titleStyle()
                 
                 if !viewModel.show {
-                    ForEach(courses) { course in
-                        CourseItem(namespace: namespace, course: course, show: $viewModel.show)
+                    ForEach(Array(viewModel.selectedMenu.enumerated()), id: \.offset) { index, dish in
+                        CourseItem(namespace: namespace, dish: dish, show: $viewModel.show)
                             .onTapGesture {
                                 withAnimation(.openCard) {
+                                    viewModel.selectedDish = dish
                                     viewModel.show.toggle()
-                                    selectedCourse = course
                                     model.showDetail = true
                                 }
                             }
@@ -62,9 +61,9 @@ struct HomeView: View {
             }
             
             if viewModel.show {
-                ForEach(courses) { course in
-                    if selectedCourse.id == course.id {
-                        CourseDetaileView(namespace: namespace, course: $selectedCourse, show: $viewModel.show)
+                ForEach(viewModel.selectedMenu) { dish in
+                    if viewModel.selectedDish.id == dish.id {
+                        CourseDetaileView(namespace: namespace, food: $viewModel.selectedDish, show: $viewModel.show)
                             .zIndex(1)
                             .transition(.asymmetric(
                                 insertion: .opacity.animation(.easeInOut(duration: 0.1)),
@@ -85,8 +84,8 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            viewModel.fullMenu = viewModel.getMenu()
-            viewModel.categories = viewModel.getCategories()
+            viewModel.menu = model.fullMenu
+            viewModel.changeMenuBy(model.categories[viewModel.selectedCategoryIndex])
         }
     }
 
@@ -135,21 +134,21 @@ struct HomeView: View {
                 .offset(x: 250, y: -100)
         )
         .sheet(isPresented: $viewModel.showFeaturedCourse) {
-            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
+//            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
         }
     }
     
     var categoriesSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(Array(viewModel.categories.enumerated()), id: \.offset) { index, category in
-                    CategoryItem(category: category, selectedId: $viewModel.categories[viewModel.selectedCategoryIndex].id)
+                ForEach(Array(model.categories.enumerated()), id: \.offset) { index, category in
+                    CategoryItem(category: category, selectedId: $model.categories[viewModel.selectedCategoryIndex].id)
                         .onTapGesture {
                             withAnimation {
-//                                selectedCategoryId = category.id
-                                viewModel.selectedCategoryIndex = index
-//                                if viewModel.selectedCategoryIndex != index {
-//                                }
+                                if viewModel.selectedCategoryIndex != index {
+                                    viewModel.selectedCategoryIndex = index
+                                    viewModel.changeMenuBy(category)
+                                }
                             }
                         }
                 }
