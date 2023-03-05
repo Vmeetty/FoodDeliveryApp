@@ -18,3 +18,15 @@ extension View {
         self.modifier(AnimatbleFontModifire(size: size, weight: weight, design: design))
     }
 }
+
+extension View {
+    func backgroundStyle(cornerRadius: CGFloat = 20, opacity: Double = 0.6) -> some View {
+        self.modifier(BackgroundStyle(cornerRadius: cornerRadius, opacity: opacity))
+    }
+}
+
+extension View {
+    func backgroundColor(opacity: Double = 0.6) -> some View {
+        self.modifier(BackgroundColor(opacity: opacity))
+    }
+}

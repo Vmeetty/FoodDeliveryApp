@@ -115,9 +115,11 @@ struct CourseDetaileView: View {
                     }
             }
         }
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .strokeStyle(cornerRadius: 30)
         .padding(20)
+        .background(.ultraThinMaterial)
+        .backgroundStyle(cornerRadius: 30)
+        .padding(20)
+        .padding(.vertical, 80)
         .sheet(isPresented: $showSection) {
             SectionView(section: $selectedSection)
         }

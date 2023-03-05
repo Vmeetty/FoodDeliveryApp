@@ -40,7 +40,7 @@ struct HomeView: View {
                             }
                     }
                 } else {
-                    ForEach(courses) { course in
+                    ForEach(viewModel.selectedMenu) { dish in
                         Rectangle()
                             .fill(.white)
                             .frame(height: 300)
