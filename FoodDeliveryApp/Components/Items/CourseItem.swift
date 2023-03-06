@@ -10,21 +10,18 @@ import SwiftUI
 struct CourseItem: View {
     var namespace: Namespace.ID
     var dish: Food
-    @Binding var show: Bool
     
     var body: some View {
         VStack {
             Spacer()
             VStack(alignment: .leading, spacing: 12) {
                 Text(dish.title)
-                    .font(.largeTitle.weight(.bold))
-                    .matchedGeometryEffect(id: "title\(dish.id)", in: namespace)
+                    .font(.title).bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .matchedGeometryEffect(id: "title\(dish.id)", in: namespace)
+                    .foregroundColor(.white)
                 HStack {
                     Image(systemName: "hryvniasign")
-//                        .resizable()
-//                        .frame(width: 26, height: 26)
-//                        .cornerRadius(10)
                         .padding(8)
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                         .strokeStyle(cornerRadius: 18)
@@ -33,10 +30,6 @@ struct CourseItem: View {
                         .font(.title2)
                         .matchedGeometryEffect(id: "price\(dish.id)", in: namespace)
                 }
-//
-//                .opacity(0)
-//                .frame(height: 0)
-//                .matchedGeometryEffect(id: "nameAndAvatar", in: namespace)
             }
             .padding(20)
             .background(
@@ -69,6 +62,6 @@ struct CourseItem: View {
 struct CourseItem_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        CourseItem(namespace: namespace, dish: Food(title: "Маргарита", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "margarita", price: "185", category: "Pizza", options: [Option(title: "Гострий", values: ["Так", "Ні"])]), show: .constant(true))
+        CourseItem(namespace: namespace, dish: Food(title: "Маргарита", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "margarita", price: "185", category: "Pizza", options: [Option(title: "Гострий", values: ["Так", "Ні"])]))
     }
 }

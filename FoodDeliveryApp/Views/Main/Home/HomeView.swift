@@ -28,13 +28,12 @@ struct HomeView: View {
                 Text("courses".uppercased())
                     .titleStyle()
                 
-                if !viewModel.show {
-                    ForEach(Array(viewModel.selectedMenu.enumerated()), id: \.offset) { index, dish in
-                        CourseItem(namespace: namespace, dish: dish, show: $viewModel.show)
+                if !model.showDetail {
+                    ForEach(viewModel.selectedMenu) { dish in
+                        CourseItem(namespace: namespace, dish: dish)
                             .onTapGesture {
                                 withAnimation(.openCard) {
                                     viewModel.selectedDish = dish
-                                    viewModel.show.toggle()
                                     model.showDetail = true
                                 }
                             }
@@ -60,21 +59,17 @@ struct HomeView: View {
                 NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Featured")
             }
             
-            if viewModel.show {
-                ForEach(viewModel.selectedMenu) { dish in
-                    if viewModel.selectedDish.id == dish.id {
-                        CourseDetaileView(namespace: namespace, food: $viewModel.selectedDish, show: $viewModel.show)
-                            .zIndex(1)
-                            .transition(.asymmetric(
-                                insertion: .opacity.animation(.easeInOut(duration: 0.1)),
-                                removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
-                            ))
-                    }
-                }
+            if model.showDetail {
+                CourseDetaileView(namespace: namespace, food: $viewModel.selectedDish)
+                    .zIndex(1)
+                    .transition(.asymmetric(
+                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
+                        removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
+                    ))
             }
         }
         .statusBarHidden(!viewModel.showStatusBar)
-        .onChange(of: viewModel.show) { newValue in
+        .onChange(of: model.showDetail) { newValue in
             withAnimation(.closeCard) {
                 if newValue {
                     viewModel.showStatusBar = false

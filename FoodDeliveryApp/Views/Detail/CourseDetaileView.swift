@@ -10,13 +10,14 @@ import SwiftUI
 struct CourseDetaileView: View {
     var namespace: Namespace.ID
     @Binding var food: Food
-    @Binding var show: Bool
+    @State var isDragble = true
+    
     @State var viewState: CGSize = .zero
     @State var showSection = false
     @State var appear = [false, false, false]
     @State var selectedSection = courseSections[0]
+    
     @EnvironmentObject var model: Model
-    @State var isDragble = true
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -24,10 +25,7 @@ struct CourseDetaileView: View {
             ScrollView {
                 cover
                 content
-//                    .offset(y: 120)
-//                    .padding(.bottom, 200)
                     .opacity(appear[2] ? 1 : 0)
-                    .matchedGeometryEffect(id: "content\(food.id)", in: namespace)
             }
             .coordinateSpace(name: "scroll")
             .background(Color("Background"))
@@ -45,9 +43,6 @@ struct CourseDetaileView: View {
         .zIndex(1)
         .onAppear {
             fadeIn()
-        }
-        .onChange(of: model.showDetail) { show in
-           fadeOut()
         }
     }
     
@@ -68,15 +63,6 @@ struct CourseDetaileView: View {
                     .matchedGeometryEffect(id: "image\(food.id)", in: namespace)
                     .offset(y: scrollY > 0 ? scrollY * -0.8 : scrollY / 5)
             )
-//            .background(
-//                Image(course.background)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
-//                    .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
-//                    .offset(y: scrollY > 0 ? -scrollY : 0)
-//                    .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
-//                    .blur(radius: scrollY / 10)
-//            )
             .mask {
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
                     .matchedGeometryEffect(id: "mask\(food.id)", in: namespace)
@@ -95,9 +81,9 @@ struct CourseDetaileView: View {
             isDragble ?
             withAnimation(.closeCard) {
                 model.showDetail = false
-                show.toggle()
             }
             : dismiss()
+            fadeOut()
         } label: {
             Image(systemName: "xmark")
                 .font(.system(size: 17, weight: .bold))
@@ -133,36 +119,29 @@ struct CourseDetaileView: View {
     }
     
     var overlayContent: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(food.title)
-                .font(.largeTitle.weight(.bold))
-                .matchedGeometryEffect(id: "title\(food.id)", in: namespace)
+                .font(.title).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
-//            Text(course.subtitle.uppercased())
-//                .font(.footnote.weight(.semibold))
-//                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
+                .foregroundColor(.primary)
+                .matchedGeometryEffect(id: "title\(food.id)", in: namespace)
             Text(food.text)
                 .font(.footnote)
-//                .matchedGeometryEffect(id: "text\(food.id)", in: namespace)
                 .opacity(appear[0] ? 1 : 0)
             Divider()
                 .foregroundColor(.secondary)
                 .opacity(appear[0] ? 1 : 0)
-//                .matchedGeometryEffect(id: "divider\(food.id)", in: namespace)
             HStack {
                 Image(systemName: "hryvniasign")
-//                    .resizable()
-//                    .frame(width: 26, height: 26)
-//                    .cornerRadius(10)
                     .padding(8)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                     .strokeStyle(cornerRadius: 18)
                     .matchedGeometryEffect(id: "currency\(food.id)", in: namespace)
                 Text(food.price)
                     .font(.title2)
+                    .foregroundColor(.primary.opacity(0.7))
                     .matchedGeometryEffect(id: "price\(food.id)", in: namespace)
             }
-//            .opacity(appear[1] ? 1 : 0)
         }
         .padding(20)
         .background(
@@ -205,7 +184,6 @@ struct CourseDetaileView: View {
     
     private func close() {
         withAnimation(.closeCard.delay(0.1)) {
-            show.toggle()
             model.showDetail = false
         }
         withAnimation(.closeCard) {
@@ -238,7 +216,7 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        CourseDetaileView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])])), show: .constant(true))
+        CourseDetaileView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])])))
             .environmentObject(Model())
     }
 }

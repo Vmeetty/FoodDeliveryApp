@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @State var text = ""
     @State var show = false
-    @State var selectedDish: Food
+    @State var selectedDish: Food = Food(title: "", weight: "", text: "", image: "", price: "", category: "", options: [Option(title: "", values: [])])
     @Namespace var namespace
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var model: Model
@@ -99,7 +99,7 @@ struct SearchView: View {
                 .accessibilityHidden(true)
         )
         .sheet(isPresented: $show) {
-            CourseDetaileView(namespace: namespace, food: $selectedDish, show: $show)
+            CourseDetaileView(namespace: namespace, food: $selectedDish)
         }
     }
     

@@ -9,7 +9,6 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     
-    @Published var show = false
     @Published var hasScrolled = false
     @Published var showStatusBar = true
     @Published var showFeaturedCourse = false
