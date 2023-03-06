@@ -130,7 +130,7 @@ struct CourseDetaileView: View {
                 .opacity(appear[0] ? 1 : 0)
             Divider()
                 .foregroundColor(.secondary)
-                .opacity(appear[0] ? 1 : 0)
+                .opacity(appear[1] ? 1 : 0)
             HStack {
                 Image(systemName: "hryvniasign")
                     .padding(8)
