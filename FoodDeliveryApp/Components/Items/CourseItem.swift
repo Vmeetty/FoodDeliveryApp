@@ -44,7 +44,7 @@ struct CourseItem: View {
 //
 //                .opacity(0)
 //                .frame(height: 0)
-//                .matchedGeometryEffect(id: "nameAndAvatar", in: namespace)
+                .matchedGeometryEffect(id: "nameAndAvatar", in: namespace)
             }
             .padding(20)
             .background(

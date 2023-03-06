@@ -60,6 +60,7 @@
 		843AFDCA29B0F0C000026273 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDC929B0F0C000026273 /* Food.swift */; };
 		843AFDCD29B0F2C900026273 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDCC29B0F2C900026273 /* HomeViewModel.swift */; };
 		843AFDD029B0F44700026273 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDCF29B0F44700026273 /* ExploreViewModel.swift */; };
+		8475B25E29B5D42B009653AC /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B25D29B5D42B009653AC /* LogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		843AFDC929B0F0C000026273 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		843AFDCC29B0F2C900026273 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		843AFDCF29B0F44700026273 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		8475B25D29B5D42B009653AC /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				843AFD9029B0E4F900026273 /* Graphics */,
 				843AFD8B29B0E4BC00026273 /* Buttons */,
 				843AFD8A29B0E4B300026273 /* Items */,
+				8475B25D29B5D42B009653AC /* LogoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				843AFD7729B0CF9100026273 /* Color + Extention.swift in Sources */,
 				843AFD8D29B0E4CE00026273 /* AvatarView.swift in Sources */,
 				843AFD7F29B0E3E600026273 /* CourseItem.swift in Sources */,
+				8475B25E29B5D42B009653AC /* LogoView.swift in Sources */,
 				843AFD8129B0E40B00026273 /* SmallCourseItem.swift in Sources */,
 				843AFD5F29B0CB1400026273 /* Handbook.swift in Sources */,
 				843AFD6D29B0CEB400026273 /* Styles.swift in Sources */,

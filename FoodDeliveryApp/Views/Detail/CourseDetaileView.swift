@@ -11,12 +11,12 @@ struct CourseDetaileView: View {
     var namespace: Namespace.ID
     @Binding var food: Food
     @Binding var show: Bool
-    @State var appear = [false, false, false]
-    @EnvironmentObject var model: Model
     @State var viewState: CGSize = .zero
-    @State var isDragble = true
-    @State var selectedSection = courseSections[0]
     @State var showSection = false
+    @State var appear = [false, false, false]
+    @State var selectedSection = courseSections[0]
+    @EnvironmentObject var model: Model
+    @State var isDragble = true
     
     var body: some View {
         ZStack {
