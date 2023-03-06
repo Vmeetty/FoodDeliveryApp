@@ -20,16 +20,6 @@ struct CourseItem: View {
                     .font(.largeTitle.weight(.bold))
                     .matchedGeometryEffect(id: "title\(dish.id)", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
-//                Text(dish.price)
-//                    .font(.title2.weight(.semibold))
-//                    .matchedGeometryEffect(id: "subtitle\(dish.id)", in: namespace)
-//                Text(dish.text)
-//                    .font(.footnote)
-//                    .matchedGeometryEffect(id: "text\(dish.id)", in: namespace)
-//                Divider()
-//                    .frame(height: 0)
-//                    .opacity(0)
-//                    .matchedGeometryEffect(id: "divider", in: namespace)
                 HStack {
                     Image(systemName: "hryvniasign")
 //                        .resizable()
@@ -38,13 +28,15 @@ struct CourseItem: View {
                         .padding(8)
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                         .strokeStyle(cornerRadius: 18)
+                        .matchedGeometryEffect(id: "currency\(dish.id)", in: namespace)
                     Text(dish.price)
                         .font(.title2)
+                        .matchedGeometryEffect(id: "price\(dish.id)", in: namespace)
                 }
 //
 //                .opacity(0)
 //                .frame(height: 0)
-                .matchedGeometryEffect(id: "nameAndAvatar", in: namespace)
+//                .matchedGeometryEffect(id: "nameAndAvatar", in: namespace)
             }
             .padding(20)
             .background(
@@ -65,12 +57,6 @@ struct CourseItem: View {
                 .aspectRatio(contentMode: .fill)
                 .matchedGeometryEffect(id: "image\(dish.id)", in: namespace)
         )
-//        .background(
-//            Image(course.background)
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
-//        )
         .mask {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
                 .matchedGeometryEffect(id: "mask\(dish.id)", in: namespace)

@@ -17,34 +17,37 @@ struct CourseDetaileView: View {
     @State var selectedSection = courseSections[0]
     @EnvironmentObject var model: Model
     @State var isDragble = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
             ScrollView {
                 cover
-                    .frame(height: 500)
-                
                 content
-                    .offset(y: 120)
-                    .padding(.bottom, 200)
+//                    .offset(y: 120)
+//                    .padding(.bottom, 200)
                     .opacity(appear[2] ? 1 : 0)
+                    .matchedGeometryEffect(id: "content\(food.id)", in: namespace)
             }
             .coordinateSpace(name: "scroll")
             .background(Color("Background"))
-            .mask({
-                RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous)
-            })
-            .shadow(color: .black.opacity(0.3), radius: 30, x: 0, y: 10)
-            .scaleEffect(viewState.width / -500 + 1)
-            .background(.black.opacity(viewState.width / 500))
+            .mask(RoundedRectangle(cornerRadius: appear[0] ? 0 : 30))
+            .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
+            .shadow(color: Color("Shadow").opacity(0.3), radius: 30, x: 0, y: 10)
+            .scaleEffect(-viewState.width / 500 + 1)
+            .background(Color("Shadow").opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
             .gesture(isDragble ? drag : nil)
             .ignoresSafeArea()
             
             closeButton
         }
+        .zIndex(1)
         .onAppear {
-            userInfofadeIn()
+            fadeIn()
+        }
+        .onChange(of: model.showDetail) { show in
+           fadeOut()
         }
     }
     
@@ -84,20 +87,24 @@ struct CourseDetaileView: View {
                     .offset(y: scrollY > 0 ? scrollY * -0.4 : 0)
             })
         }
+        .frame(height: 500)
     }
     
     var closeButton: some View {
         Button {
+            isDragble ?
             withAnimation(.closeCard) {
-                show.toggle()
                 model.showDetail = false
+                show.toggle()
             }
+            : dismiss()
         } label: {
             Image(systemName: "xmark")
-                .font(.body.weight(.bold))
+                .font(.system(size: 17, weight: .bold))
                 .foregroundColor(.secondary)
                 .padding(8)
                 .background(.ultraThinMaterial, in: Circle())
+                .backgroundStyle(cornerRadius: 18)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         .padding(20)
@@ -136,23 +143,26 @@ struct CourseDetaileView: View {
 //                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
             Text(food.text)
                 .font(.footnote)
-                .matchedGeometryEffect(id: "text\(food.id)", in: namespace)
-            Divider()
+//                .matchedGeometryEffect(id: "text\(food.id)", in: namespace)
                 .opacity(appear[0] ? 1 : 0)
-                .matchedGeometryEffect(id: "divider\(food.id)", in: namespace)
+            Divider()
+                .foregroundColor(.secondary)
+                .opacity(appear[0] ? 1 : 0)
+//                .matchedGeometryEffect(id: "divider\(food.id)", in: namespace)
             HStack {
-                Image("Avatar Default")
-                    .resizable()
-                    .frame(width: 26, height: 26)
-                    .cornerRadius(10)
+                Image(systemName: "hryvniasign")
+//                    .resizable()
+//                    .frame(width: 26, height: 26)
+//                    .cornerRadius(10)
                     .padding(8)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                     .strokeStyle(cornerRadius: 18)
-                Text("Vlad Chuvashov")
-                    .font(.footnote)
+                    .matchedGeometryEffect(id: "currency\(food.id)", in: namespace)
+                Text(food.price)
+                    .font(.title2)
+                    .matchedGeometryEffect(id: "price\(food.id)", in: namespace)
             }
-            .opacity(appear[1] ? 1 : 0)
-            .matchedGeometryEffect(id: "nameAndAvatar\(food.id)", in: namespace)
+//            .opacity(appear[1] ? 1 : 0)
         }
         .padding(20)
         .background(
@@ -168,10 +178,19 @@ struct CourseDetaileView: View {
     }
     
     var drag: some Gesture {
-        DragGesture()
+        DragGesture(minimumDistance: 30, coordinateSpace: .local)
             .onChanged({ newValue in
                 guard newValue.translation.width > 0 else { return }
-                viewState = newValue.translation
+                
+                if newValue.startLocation.x < 100 {
+                    withAnimation {
+                        viewState = newValue.translation
+                    }
+                }
+                
+                if viewState.width > 120 {
+                    close()
+                }
             })
             .onEnded({ newValue in
                 if viewState.width > 80 {
@@ -196,7 +215,7 @@ struct CourseDetaileView: View {
         isDragble = false
     }
     
-    private func userInfofadeIn() {
+    private func fadeIn() {
         withAnimation(.easeOut.delay(0.3)) {
             appear[0] = true
         }
@@ -211,7 +230,7 @@ struct CourseDetaileView: View {
     private func fadeOut() {
         appear[0] = false
         appear[1] = false
-        appear[2] = true
+        appear[2] = false
     }
 }
 
