@@ -30,15 +30,17 @@ struct CourseDetaileView: View {
             .coordinateSpace(name: "scroll")
             .background(Color("Background"))
             .mask(RoundedRectangle(cornerRadius: appear[0] ? 0 : 30))
-            .mask(RoundedRectangle(cornerRadius: viewState.width / 3, style: .continuous))
-            .shadow(color: Color("Shadow").opacity(0.3), radius: 30, x: 0, y: 10)
-            .scaleEffect(-viewState.width / 500 + 1)
+            .mask(RoundedRectangle(cornerRadius: viewState.width / 3))
+            .modifier(OutlineModifier(cornerRadius: viewState.width / 3))
+            .shadow(color: Color("Shadow").opacity(0.5), radius: 30, x: 0, y: 10)
+            .scaleEffect(-viewState.width/500 + 1)
             .background(Color("Shadow").opacity(viewState.width / 500))
             .background(.ultraThinMaterial)
             .gesture(isDragble ? drag : nil)
             .ignoresSafeArea()
             
             closeButton
+                .opacity(appear[0] ? 1 : 0)
         }
         .zIndex(1)
         .onAppear {
@@ -55,13 +57,15 @@ struct CourseDetaileView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
-            .foregroundColor(.black)
             .background(
                 Image(food.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .matchedGeometryEffect(id: "image\(food.id)", in: namespace)
-                    .offset(y: scrollY > 0 ? scrollY * -0.8 : scrollY / 5)
+                    .matchedGeometryEffect(id: "background\(food.id)", in: namespace)
+                    .offset(y: scrollY > 0 ? -scrollY : 0)
+                    .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
+                    .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
+                    .accessibility(hidden: true)
             )
             .mask {
                 RoundedRectangle(cornerRadius: 30, style: .continuous)
@@ -85,12 +89,7 @@ struct CourseDetaileView: View {
             : dismiss()
             fadeOut()
         } label: {
-            Image(systemName: "xmark")
-                .font(.system(size: 17, weight: .bold))
-                .foregroundColor(.secondary)
-                .padding(8)
-                .background(.ultraThinMaterial, in: Circle())
-                .backgroundStyle(cornerRadius: 18)
+            CloseButton()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         .padding(20)
@@ -150,6 +149,7 @@ struct CourseDetaileView: View {
                 .mask({
                     RoundedRectangle(cornerRadius: 30, style: .continuous)
                 })
+                .blur(radius: 0)
                 .matchedGeometryEffect(id: "blur\(food.id)", in: namespace)
         )
         .offset(y: 250)
@@ -216,7 +216,7 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        CourseDetaileView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])])))
+        CourseDetaileView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза. Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])])))
             .environmentObject(Model())
     }
 }

@@ -15,7 +15,7 @@ extension View {
 
 extension View {
     func animatbleFont(size: Double, weight: Font.Weight = .regular, design: Font.Design = .default) -> some View {
-        self.modifier(AnimatbleFontModifire(size: size, weight: weight, design: design))
+        self.modifier(AnimatbleFontModifier(size: size, weight: weight, design: design))
     }
 }
 
