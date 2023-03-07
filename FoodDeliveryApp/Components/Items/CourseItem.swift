@@ -34,8 +34,8 @@ struct CourseItem: View {
             .padding(20)
             .background(
                 Rectangle()
-                    .fill(.ultraThinMaterial)
-//                    .opacity(0.3)
+                    .fill(.black)
+                    .opacity(0.3)
                     .mask({
                         RoundedRectangle(cornerRadius: 30, style: .continuous)
                     })
@@ -44,18 +44,11 @@ struct CourseItem: View {
             )
         }
         .foregroundColor(.white)
-//        .background(
-//            Image(dish.image)
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .matchedGeometryEffect(id: "image\(dish.id)", in: namespace)
-//        )
         .background(
             Image(dish.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .disabled(true)
-                .matchedGeometryEffect(id: "background\(dish.id)", in: namespace)
+                .matchedGeometryEffect(id: "image\(dish.id)", in: namespace)
         )
         .mask {
             RoundedRectangle(cornerRadius: 30, style: .continuous)

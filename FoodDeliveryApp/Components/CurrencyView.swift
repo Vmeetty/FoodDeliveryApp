@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LogoView: View {
+struct CurrencyView: View {
     
     var body: some View {
         Image(systemName: "hryvniasign")
@@ -22,6 +22,6 @@ struct LogoView: View {
 
 struct LogoView_Previews: PreviewProvider {
     static var previews: some View {
-        LogoView()
+        CurrencyView()
     }
 }
