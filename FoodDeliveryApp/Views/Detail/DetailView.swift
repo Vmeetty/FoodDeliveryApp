@@ -1,5 +1,5 @@
 //
-//  CourseDetaileView.swift
+//  DetailView.swift
 //  FoodDeliveryApp
 //
 //  Created by admin on 3/2/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CourseDetaileView: View {
+struct DetailView: View {
     var namespace: Namespace.ID
     @Binding var food: Food
     @State var isDragble = true
@@ -26,7 +26,7 @@ struct CourseDetaileView: View {
                 cover
                 Group {
                     container
-                    content
+                    additionsSection
                         .opacity(appear[2] ? 1 : 0)
                 }
                 .offset(y: -30)
@@ -94,25 +94,25 @@ struct CourseDetaileView: View {
         .ignoresSafeArea()
     }
     
-    var content: some View {
+    var addionsContainer: some View {
         VStack(alignment: .leading) {
-            ForEach(Array(courseSections.enumerated()), id: \.offset) { index, section in
+            ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
                 if index != 0 { Divider() }
-                SectionRow(section: section)
-                    .onTapGesture {
-                        selectedSection = section
-                        showSection = true
-                    }
+                AdditionRow(addition: addition)
             }
         }
-        .padding(20)
+    }
+    
+    var additionsSection: some View {
+        VStack(alignment: .leading) {
+            ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
+                if index != 0 { Divider() }
+                AdditionRow(addition: addition)
+            }
+        }
         .background(.ultraThinMaterial)
         .backgroundStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
-//        .padding(.vertical, 80)
-        .sheet(isPresented: $showSection) {
-            SectionView(section: $selectedSection)
-        }
     }
     
     var container: some View {
@@ -136,8 +136,8 @@ struct CourseDetaileView: View {
             HStack {
                 Image(systemName: "hryvniasign")
                     .padding(8)
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                    .strokeStyle(cornerRadius: 18)
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .strokeStyle(cornerRadius: 12)
                     .matchedGeometryEffect(id: "currency\(food.id)", in: namespace)
                 Text(food.price)
                     .font(.title2)
@@ -149,13 +149,10 @@ struct CourseDetaileView: View {
         .background(
             Rectangle()
                 .fill(.ultraThinMaterial)
-                .mask({
-                    RoundedRectangle(cornerRadius: 30, style: .continuous)
-                })
-                .blur(radius: 0)
+                .backgroundStyle(cornerRadius: 30)
                 .matchedGeometryEffect(id: "blur\(food.id)", in: namespace)
         )
-//        .offset(y: -100)
+        .frame(maxHeight: .infinity, alignment: .bottom)
         .padding(20)
     }
     
@@ -219,7 +216,7 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        CourseDetaileView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])])))
+        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionValue(title: "Так"), AdditionValue(title: "Ні")])])))
             .environmentObject(Model())
     }
 }

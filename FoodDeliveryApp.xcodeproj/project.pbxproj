@@ -48,7 +48,7 @@
 		843AFD9E29B0E5EF00026273 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9D29B0E5EF00026273 /* ExploreView.swift */; };
 		843AFDA029B0E60200026273 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9F29B0E60200026273 /* NotificationsView.swift */; };
 		843AFDA229B0E61B00026273 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA129B0E61B00026273 /* LibraryView.swift */; };
-		843AFDA429B0E63700026273 /* CourseDetaileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA329B0E63700026273 /* CourseDetaileView.swift */; };
+		843AFDA429B0E63700026273 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA329B0E63700026273 /* DetailView.swift */; };
 		843AFDA629B0E65100026273 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA529B0E65100026273 /* SectionView.swift */; };
 		843AFDA829B0E68C00026273 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA729B0E68C00026273 /* SignUpView.swift */; };
 		843AFDAA29B0E6A100026273 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA929B0E6A100026273 /* SignInView.swift */; };
@@ -63,6 +63,7 @@
 		8475B25E29B5D42B009653AC /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B25D29B5D42B009653AC /* CurrencyView.swift */; };
 		8475B26829B73C85009653AC /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B26729B73C85009653AC /* CloseButton.swift */; };
 		8475B26A29B7636D009653AC /* AdditionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B26929B7636D009653AC /* AdditionRow.swift */; };
+		84769A7329B788C1009AF71F /* String + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7229B788C1009AF71F /* String + Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,7 +109,7 @@
 		843AFD9D29B0E5EF00026273 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		843AFD9F29B0E60200026273 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		843AFDA129B0E61B00026273 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
-		843AFDA329B0E63700026273 /* CourseDetaileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetaileView.swift; sourceTree = "<group>"; };
+		843AFDA329B0E63700026273 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		843AFDA529B0E65100026273 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		843AFDA729B0E68C00026273 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		843AFDA929B0E6A100026273 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		8475B25D29B5D42B009653AC /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		8475B26729B73C85009653AC /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		8475B26929B7636D009653AC /* AdditionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionRow.swift; sourceTree = "<group>"; };
+		84769A7229B788C1009AF71F /* String + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				843AFD7329B0CF9100026273 /* Animation + Extension.swift */,
 				843AFD7429B0CF9100026273 /* Color + Extention.swift */,
 				843AFD7529B0CF9100026273 /* View + Extension.swift */,
+				84769A7229B788C1009AF71F /* String + Extention.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -301,7 +304,7 @@
 		843AFD9929B0E5AE00026273 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				843AFDA329B0E63700026273 /* CourseDetaileView.swift */,
+				843AFDA329B0E63700026273 /* DetailView.swift */,
 				843AFDA529B0E65100026273 /* SectionView.swift */,
 			);
 			path = Detail;
@@ -463,6 +466,7 @@
 				843AFD5D29B0CB1400026273 /* PreferenceKeys.swift in Sources */,
 				843AFD9629B0E52C00026273 /* CircularView.swift in Sources */,
 				8475B26829B73C85009653AC /* CloseButton.swift in Sources */,
+				84769A7329B788C1009AF71F /* String + Extention.swift in Sources */,
 				843AFD9229B0E50600026273 /* HexagonView.swift in Sources */,
 				843AFDC529B0EA2200026273 /* Category.swift in Sources */,
 				843AFDAC29B0E6B600026273 /* ModalView.swift in Sources */,
@@ -489,7 +493,7 @@
 				843AFD7A29B0E35B00026273 /* CoinViewModel.swift in Sources */,
 				843AFD8729B0E44F00026273 /* SectionRow.swift in Sources */,
 				843AFD2529B0C0FC00026273 /* FoodDeliveryAppApp.swift in Sources */,
-				843AFDA429B0E63700026273 /* CourseDetaileView.swift in Sources */,
+				843AFDA429B0E63700026273 /* DetailView.swift in Sources */,
 				843AFD6629B0CE2200026273 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

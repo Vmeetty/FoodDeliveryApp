@@ -46,7 +46,7 @@ struct HomeView: View {
                             .cornerRadius(30)
                             .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
                             .opacity(0.3)
-                        .padding(.horizontal, 30)
+                            .padding(.horizontal, 30)
                     }
                 }
             }
@@ -60,7 +60,7 @@ struct HomeView: View {
             }
             
             if model.showDetail {
-                CourseDetaileView(namespace: namespace, food: $viewModel.selectedDish)
+                DetailView(namespace: namespace, food: $viewModel.selectedDish)
                     .zIndex(1)
                     .transition(.asymmetric(
                         insertion: .opacity.animation(.easeInOut(duration: 0.1)),

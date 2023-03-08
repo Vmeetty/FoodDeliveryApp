@@ -17,9 +17,9 @@ class Food: Identifiable, Codable {
     var image: String
     var price: String
     var category: String
-    var options: [Option]
+    var options: [Addition]
     
-    init(title: String, weight: String, text: String, image: String, price: String, category: String, options: [Option]) {
+    init(title: String, weight: String, text: String, image: String, price: String, category: String, options: [Addition]) {
         self.title = title
         self.weight = weight
         self.text = text
@@ -30,13 +30,20 @@ class Food: Identifiable, Codable {
     }
 }
 
-struct Option: Codable {
+struct Addition: Identifiable, Codable {
+    var id = UUID()
     var title: String
-    var values: [String]
+    var values: [AdditionValue]
     
-    init(title: String, values: [String]) {
+    init(title: String, values: [AdditionValue]) {
         self.title = title
         self.values = values
     }
     
+}
+
+struct AdditionValue: Identifiable, Codable {
+    var id = UUID()
+    var title: String
+    var price: String?
 }

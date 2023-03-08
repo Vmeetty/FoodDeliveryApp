@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @State var text = ""
     @State var show = false
-    @State var selectedDish: Food = Food(title: "", weight: "", text: "", image: "", price: "", category: "", options: [Option(title: "", values: [])])
+    @State var selectedDish: Food = Food(title: "", weight: "", text: "", image: "", price: "", category: "", options: [Addition(title: "", values: [])])
     @Namespace var namespace
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var model: Model
@@ -99,7 +99,7 @@ struct SearchView: View {
                 .accessibilityHidden(true)
         )
         .sheet(isPresented: $show) {
-            CourseDetaileView(namespace: namespace, food: $selectedDish)
+            DetailView(namespace: namespace, food: $selectedDish)
         }
     }
     
@@ -122,6 +122,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(selectedDish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Option(title: "Гострий", values: ["Так", "Ні"])]))
+        SearchView(selectedDish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionValue(title: "Так"), AdditionValue(title: "Ні")])]))
     }
 }

@@ -23,24 +23,24 @@ struct CourseItem: View {
                 HStack {
                     Image(systemName: "hryvniasign")
                         .padding(8)
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-                        .strokeStyle(cornerRadius: 18)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .strokeStyle(cornerRadius: 12)
                         .matchedGeometryEffect(id: "currency\(dish.id)", in: namespace)
                     Text(dish.price)
                         .font(.title2)
+                        .foregroundColor(.white)
                         .matchedGeometryEffect(id: "price\(dish.id)", in: namespace)
                 }
             }
             .padding(20)
             .background(
                 Rectangle()
-                    .fill(.black)
-                    .opacity(0.3)
-                    .mask({
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    })
+                    .fill(.black.opacity(0.4))
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+                    .cornerRadius(30)
                     .blur(radius: 30)
                     .matchedGeometryEffect(id: "blur\(dish.id)", in: namespace)
+                    .opacity(0.8)
             )
         }
         .foregroundColor(.white)
@@ -62,6 +62,6 @@ struct CourseItem: View {
 struct CourseItem_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        CourseItem(namespace: namespace, dish: Food(title: "Маргарита", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "margarita", price: "185", category: "Pizza", options: [Option(title: "Гострий", values: ["Так", "Ні"])]))
+        CourseItem(namespace: namespace, dish: Food(title: "Маргарита", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "margarita", price: "185", category: "Pizza", options: [Addition(title: "Гострий", values: [AdditionValue(title: "Так"), AdditionValue(title: "Ні")])]))
     }
 }
