@@ -18,7 +18,7 @@ struct DetailView: View {
     
     @EnvironmentObject var model: Model
     @Environment(\.dismiss) var dismiss
-    @StateObject var detailViewModel = DetailViewModel()
+    @StateObject var viewModel = DetailViewModel()
     
     var body: some View {
         ZStack {
@@ -95,23 +95,12 @@ struct DetailView: View {
         .ignoresSafeArea()
     }
     
-    var addionsContainer: some View {
-        VStack(alignment: .leading) {
-            ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
-                if index != 0 {
-                    Divider()
-                }
-                AdditionRow(addition: addition)
-                    .environmentObject(detailViewModel)
-            }
-        }
-    }
-    
     var additionsSection: some View {
         VStack(alignment: .leading) {
             ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
                 if index != 0 { Divider() }
                 AdditionRow(addition: addition)
+                    .environmentObject(viewModel)
             }
         }
         .background(.ultraThinMaterial)
@@ -147,6 +136,8 @@ struct DetailView: View {
                     .font(.title2)
                     .foregroundColor(.primary.opacity(0.7))
                     .matchedGeometryEffect(id: "price\(food.id)", in: namespace)
+                Spacer()
+                Text("\(viewModel.totalPrice)")
             }
         }
         .padding(20)
@@ -217,7 +208,7 @@ struct DetailView: View {
     
     private func createOrderItem() {
         let newOrderItem = OrderItem(title: food.title, price: food.price, selectedAdditions: [])
-        detailViewModel.orderItem = newOrderItem
+        viewModel.orderItem = newOrderItem
     }
 }
 

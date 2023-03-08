@@ -34,7 +34,7 @@ struct AdditionRow: View {
                     }
                     Spacer()
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.primary)
                 }
             }
             
@@ -57,10 +57,23 @@ struct AdditionRow: View {
                     .onTapGesture {
                         if !value.isSelected {
                             addition.values[index].isSelected = true
+                            let newAdditionItem = AdditionItem(title: value.title, price: value.price, isSelected: true)
+                            var addExists = false
+                            for (index, addition) in detailViewModel.orderItem.selectedAdditions.enumerated() {
+                                if addition.title == value.title {
+                                    addExists = true
+                                    detailViewModel.orderItem.selectedAdditions[index].values.append(newAdditionItem)
+                                    return
+                                }
+                            }
+                            if !addExists {
+                                let newAddition = Addition(title: value.title, values: [newAdditionItem])
+                                detailViewModel.orderItem.selectedAdditions.append(newAddition)
+                            }
+                            detailViewModel.calculateTotalPrice()
                         } else {
                             addition.values[index].isSelected = false
                         }
-                        print("\(addition.title): \n\(value.title) - \(value.price ?? "0 грн") selected")
                     }
                     .opacity(appear ? 1 : 0)
                 }

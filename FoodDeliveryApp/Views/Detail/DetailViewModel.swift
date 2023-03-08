@@ -8,5 +8,30 @@
 import SwiftUI
 
 class DetailViewModel: ObservableObject {
-    @Published var orderItem: OrderItem!
+    @Published var orderItem: OrderItem = OrderItem(title: "", price: "", selectedAdditions: [])
+    @Published var totalPrice: Double = 0
+    
+    func calculateTotalPrice() {
+        var total: Double = 0
+        
+        guard let price = Double(orderItem.price) else {
+            fatalError("orderItem.price ->> doesn't exist or the value format is not correct")
+        }
+        total += price
+        
+        for addition in orderItem.selectedAdditions {
+            if !addition.values.isEmpty {
+                for value in addition.values {
+                    guard let addItemPrice = value.price else {
+                        fatalError("addition value.price ->> doesn't exist")
+                    }
+                    guard let additionItemPrice = Double(addItemPrice) else {
+                        fatalError("orderItem.price ->> doesn't exist or the value format is not correct")
+                    }
+                    total += additionItemPrice
+                }
+            }
+        }
+        totalPrice = total
+    }
 }
