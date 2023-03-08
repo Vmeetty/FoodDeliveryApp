@@ -97,7 +97,9 @@ struct DetailView: View {
     var addionsContainer: some View {
         VStack(alignment: .leading) {
             ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
-                if index != 0 { Divider() }
+                if index != 0 {
+                    Divider()
+                }
                 AdditionRow(addition: addition)
             }
         }
