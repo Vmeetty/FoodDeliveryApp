@@ -15,10 +15,10 @@ struct DetailView: View {
     @State var viewState: CGSize = .zero
     @State var showSection = false
     @State var appear = [false, false, false]
-    @State var selectedSection = courseSections[0]
     
     @EnvironmentObject var model: Model
     @Environment(\.dismiss) var dismiss
+    @StateObject var detailViewModel = DetailViewModel()
     
     var body: some View {
         ZStack {
@@ -48,6 +48,7 @@ struct DetailView: View {
         }
         .zIndex(1)
         .onAppear {
+            createOrderItem()
             fadeIn()
         }
     }
@@ -101,6 +102,7 @@ struct DetailView: View {
                     Divider()
                 }
                 AdditionRow(addition: addition)
+                    .environmentObject(detailViewModel)
             }
         }
     }
@@ -212,13 +214,18 @@ struct DetailView: View {
         appear[1] = false
         appear[2] = false
     }
+    
+    private func createOrderItem() {
+        let newOrderItem = OrderItem(title: food.title, price: food.price, selectedAdditions: [])
+        detailViewModel.orderItem = newOrderItem
+    }
 }
 
 struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionValue(title: "Так"), AdditionValue(title: "Ні")])])))
+        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])])))
             .environmentObject(Model())
     }
 }

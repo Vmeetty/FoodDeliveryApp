@@ -33,17 +33,18 @@ class Food: Identifiable, Codable {
 struct Addition: Identifiable, Codable {
     var id = UUID()
     var title: String
-    var values: [AdditionValue]
+    var values: [AdditionItem]
     
-    init(title: String, values: [AdditionValue]) {
-        self.title = title
-        self.values = values
-    }
+//    init(title: String, values: [AdditionItem]) {
+//        self.title = title
+//        self.values = values
+//    }
     
 }
 
-struct AdditionValue: Identifiable, Codable {
+struct AdditionItem: Identifiable, Codable {
     var id = UUID()
     var title: String
     var price: String?
+    var isSelected: Bool = false
 }

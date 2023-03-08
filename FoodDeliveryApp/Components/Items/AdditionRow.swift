@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct AdditionRow: View {
-    var addition: Addition
+    @State var addition: Addition
     @State var isExpanded = false
     @State var appear = false
-    @State var selectIcon = "square"
+    @State var additionsSelected = [String]()
+    
+    @EnvironmentObject var detailViewModel: DetailViewModel
     
     var body: some View {
         VStack(spacing: 12) {
@@ -24,9 +26,11 @@ struct AdditionRow: View {
                             .fontWeight(.semibold)
                             .tint(.primary)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("Додано - \(0)")
-                            .font(.caption.weight(.medium))
-                            .tint(.secondary)
+                        if additionsSelected.isEmpty {
+                            Text("Натисніть, щоб додати")
+                                .font(.caption.weight(.medium))
+                                .tint(.secondary)
+                        }
                     }
                     Spacer()
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
@@ -36,11 +40,11 @@ struct AdditionRow: View {
             
             if isExpanded {
                 Divider()
-                ForEach(addition.values) { value in
+                ForEach(Array(addition.values.enumerated()), id: \.offset) { index, value in
                     HStack {
                         HStack {
-                            Image(systemName: selectIcon)
-                                .foregroundColor(.secondary)
+                            Image(systemName: !value.isSelected ? "square" : "square.fill")
+                                .foregroundStyle(.linearGradient(colors: [.pink, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
                             Text(value.title)
                                 .fontWeight(.regular)
                                 .foregroundStyle(.primary)
@@ -51,6 +55,11 @@ struct AdditionRow: View {
                             .foregroundStyle(.secondary)
                     }
                     .onTapGesture {
+                        if !value.isSelected {
+                            addition.values[index].isSelected = true
+                        } else {
+                            addition.values[index].isSelected = false
+                        }
                         print("\(addition.title): \n\(value.title) - \(value.price ?? "0 грн") selected")
                     }
                     .opacity(appear ? 1 : 0)
@@ -81,7 +90,8 @@ struct AdditionRow: View {
 }
 
 struct AdditionRow_Previews: PreviewProvider {
+
     static var previews: some View {
-        AdditionRow(addition: Addition(title: "Extra", values: [AdditionValue(title: "Так"), AdditionValue(title: "Ні")]))
+        AdditionRow(addition: Addition(title: "Extra", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]))
     }
 }
