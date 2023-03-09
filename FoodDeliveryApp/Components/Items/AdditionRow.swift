@@ -59,10 +59,10 @@ struct AdditionRow: View {
                             addition.values[index].isSelected = true
                             let newAdditionItem = AdditionItem(title: value.title, price: value.price, isSelected: true)
                             var addExists = false
-                            for (index, addition) in detailViewModel.orderItem.selectedAdditions.enumerated() {
-                                if addition.title == value.title {
+                            for (ind, selectedAddition) in detailViewModel.orderItem.selectedAdditions.enumerated() {
+                                if selectedAddition.title == value.title {
                                     addExists = true
-                                    detailViewModel.orderItem.selectedAdditions[index].values.append(newAdditionItem)
+                                    detailViewModel.orderItem.selectedAdditions[ind].values.append(newAdditionItem)
                                     return
                                 }
                             }
@@ -73,6 +73,21 @@ struct AdditionRow: View {
                             detailViewModel.calculateTotalPrice()
                         } else {
                             addition.values[index].isSelected = false
+                            for (ind, selectedAddition) in detailViewModel.orderItem.selectedAdditions.enumerated() {
+                                if selectedAddition.title == addition.title {
+                                    if selectedAddition.values.count < 2 {
+                                        detailViewModel.orderItem.selectedAdditions.remove(at: ind)
+                                        detailViewModel.calculateTotalPrice()
+                                    } else {
+                                        for (itemInd, item) in detailViewModel.orderItem.selectedAdditions[ind].values.enumerated() {
+                                            if item.id == value.id {
+                                                detailViewModel.orderItem.selectedAdditions[ind].values.remove(at: itemInd)
+                                                detailViewModel.calculateTotalPrice()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     .opacity(appear ? 1 : 0)

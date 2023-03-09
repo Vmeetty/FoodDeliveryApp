@@ -22,9 +22,7 @@ class DetailViewModel: ObservableObject {
         for addition in orderItem.selectedAdditions {
             if !addition.values.isEmpty {
                 for value in addition.values {
-                    guard let addItemPrice = value.price else {
-                        fatalError("addition value.price ->> doesn't exist")
-                    }
+                    let addItemPrice = value.price ?? "0"
                     guard let additionItemPrice = Double(addItemPrice) else {
                         fatalError("orderItem.price ->> doesn't exist or the value format is not correct")
                     }
