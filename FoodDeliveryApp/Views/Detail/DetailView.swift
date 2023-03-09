@@ -32,7 +32,7 @@ struct DetailView: View {
                 .offset(y: -30)
             }
             .coordinateSpace(name: "scroll")
-            .background(Color("Background"))
+            .background(Color("Background").opacity(appear[0] ? 1 : 0))
             .mask(RoundedRectangle(cornerRadius: appear[0] ? 0 : 30))
             .mask(RoundedRectangle(cornerRadius: viewState.width / 3))
             .modifier(OutlineModifier(cornerRadius: viewState.width / 3))
