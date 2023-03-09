@@ -48,7 +48,7 @@ struct DetailView: View {
         }
         .zIndex(1)
         .onAppear {
-            createOrderItem()
+            viewModel.totalPrice = food.price
             fadeIn()
         }
     }
@@ -99,13 +99,16 @@ struct DetailView: View {
         VStack(alignment: .leading) {
             ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
                 if index != 0 { Divider() }
-                AdditionRow(addition: addition)
+                AdditionRow(addition: $food.options[index])
                     .environmentObject(viewModel)
             }
         }
         .background(.ultraThinMaterial)
         .backgroundStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
+        .onReceive(viewModel.$foodModelChanged) { newValue in
+            if newValue { viewModel.calculateWith(foodItem: food) }
+        }
     }
     
     var container: some View {
@@ -137,7 +140,7 @@ struct DetailView: View {
                     .foregroundColor(.primary.opacity(0.7))
                     .matchedGeometryEffect(id: "price\(food.id)", in: namespace)
                 Spacer()
-                Text("\(viewModel.totalPrice)")
+                Text(viewModel.totalPrice)
             }
         }
         .padding(20)
@@ -204,11 +207,6 @@ struct DetailView: View {
         appear[0] = false
         appear[1] = false
         appear[2] = false
-    }
-    
-    private func createOrderItem() {
-        let newOrderItem = OrderItem(title: food.title, price: food.price, selectedAdditions: [])
-        viewModel.orderItem = newOrderItem
     }
 }
 
