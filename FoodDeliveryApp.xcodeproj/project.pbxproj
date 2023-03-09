@@ -33,7 +33,7 @@
 		843AFD7829B0CF9100026273 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD7529B0CF9100026273 /* View + Extension.swift */; };
 		843AFD7A29B0E35B00026273 /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD7929B0E35B00026273 /* CoinViewModel.swift */; };
 		843AFD7D29B0E3C900026273 /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD7C29B0E3C900026273 /* FeaturedItem.swift */; };
-		843AFD7F29B0E3E600026273 /* CourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD7E29B0E3E600026273 /* CourseItem.swift */; };
+		843AFD7F29B0E3E600026273 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD7E29B0E3E600026273 /* MenuItem.swift */; };
 		843AFD8129B0E40B00026273 /* SmallCourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD8029B0E40B00026273 /* SmallCourseItem.swift */; };
 		843AFD8329B0E42000026273 /* HandbookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD8229B0E42000026273 /* HandbookItem.swift */; };
 		843AFD8529B0E43900026273 /* TopicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD8429B0E43900026273 /* TopicItem.swift */; };
@@ -96,7 +96,7 @@
 		843AFD7529B0CF9100026273 /* View + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		843AFD7929B0E35B00026273 /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
 		843AFD7C29B0E3C900026273 /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
-		843AFD7E29B0E3E600026273 /* CourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItem.swift; sourceTree = "<group>"; };
+		843AFD7E29B0E3E600026273 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		843AFD8029B0E40B00026273 /* SmallCourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCourseItem.swift; sourceTree = "<group>"; };
 		843AFD8229B0E42000026273 /* HandbookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbookItem.swift; sourceTree = "<group>"; };
 		843AFD8429B0E43900026273 /* TopicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicItem.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				843AFD7C29B0E3C900026273 /* FeaturedItem.swift */,
-				843AFD7E29B0E3E600026273 /* CourseItem.swift */,
+				843AFD7E29B0E3E600026273 /* MenuItem.swift */,
 				843AFD8029B0E40B00026273 /* SmallCourseItem.swift */,
 				843AFD8229B0E42000026273 /* HandbookItem.swift */,
 				843AFD8429B0E43900026273 /* TopicItem.swift */,
@@ -485,7 +485,7 @@
 				843AFD2729B0C0FC00026273 /* ContentView.swift in Sources */,
 				843AFD7729B0CF9100026273 /* Color + Extention.swift in Sources */,
 				843AFD8D29B0E4CE00026273 /* AvatarView.swift in Sources */,
-				843AFD7F29B0E3E600026273 /* CourseItem.swift in Sources */,
+				843AFD7F29B0E3E600026273 /* MenuItem.swift in Sources */,
 				8475B25E29B5D42B009653AC /* CurrencyView.swift in Sources */,
 				843AFD8129B0E40B00026273 /* SmallCourseItem.swift in Sources */,
 				843AFD5F29B0CB1400026273 /* Handbook.swift in Sources */,

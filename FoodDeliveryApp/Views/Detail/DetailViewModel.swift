@@ -11,6 +11,9 @@ class DetailViewModel: ObservableObject {
     @Published var orderItem: OrderItem = OrderItem(title: "", price: "", selectedAdditions: [])
     @Published var foodModelChanged = false
     @Published var totalPrice: String = "0"
+    @Published var isDragble = true
+    @Published var viewState: CGSize = .zero
+    @Published var appear = [false, false, false, false]
     
     func calculateWith(foodItem: Food) {
         var total: Double = 0

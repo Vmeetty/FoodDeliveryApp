@@ -10,12 +10,6 @@ import SwiftUI
 struct DetailView: View {
     var namespace: Namespace.ID
     @Binding var food: Food
-    @State var isDragble = true
-    
-    @State var viewState: CGSize = .zero
-    @State var showSection = false
-    @State var appear = [false, false, false]
-    
     @EnvironmentObject var model: Model
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = DetailViewModel()
@@ -27,24 +21,24 @@ struct DetailView: View {
                 Group {
                     container
                     additionsSection
-                        .opacity(appear[2] ? 1 : 0)
+                        .opacity(viewModel.appear[2] ? 1 : 0)
                 }
                 .offset(y: -30)
             }
             .coordinateSpace(name: "scroll")
-            .background(Color("Background").opacity(appear[0] ? 1 : 0))
-            .mask(RoundedRectangle(cornerRadius: appear[0] ? 0 : 30))
-            .mask(RoundedRectangle(cornerRadius: viewState.width / 3))
-            .modifier(OutlineModifier(cornerRadius: viewState.width / 3))
+            .background(Color("Background").opacity(viewModel.appear[3] ? 1 : 0))
+            .mask(RoundedRectangle(cornerRadius: viewModel.appear[0] ? 0 : 30))
+            .mask(RoundedRectangle(cornerRadius: viewModel.viewState.width / 3))
+            .modifier(OutlineModifier(cornerRadius: viewModel.viewState.width / 3))
             .shadow(color: Color("Shadow").opacity(0.5), radius: 30, x: 0, y: 10)
-            .scaleEffect(-viewState.width/500 + 1)
-            .background(Color("Shadow").opacity(viewState.width / 500))
+            .scaleEffect(-viewModel.viewState.width/500 + 1)
+            .background(Color("Shadow").opacity(viewModel.viewState.width / 500))
             .background(.ultraThinMaterial)
-            .gesture(isDragble ? drag : nil)
+            .gesture(viewModel.isDragble ? drag : nil)
             .ignoresSafeArea()
             
             closeButton
-                .opacity(appear[0] ? 1 : 0)
+                .opacity(viewModel.appear[0] ? 1 : 0)
         }
         .zIndex(1)
         .onAppear {
@@ -81,7 +75,7 @@ struct DetailView: View {
     
     var closeButton: some View {
         Button {
-            isDragble ?
+            viewModel.isDragble ?
             withAnimation(.closeCard) {
                 model.showDetail = false
             }
@@ -122,13 +116,13 @@ struct DetailView: View {
                 .font(.footnote).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.secondary.opacity(0.7))
-                .opacity(appear[0] ? 1 : 0)
+                .opacity(viewModel.appear[0] ? 1 : 0)
             Text(food.text)
                 .font(.footnote)
-                .opacity(appear[0] ? 1 : 0)
+                .opacity(viewModel.appear[0] ? 1 : 0)
             Divider()
                 .foregroundColor(.secondary)
-                .opacity(appear[1] ? 1 : 0)
+                .opacity(viewModel.appear[1] ? 1 : 0)
             HStack {
                 Image(systemName: "hryvniasign")
                     .padding(8)
@@ -161,20 +155,20 @@ struct DetailView: View {
                 
                 if newValue.startLocation.x < 100 {
                     withAnimation {
-                        viewState = newValue.translation
+                        viewModel.viewState = newValue.translation
                     }
                 }
                 
-                if viewState.width > 120 {
+                if viewModel.viewState.width > 120 {
                     close()
                 }
             })
             .onEnded({ newValue in
-                if viewState.width > 80 {
+                if viewModel.viewState.width > 80 {
                     close()
                 } else {
                     withAnimation(.closeCard) {
-                        viewState = .zero
+                        viewModel.viewState = .zero
                     }
                 }
             })
@@ -185,28 +179,32 @@ struct DetailView: View {
             model.showDetail = false
         }
         withAnimation(.closeCard) {
-            viewState = .zero
+            viewModel.viewState = .zero
         }
         
-        isDragble = false
+        viewModel.isDragble = false
     }
     
     private func fadeIn() {
         withAnimation(.easeOut.delay(0.3)) {
-            appear[0] = true
+            viewModel.appear[0] = true
         }
         withAnimation(.easeOut.delay(0.4)) {
-            appear[1] = true
+            viewModel.appear[1] = true
         }
         withAnimation(.easeOut.delay(0.5)) {
-            appear[2] = true
+            viewModel.appear[2] = true
+        }
+        withAnimation(.easeOut) {
+            viewModel.appear[3] = true
         }
     }
     
     private func fadeOut() {
-        appear[0] = false
-        appear[1] = false
-        appear[2] = false
+        viewModel.appear[0] = false
+        viewModel.appear[1] = false
+        viewModel.appear[2] = false
+        viewModel.appear[3] = false
     }
 }
 

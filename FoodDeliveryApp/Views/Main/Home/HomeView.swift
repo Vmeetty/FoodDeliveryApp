@@ -30,7 +30,7 @@ struct HomeView: View {
                 
                 if !model.showDetail {
                     ForEach(viewModel.selectedMenu) { dish in
-                        CourseItem(namespace: namespace, dish: dish)
+                        MenuItem(namespace: namespace, dish: dish)
                             .onTapGesture {
                                 withAnimation(.openCard) {
                                     viewModel.selectedDish = dish
@@ -38,7 +38,8 @@ struct HomeView: View {
                                 }
                             }
                     }
-                } else {
+                }
+                else {
                     ForEach(viewModel.selectedMenu) { dish in
                         Rectangle()
                             .fill(.white)
