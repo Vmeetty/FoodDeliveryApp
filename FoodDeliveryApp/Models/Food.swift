@@ -34,12 +34,6 @@ struct Addition: Identifiable, Codable {
     var id = UUID()
     var title: String
     var values: [AdditionItem]
-    
-//    init(title: String, values: [AdditionItem]) {
-//        self.title = title
-//        self.values = values
-//    }
-    
 }
 
 struct AdditionItem: Identifiable, Codable {

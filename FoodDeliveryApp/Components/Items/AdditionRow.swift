@@ -12,6 +12,7 @@ struct AdditionRow: View {
     @State var isExpanded = false
     @State var appear = false
     @State var additionsSelected = [String]()
+    @State var checkedAdditions = "Нічого не додано"
     
     @EnvironmentObject var detailVM: DetailViewModel
     
@@ -27,7 +28,7 @@ struct AdditionRow: View {
                             .tint(.primary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         if additionsSelected.isEmpty {
-                            Text("Натисніть, щоб додати")
+                            Text(checkedAdditions)
                                 .font(.caption.weight(.medium))
                                 .tint(.secondary)
                         }
@@ -56,6 +57,7 @@ struct AdditionRow: View {
                     }
                     .onTapGesture {
                         addition.values[index].isSelected = !value.isSelected ? true : false
+                        catchAddItemsTitles()
                         detailVM.foodHasBeenChanged()
                     }
                     .opacity(appear ? 1 : 0)
@@ -64,6 +66,20 @@ struct AdditionRow: View {
         }
         .padding(20)
         .padding(.horizontal, 20)
+    }
+    
+    private func catchAddItemsTitles() {
+        var tempStrArray: [String] = []
+        for addtionItem in addition.values {
+            if addtionItem.isSelected {
+                tempStrArray.append(addtionItem.title)
+            }
+        }
+        var tempStr = ""
+        for (index, addTitlte) in tempStrArray.enumerated() {
+            tempStr += index == 0 ? addTitlte : ", \(addTitlte)"
+        }
+        checkedAdditions = tempStrArray.isEmpty ? "Нічого не додано" : tempStr
     }
     
     private func fadeIn() {
