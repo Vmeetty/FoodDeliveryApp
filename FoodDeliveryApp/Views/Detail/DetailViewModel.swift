@@ -8,7 +8,7 @@
 import SwiftUI
 
 class DetailViewModel: ObservableObject {
-    @Published var orderItem: OrderItem = OrderItem(title: "", totalPrice: "", selectedAdditions: [])
+    @Published var orderItem: OrderItem = OrderItem(title: "", totalPrice: "", count: 1)
     @Published var foodModelChanged = false
     @Published var totalPrice: String = "0"
     @Published var isDragble = true
@@ -47,9 +47,26 @@ class DetailViewModel: ObservableObject {
     func addItemToCart(item: Food) {
         let title = item.title
         let totalPrice = self.totalPrice
-        var additions = [Addition]()
-        for addtion in item.options {
-            
+        var additions:[Addition] = []
+        for addition in item.options {
+            let additionTitle = addition.title
+            var selectedItems = [AdditionItem]()
+            for item in addition.values {
+                if item.isSelected {
+                    selectedItems.append(item)
+                }
+            }
+            if !selectedItems.isEmpty {
+                let newAddition = Addition(title: additionTitle, values: selectedItems)
+                additions.append(newAddition)
+            }
         }
+        let newItem = OrderItem(title: title, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
+        print(newItem.title)
+        print("\(self.count)шт - \(newItem.totalPrice)uah")
+        if let additionsForPrint = newItem.selectedAdditions {
+            print(additionsForPrint)
+        }
+        // TODO: add this object to Cart here
     }
 }

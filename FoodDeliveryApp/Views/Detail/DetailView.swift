@@ -154,8 +154,10 @@ struct DetailView: View {
         HStack(spacing: 15) {
             HStack(spacing: 15) {
                 Button {
-                    viewModel.count -= 1
-                    viewModel.calculateWith(foodItem: food)
+                    if viewModel.count > 1 {
+                        viewModel.count -= 1
+                        viewModel.calculateWith(foodItem: food)
+                    }
                 } label: {
                     Image(systemName: "minus")
                         .font(.system(size: 17, weight: .bold))
@@ -187,7 +189,7 @@ struct DetailView: View {
             .frame(height: 50)
             
             Button {
-
+                viewModel.addItemToCart(item: food)
             } label: {
                 HStack {
                     Text("\(viewModel.totalPrice) грн")
