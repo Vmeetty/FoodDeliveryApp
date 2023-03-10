@@ -10,12 +10,12 @@ import Foundation
 class OrderItem: Identifiable, Codable {
     var id = UUID()
     var title: String
-    var price: String
+    var totalPrice: String
     var selectedAdditions: [Addition]
     
-    init(title: String, price: String, selectedAdditions: [Addition]) {
+    init(title: String, totalPrice: String, selectedAdditions: [Addition]) {
         self.title = title
-        self.price = price
+        self.totalPrice = totalPrice
         self.selectedAdditions = selectedAdditions
     }
 }

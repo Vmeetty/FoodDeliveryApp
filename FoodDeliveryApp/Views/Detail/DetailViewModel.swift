@@ -8,18 +8,19 @@
 import SwiftUI
 
 class DetailViewModel: ObservableObject {
-    @Published var orderItem: OrderItem = OrderItem(title: "", price: "", selectedAdditions: [])
+    @Published var orderItem: OrderItem = OrderItem(title: "", totalPrice: "", selectedAdditions: [])
     @Published var foodModelChanged = false
     @Published var totalPrice: String = "0"
     @Published var isDragble = true
     @Published var viewState: CGSize = .zero
     @Published var appear = [false, false, false, false]
+    @Published var count: Int = 1
     
     func calculateWith(foodItem: Food) {
         var total: Double = 0
         
         guard let price = Double(foodItem.price) else {
-            fatalError("orderItem.price ->> doesn't exist or the value format is not correct")
+            fatalError("foodItem.price ->> doesn't exist or the value format is not correct")
         }
         total += price
         
@@ -35,10 +36,20 @@ class DetailViewModel: ObservableObject {
                 }
             }
         }
-        totalPrice = String(total)
+        total *= Double(count)
+        totalPrice = String(format: "%.2f", total)
     }
     
     func foodHasBeenChanged() {
         foodModelChanged = true
+    }
+    
+    func addItemToCart(item: Food) {
+        let title = item.title
+        let totalPrice = self.totalPrice
+        var additions = [Addition]()
+        for addtion in item.options {
+            
+        }
     }
 }

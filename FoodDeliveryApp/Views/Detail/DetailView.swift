@@ -154,7 +154,8 @@ struct DetailView: View {
         HStack(spacing: 15) {
             HStack(spacing: 15) {
                 Button {
-                    
+                    viewModel.count -= 1
+                    viewModel.calculateWith(foodItem: food)
                 } label: {
                     Image(systemName: "minus")
                         .font(.system(size: 17, weight: .bold))
@@ -164,9 +165,10 @@ struct DetailView: View {
                         .background(.ultraThinMaterial, in: Circle())
                         .backgroundStyle(cornerRadius: 18)
                 }
-                Text("1")
+                Text("\(viewModel.count)")
                 Button {
-                    
+                    viewModel.count += 1
+                    viewModel.calculateWith(foodItem: food)
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 17, weight: .bold))
@@ -280,7 +282,7 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])])))
+        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "kapreze", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])])))
             .environmentObject(Model())
     }
 }
