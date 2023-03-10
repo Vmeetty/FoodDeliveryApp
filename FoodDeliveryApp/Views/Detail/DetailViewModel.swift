@@ -8,7 +8,7 @@
 import SwiftUI
 
 class DetailViewModel: ObservableObject {
-    @Published var orderItem: OrderItem = OrderItem(title: "", totalPrice: "", count: 1)
+    @Published var orderItem: OrderItem = OrderItem(title: "", image: "", totalPrice: "", count: 1)
     @Published var foodModelChanged = false
     @Published var totalPrice: String = "0"
     @Published var isDragble = true
@@ -61,7 +61,7 @@ class DetailViewModel: ObservableObject {
                 additions.append(newAddition)
             }
         }
-        let newItem = OrderItem(title: title, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
+        let newItem = OrderItem(title: title, image: item.image, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
         print(newItem.title)
         print("\(self.count)шт - \(newItem.totalPrice)uah")
         if let additionsForPrint = newItem.selectedAdditions {

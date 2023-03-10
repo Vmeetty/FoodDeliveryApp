@@ -11,6 +11,7 @@ extension OrderItem: Equatable {
     static func == (lhs: OrderItem, rhs: OrderItem) -> Bool {
         return lhs.id == rhs.id &&
         lhs.title == rhs.title &&
+        lhs.image == rhs.image &&
         lhs.totalPrice == rhs.totalPrice &&
         lhs.count == rhs.count &&
         lhs.selectedAdditions == rhs.selectedAdditions

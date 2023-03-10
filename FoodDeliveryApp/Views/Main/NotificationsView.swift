@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NotificationsView: View {
+    @EnvironmentObject var model: Model
+    
     var body: some View {
         ZStack {
             Color("Background").ignoresSafeArea()
@@ -30,9 +32,9 @@ struct NotificationsView: View {
     
     var sectionsSection: some View {
         VStack(alignment: .leading) {
-            ForEach(Array(courseSections.enumerated()), id: \.offset) { index, section in
+            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, section in
                 if index != 0 { Divider() }
-                SectionRow(section: section)
+                OrderItemRow(item: section)
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
