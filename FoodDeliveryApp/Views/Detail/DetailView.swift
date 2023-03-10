@@ -190,6 +190,7 @@ struct DetailView: View {
             
             Button {
                 viewModel.addItemToCart(item: food)
+                close()
             } label: {
                 HStack {
                     Text("\(viewModel.totalPrice) грн")
@@ -218,6 +219,10 @@ struct DetailView: View {
         )
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
+        .onChange(of: viewModel.orderItem) { newOrderItem in
+            model.orderItems.append(newOrderItem)
+            print(model.orderItems.map({ $0.title }))
+        }
     }
     
     var drag: some Gesture {

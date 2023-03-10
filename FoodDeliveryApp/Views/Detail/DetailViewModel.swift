@@ -67,6 +67,7 @@ class DetailViewModel: ObservableObject {
         if let additionsForPrint = newItem.selectedAdditions {
             print(additionsForPrint)
         }
-        // TODO: add this object to Cart here
+        // adding new order item to orderItems for populating the cart (working with .onChange modifier)
+        orderItem = newItem
     }
 }

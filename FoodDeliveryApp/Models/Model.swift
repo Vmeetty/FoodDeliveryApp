@@ -14,6 +14,7 @@ class Model: ObservableObject {
     @Published var categories: [Category] = []
     @Published var fullMenu: [Food] = []
     @Published var featuredPromotions: [Food] = []
+    @Published var orderItems: [OrderItem] = []
     
     init() {
         getCategories()
