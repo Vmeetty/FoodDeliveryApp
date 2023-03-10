@@ -25,6 +25,7 @@ struct DetailView: View {
                 }
                 .offset(y: -30)
             }
+            .padding(.bottom, 90)
             .coordinateSpace(name: "scroll")
             .background(Color("Background").opacity(viewModel.appear[3] ? 1 : 0))
             .mask(RoundedRectangle(cornerRadius: viewModel.appear[0] ? 0 : 30))
@@ -39,6 +40,9 @@ struct DetailView: View {
             
             closeButton
                 .opacity(viewModel.appear[0] ? 1 : 0)
+            
+            addContainer
+                .opacity(viewModel.appear[2] ? 1 : 0)
         }
         .zIndex(1)
         .onAppear {
@@ -133,8 +137,6 @@ struct DetailView: View {
                     .font(.title2)
                     .foregroundColor(.primary.opacity(0.7))
                     .matchedGeometryEffect(id: "price\(food.id)", in: namespace)
-                Spacer()
-                Text(viewModel.totalPrice)
             }
         }
         .padding(20)
@@ -146,6 +148,72 @@ struct DetailView: View {
         )
         .frame(maxHeight: .infinity, alignment: .bottom)
         .padding(20)
+    }
+    
+    var addContainer: some View {
+        HStack(spacing: 15) {
+            HStack(spacing: 15) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "minus")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(.secondary)
+                        .padding(8)
+                        .frame(width: 30, height: 30)
+                        .background(.ultraThinMaterial, in: Circle())
+                        .backgroundStyle(cornerRadius: 18)
+                }
+                Text("1")
+                Button {
+                    
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(.secondary)
+                        .padding(8)
+                        .frame(width: 30, height: 30)
+                        .background(.ultraThinMaterial, in: Circle())
+                        .backgroundStyle(cornerRadius: 18)
+                }
+            }
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
+                    .opacity(0.05)
+            )
+            .frame(height: 50)
+            
+            Button {
+
+            } label: {
+                HStack {
+                    Text("\(viewModel.totalPrice) грн")
+                        .fontWeight(.light)
+                    Spacer()
+                    Text("Додати")
+                }
+            }
+            .font(.headline)
+            .tint(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .frame(height: 50)
+            .background(
+                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                    .fill(.linearGradient(colors: [.purple, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+            )
+        }
+        .padding()
+        .frame(height: 92, alignment: .top)
+        .background(
+            RoundedRectangle(cornerRadius: 34)
+                .fill(.ultraThinMaterial)
+                .strokeStyle(cornerRadius: 34)
+                .shadow(color: Color("Shadow").opacity(0.2), radius: 5, x: 0, y: 0)
+        )
+        .frame(maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea()
     }
     
     var drag: some Gesture {
@@ -212,7 +280,7 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])])))
+        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])])))
             .environmentObject(Model())
     }
 }
