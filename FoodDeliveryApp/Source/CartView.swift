@@ -1,5 +1,5 @@
 //
-//  NotificationsView.swift
+//  CartView.swift
 //  FoodDeliveryApp
 //
 //  Created by admin on 3/2/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NotificationsView: View {
+struct CartView: View {
     @EnvironmentObject var model: Model
     
     var body: some View {
@@ -32,9 +32,9 @@ struct NotificationsView: View {
     
     var sectionsSection: some View {
         VStack(alignment: .leading) {
-            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, section in
+            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, item in
                 if index != 0 { Divider() }
-                OrderItemRow(item: section)
+                OrderItemRow(item: item)
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -43,8 +43,8 @@ struct NotificationsView: View {
     }
 }
 
-struct NotificationsView_Previews: PreviewProvider {
+struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsView()
+        CartView()
     }
 }

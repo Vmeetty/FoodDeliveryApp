@@ -46,7 +46,7 @@
 		843AFD9629B0E52C00026273 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9529B0E52C00026273 /* CircularView.swift */; };
 		843AFD9C29B0E5D500026273 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9B29B0E5D500026273 /* HomeView.swift */; };
 		843AFD9E29B0E5EF00026273 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9D29B0E5EF00026273 /* ExploreView.swift */; };
-		843AFDA029B0E60200026273 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9F29B0E60200026273 /* NotificationsView.swift */; };
+		843AFDA029B0E60200026273 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9F29B0E60200026273 /* CartView.swift */; };
 		843AFDA229B0E61B00026273 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA129B0E61B00026273 /* LibraryView.swift */; };
 		843AFDA429B0E63700026273 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA329B0E63700026273 /* DetailView.swift */; };
 		843AFDA629B0E65100026273 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA529B0E65100026273 /* SectionView.swift */; };
@@ -110,7 +110,7 @@
 		843AFD9529B0E52C00026273 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		843AFD9B29B0E5D500026273 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		843AFD9D29B0E5EF00026273 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
-		843AFD9F29B0E60200026273 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		843AFD9F29B0E60200026273 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		843AFDA129B0E61B00026273 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		843AFDA329B0E63700026273 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		843AFDA529B0E65100026273 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			children = (
 				843AFD2429B0C0FC00026273 /* FoodDeliveryAppApp.swift */,
 				843AFDD129B2240F00026273 /* Managers */,
-				843AFD9729B0E59F00026273 /* Views */,
+				843AFD9729B0E59F00026273 /* Source */,
 				843AFD7B29B0E3B100026273 /* Components */,
 				843AFD7229B0CF6600026273 /* Extentions */,
 				843AFD6729B0CE5500026273 /* Helpers */,
@@ -287,27 +287,19 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
-		843AFD9729B0E59F00026273 /* Views */ = {
+		843AFD9729B0E59F00026273 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				843AFD9829B0E5A700026273 /* Main */,
+				843AFDCE29B0F43700026273 /* Explore */,
+				843AFDCB29B0F2B200026273 /* Home */,
 				843AFD9929B0E5AE00026273 /* Detail */,
+				843AFD9F29B0E60200026273 /* CartView.swift */,
+				843AFDA129B0E61B00026273 /* LibraryView.swift */,
 				843AFDAD29B0E6CE00026273 /* Sheets */,
 				843AFD9A29B0E5BC00026273 /* Modals */,
 				843AFDA529B0E65100026273 /* SectionView.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		843AFD9829B0E5A700026273 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				843AFDCB29B0F2B200026273 /* Home */,
-				843AFDCE29B0F43700026273 /* Explore */,
-				843AFD9F29B0E60200026273 /* NotificationsView.swift */,
-				843AFDA129B0E61B00026273 /* LibraryView.swift */,
-			);
-			path = Main;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		843AFD9929B0E5AE00026273 /* Detail */ = {
@@ -457,7 +449,7 @@
 				843AFD5E29B0CB1400026273 /* TabBarItemModel.swift in Sources */,
 				843AFD9E29B0E5EF00026273 /* ExploreView.swift in Sources */,
 				84CF721729B8D590004E92F1 /* DetailViewModel.swift in Sources */,
-				843AFDA029B0E60200026273 /* NotificationsView.swift in Sources */,
+				843AFDA029B0E60200026273 /* CartView.swift in Sources */,
 				843AFD5A29B0CB1400026273 /* Topic.swift in Sources */,
 				843AFDD029B0F44700026273 /* ExploreViewModel.swift in Sources */,
 				843AFD9429B0E51A00026273 /* BlobView.swift in Sources */,

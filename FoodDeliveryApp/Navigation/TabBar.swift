@@ -29,6 +29,7 @@ struct TabBar: View {
         )
         .strokeStyle(cornerRadius: 34)
         .frame(maxHeight: .infinity, alignment: .bottom)
+        .padding()
         .ignoresSafeArea()
     }
     
