@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuItem: View {
     var namespace: Namespace.ID
     var dish: Food
+    @EnvironmentObject var model: Model
     
     var body: some View {
         VStack {
@@ -56,6 +57,18 @@ struct MenuItem: View {
         }
         .frame(height: 300)
         .padding(20)
+        .overlay {
+            if dish.countSelected != "0" {
+                Text(dish.countSelected)
+                    .frame(width: 30.0, height: 30.0)
+                    .padding(2)
+                    .foregroundColor(.primary)
+                    .background(Color(UIColor.systemBackground), in: RoundedRectangle(cornerRadius: 15, style: .continuous))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .padding(35)
+            }
+            
+        }
     }
 }
 

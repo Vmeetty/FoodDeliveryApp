@@ -18,6 +18,7 @@ class Food: Identifiable, Codable {
     var price: String
     var category: String
     var options: [Addition]
+    var countSelected: String = "0"
     
     init(title: String, weight: String, text: String, image: String, price: String, category: String, options: [Addition]) {
         self.title = title

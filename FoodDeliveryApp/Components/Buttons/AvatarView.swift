@@ -30,6 +30,8 @@ struct AvatarView: View {
                 }
             } else {
                 Image("Avatar Default")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
         }
         .frame(width: 26, height: 26)

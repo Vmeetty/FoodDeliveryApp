@@ -10,11 +10,12 @@ import SwiftUI
 struct Topic: Identifiable {
     let id = UUID()
     var title: String
+    var subtitle: String
     var icon: String
 }
 
 var topics = [
-    Topic(title: "iOS Development", icon: "iphone"),
-    Topic(title: "UI Design", icon: "eyedropper"),
-    Topic(title: "Web development", icon: "laptopcomputer")
+    Topic(title: "Адреса", subtitle: "Авіаконструктора Сікорського 4Д", icon: "location"),
+    Topic(title: "Час доставки", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock"),
+    Topic(title: "Оберіть спосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard")
 ]

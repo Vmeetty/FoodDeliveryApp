@@ -57,7 +57,7 @@ struct HomeView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay {
-                NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Featured")
+                NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Меню")
             }
             
             if model.showDetail {

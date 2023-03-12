@@ -55,7 +55,7 @@ struct ExploreView: View {
             ForEach(Array(topics.enumerated()), id: \.offset) { index, topic in
                 VStack {
                     if index != 0 { Divider() }
-                    TopicItem(topic: topic)
+                    OrderInfoItem(topic: topic)
                 }
             }
         }

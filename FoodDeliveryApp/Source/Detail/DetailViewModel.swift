@@ -61,13 +61,8 @@ class DetailViewModel: ObservableObject {
                 additions.append(newAddition)
             }
         }
-        let newItem = OrderItem(title: title, image: item.image, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
-        print(newItem.title)
-        print("\(self.count)шт - \(newItem.totalPrice)uah")
-        if let additionsForPrint = newItem.selectedAdditions {
-            print(additionsForPrint)
-        }
-        // adding new order item to orderItems for populating the cart (working with .onChange modifier)
-        orderItem = newItem
+        
+        // Publishing new order item for populating the cart (with .onChange modifier)
+        orderItem = OrderItem(title: title, image: item.image, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
     }
 }

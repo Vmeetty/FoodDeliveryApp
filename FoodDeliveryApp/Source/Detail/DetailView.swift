@@ -168,6 +168,7 @@ struct DetailView: View {
                         .backgroundStyle(cornerRadius: 18)
                 }
                 Text("\(viewModel.count)")
+                    .lineLimit(1)
                 Button {
                     viewModel.count += 1
                     viewModel.calculateWith(foodItem: food)
@@ -189,6 +190,7 @@ struct DetailView: View {
             .frame(height: 50)
             
             Button {
+                food.countSelected = String(viewModel.count)
                 viewModel.addItemToCart(item: food)
                 close()
             } label: {

@@ -16,10 +16,10 @@ struct TabBarItemModel: Identifiable {
 }
 
 var tabBarItems = [
-    TabBarItemModel(title: "Меню", imageName: "house", tab: .home, color: .teal),
-    TabBarItemModel(title: "Бали", imageName: "magnifyingglass", tab: .explore, color: .blue),
-    TabBarItemModel(title: "Корзина", imageName: "bell", tab: .notifications, color: .pink),
-    TabBarItemModel(title: "Акції", imageName: "rectangle.stack", tab: .library, color: .yellow)
+    TabBarItemModel(title: "Меню", imageName: "menucard.fill", tab: .home, color: .teal),
+    TabBarItemModel(title: "Бали", imageName: "star.square.on.square.fill", tab: .explore, color: .blue),
+    TabBarItemModel(title: "Корзина", imageName: "cart.fill", tab: .notifications, color: .pink),
+    TabBarItemModel(title: "Акції", imageName: "percent", tab: .library, color: .yellow)
 ]
 
 enum Tab: String {

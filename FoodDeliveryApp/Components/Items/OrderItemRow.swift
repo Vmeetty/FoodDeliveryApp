@@ -11,27 +11,45 @@ struct OrderItemRow: View {
     var item: OrderItem
     
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
+        HStack(alignment: .center, spacing: 14) {
             Image(item.image)
                 .resizable()
-                .frame(width: 36, height: 36)
+                .frame(width: 70, height: 70)
                 .mask(Circle())
-                .padding(12)
                 .background(Color(UIColor.systemBackground).opacity(0.3))
                 .mask(Circle())
-            VStack(alignment: .leading, spacing: 8) {
-                Text(item.title)
-                    .fontWeight(.semibold)
-                if let additions = item.selectedAdditions {
-                    ForEach(additions) { addition in
-                        /*@START_MENU_TOKEN@*/Text(addition.title)/*@END_MENU_TOKEN@*/
-                            .font(.caption.weight(.medium))
-                            .foregroundStyle(.secondary)
-                    }
+            VStack(alignment: .leading, spacing: 15) {
+                HStack(alignment: .center, spacing: 8) {
+                    Text(item.title)
+                        .font(.body)
+                        .fontWeight(.semibold)
+                    Spacer()
+                    closeButton
+                }
+                HStack(alignment: .center, spacing: 8) {
+                    CounterView()
+                    Spacer()
+                    Text("\(item.totalPrice) грн")
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .padding(20)
+    }
+    
+    var closeButton: some View {
+        Button {
+//            viewModel.isDragble ?
+//            withAnimation(.closeCard) {
+//                model.showDetail = false
+//            }
+//            : dismiss()
+//            fadeOut()
+        } label: {
+            Image(systemName: "xmark")
+                .font(.system(size: 17, weight: .bold))
+                .foregroundColor(.secondary)
+        }
     }
 }
 
