@@ -25,9 +25,6 @@ struct HomeView: View {
                 featured
                 categoriesSection
                 
-                Text("courses".uppercased())
-                    .titleStyle()
-                
                 if !model.showDetail {
                     ForEach(viewModel.selectedMenu) { dish in
                         MenuItem(namespace: namespace, dish: dish)
@@ -61,7 +58,7 @@ struct HomeView: View {
             }
             
             if model.showDetail {
-                DetailView(namespace: namespace, food: $viewModel.selectedDish)
+                DetailView(namespace: namespace, food: viewModel.selectedDish)
                     .zIndex(1)
                     .transition(.asymmetric(
                         insertion: .opacity.animation(.easeInOut(duration: 0.1)),

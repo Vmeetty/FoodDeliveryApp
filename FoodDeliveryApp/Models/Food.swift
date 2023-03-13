@@ -34,7 +34,7 @@ class Food: Identifiable, Codable {
 }
 
 struct Addition: Identifiable, Codable {
-    var id = UUID()
+    var id: Int
     var title: String
     var values: [AdditionItem]
 }

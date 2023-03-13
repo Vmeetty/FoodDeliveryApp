@@ -104,6 +104,6 @@ struct AdditionRow: View {
 struct AdditionRow_Previews: PreviewProvider {
 
     static var previews: some View {
-        AdditionRow(addition: .constant(Addition(title: "Extra", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])))
+        AdditionRow(addition: .constant(Addition(id: 1, title: "Extra", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])))
     }
 }

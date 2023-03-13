@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     var namespace: Namespace.ID
-    @Binding var food: Food
+    @State var food: Food
     @EnvironmentObject var model: Model
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = DetailViewModel()
@@ -46,7 +46,7 @@ struct DetailView: View {
         }
         .zIndex(1)
         .onAppear {
-            viewModel.totalPrice = food.price
+            viewModel.createLocalItem(food: food)
             fadeIn()
         }
     }
@@ -61,7 +61,7 @@ struct DetailView: View {
             .frame(maxWidth: .infinity)
             .frame(height: scrollY > 0 ? 500 + scrollY : 500)
             .background(
-                Image(food.image)
+                Image(viewModel.localDishItem.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .matchedGeometryEffect(id: "image\(food.id)", in: namespace)
@@ -95,9 +95,9 @@ struct DetailView: View {
     
     var additionsSection: some View {
         VStack(alignment: .leading) {
-            ForEach(Array(food.options.enumerated()), id: \.offset) { index, addition in
+            ForEach(Array(viewModel.localDishItem.options.enumerated()), id: \.offset) { index, addition in
                 if index != 0 { Divider() }
-                AdditionRow(addition: $food.options[index])
+                AdditionRow(addition: $viewModel.localDishItem.options[index])
                     .environmentObject(viewModel)
             }
         }
@@ -105,23 +105,23 @@ struct DetailView: View {
         .backgroundStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
         .onReceive(viewModel.$foodModelChanged) { newValue in
-            if newValue { viewModel.calculateWith(foodItem: food) }
+            if newValue { viewModel.calculateWith() }
         }
     }
     
     var container: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text(food.title)
+            Text(viewModel.localDishItem.title)
                 .font(.title).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.primary)
                 .matchedGeometryEffect(id: "title\(food.id)", in: namespace)
-            Text(food.weight.uppercased())
+            Text(viewModel.localDishItem.weight.uppercased())
                 .font(.footnote).bold()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.secondary.opacity(0.7))
                 .opacity(viewModel.appear[0] ? 1 : 0)
-            Text(food.text)
+            Text(viewModel.localDishItem.text)
                 .font(.footnote)
                 .opacity(viewModel.appear[0] ? 1 : 0)
             Divider()
@@ -133,7 +133,7 @@ struct DetailView: View {
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .strokeStyle(cornerRadius: 12)
                     .matchedGeometryEffect(id: "currency\(food.id)", in: namespace)
-                Text(String(format: "%.2f", food.price))
+                Text(String(format: "%.2f", viewModel.localDishItem.price))
                     .font(.title2)
                     .foregroundColor(.primary.opacity(0.7))
                     .matchedGeometryEffect(id: "price\(food.id)", in: namespace)
@@ -156,7 +156,7 @@ struct DetailView: View {
                 Button {
                     if viewModel.count > 1 {
                         viewModel.count -= 1
-                        viewModel.calculateWith(foodItem: food)
+                        viewModel.calculateWith()
                     }
                 } label: {
                     Image(systemName: "minus")
@@ -171,7 +171,7 @@ struct DetailView: View {
                     .lineLimit(1)
                 Button {
                     viewModel.count += 1
-                    viewModel.calculateWith(foodItem: food)
+                    viewModel.calculateWith()
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 17, weight: .bold))
@@ -195,7 +195,7 @@ struct DetailView: View {
                 close()
             } label: {
                 HStack {
-                    Text("\(viewModel.totalPrice) грн")
+                    Text("\(String(format: "%.2f", viewModel.totalPrice)) грн")
                         .fontWeight(.light)
                     Spacer()
                     Text("Додати")
@@ -228,7 +228,9 @@ struct DetailView: View {
                 var matchedIndex: Int?
                 for (index, item) in model.orderItems.enumerated() {
                     if item.id == newOrderItem.id {
-                        matchedIndex = index
+                        if item.options == newOrderItem.options {
+                            matchedIndex = index
+                        }
                     }
                 }
                 if let matchedIndex = matchedIndex {
@@ -306,7 +308,6 @@ struct CourseDetaoleView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        DetailView(namespace: namespace, food: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "kapreze", price: 430.00, category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])], countSelected: 0)))
-            .environmentObject(Model())
+        DetailView(namespace: namespace, food: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0))
     }
 }

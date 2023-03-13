@@ -15,12 +15,28 @@ class DetailViewModel: ObservableObject {
     @Published var viewState: CGSize = .zero
     @Published var appear = [false, false, false, false]
     @Published var count: Int = 1
+    @Published var localDishItem = Food(title: "", weight: "", text: "", image: "", price: 0.0, category: "", options: [], countSelected: 0)
     
-    func calculateWith(foodItem: Food) {
+    func createLocalItem(food: Food) {
+        localDishItem = Food(
+            id: food.id,
+            title: food.title,
+            weight: food.weight,
+            text: food.text,
+            image: food.image,
+            price: food.price,
+            category: food.category,
+            options: food.options,
+            countSelected: 0
+        )
+        totalPrice = food.price
+    }
+    
+    func calculateWith() {
         var total: Double = 0
-        total += foodItem.price
+        total += localDishItem.price
 
-        for addition in foodItem.options {
+        for addition in localDishItem.options {
             for addItem in addition.values {
                 if addItem.isSelected {
                     if let addItemPrice = addItem.price {
@@ -42,7 +58,7 @@ class DetailViewModel: ObservableObject {
     
     func addItemToCart(item: Food) {
         var additions:[Addition] = []
-        for addition in item.options {
+        for addition in localDishItem.options {
             let additionTitle = addition.title
             var selectedItems = [AdditionItem]()
             for item in addition.values {
@@ -51,7 +67,7 @@ class DetailViewModel: ObservableObject {
                 }
             }
             if !selectedItems.isEmpty {
-                let newAddition = Addition(title: additionTitle, values: selectedItems)
+                let newAddition = Addition(id: addition.id, title: additionTitle, values: selectedItems)
                 additions.append(newAddition)
             }
         }
