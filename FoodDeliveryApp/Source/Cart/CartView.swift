@@ -34,9 +34,9 @@ struct CartView: View {
     
     var itemsSection: some View {
         VStack(alignment: .leading) {
-            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, item in
+            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, _ in
                 if index != 0 { Divider() }
-                OrderItemRow(item: item)
+                OrderItemRow(item: $model.orderItems[index])
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))

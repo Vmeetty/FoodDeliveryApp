@@ -8,9 +8,9 @@
 import SwiftUI
 
 class DetailViewModel: ObservableObject {
-    @Published var orderItem: OrderItem = OrderItem(title: "", image: "", totalPrice: "", count: 1)
+    @Published var orderItem = Food(title: "", weight: "", text: "", image: "", price: 0.0, category: "", options: [], countSelected: 0)
     @Published var foodModelChanged = false
-    @Published var totalPrice: String = "0"
+    @Published var totalPrice: Double = 0.0
     @Published var isDragble = true
     @Published var viewState: CGSize = .zero
     @Published var appear = [false, false, false, false]
@@ -18,12 +18,8 @@ class DetailViewModel: ObservableObject {
     
     func calculateWith(foodItem: Food) {
         var total: Double = 0
-        
-        guard let price = Double(foodItem.price) else {
-            fatalError("foodItem.price ->> doesn't exist or the value format is not correct")
-        }
-        total += price
-        
+        total += foodItem.price
+
         for addition in foodItem.options {
             for addItem in addition.values {
                 if addItem.isSelected {
@@ -37,7 +33,7 @@ class DetailViewModel: ObservableObject {
             }
         }
         total *= Double(count)
-        totalPrice = String(format: "%.2f", total)
+        totalPrice = total // String(format: "%.2f", total)
     }
     
     func foodHasBeenChanged() {
@@ -45,8 +41,6 @@ class DetailViewModel: ObservableObject {
     }
     
     func addItemToCart(item: Food) {
-        let title = item.title
-        let totalPrice = self.totalPrice
         var additions:[Addition] = []
         for addition in item.options {
             let additionTitle = addition.title
@@ -63,6 +57,16 @@ class DetailViewModel: ObservableObject {
         }
         
         // Publishing new order item for populating the cart (with .onChange modifier)
-        orderItem = OrderItem(title: title, image: item.image, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
+//        orderItem = OrderItem(title: title, image: item.image, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
+        orderItem = Food(
+            id: item.id,
+            title: item.title,
+            weight: item.weight,
+            text: item.text,
+            image: item.image,
+            price: self.totalPrice,
+            category: item.category,
+            options: additions,
+            countSelected: count)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderItemRow: View {
-    var item: OrderItem
+    @Binding var item: Food
     
     var body: some View {
         HStack(alignment: .center, spacing: 14) {
@@ -29,7 +29,7 @@ struct OrderItemRow: View {
                 HStack(alignment: .center, spacing: 8) {
                     CounterView()
                     Spacer()
-                    Text("\(item.totalPrice) грн")
+                    Text("\(item.price) грн")
                 }
             }
         }
@@ -55,6 +55,6 @@ struct OrderItemRow: View {
 
 struct SectionRow_Previews: PreviewProvider {
     static var previews: some View {
-        OrderItemRow(item: OrderItem(title: "Kapreze", image: "kapreze", totalPrice: "250", count: 1))
+        OrderItemRow(item: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0)))
     }
 }

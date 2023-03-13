@@ -10,17 +10,18 @@ import Foundation
 typealias FoodModel = [Food]
 
 class Food: Identifiable, Codable {
-    var id = UUID()
+    var id: UUID
     var title: String
     var weight: String
     var text: String
     var image: String
-    var price: String
+    var price: Double
     var category: String
     var options: [Addition]
-    var countSelected: String = "0"
+    var countSelected: Int
     
-    init(title: String, weight: String, text: String, image: String, price: String, category: String, options: [Addition]) {
+    init(id: UUID = UUID(), title: String, weight: String, text: String, image: String, price: Double, category: String, options: [Addition], countSelected: Int) {
+        self.id = id
         self.title = title
         self.weight = weight
         self.text = text
@@ -28,6 +29,7 @@ class Food: Identifiable, Codable {
         self.price = price
         self.category = category
         self.options = options
+        self.countSelected = countSelected
     }
 }
 

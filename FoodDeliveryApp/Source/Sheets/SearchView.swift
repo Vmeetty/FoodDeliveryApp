@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @State var text = ""
     @State var show = false
-    @State var selectedDish: Food = Food(title: "", weight: "", text: "", image: "", price: "", category: "", options: [Addition(title: "", values: [])])
+    @State var selectedDish: Food = Food(title: "", weight: "", text: "", image: "", price: 0.0, category: "", options: [Addition(title: "", values: [])], countSelected: 0)
     @Namespace var namespace
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var model: Model
@@ -122,6 +122,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(selectedDish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430", category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])]))
+        SearchView(selectedDish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])], countSelected: 0))
     }
 }
