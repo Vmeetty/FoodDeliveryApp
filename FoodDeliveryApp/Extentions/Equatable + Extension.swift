@@ -7,14 +7,17 @@
 
 import Foundation
 
-extension OrderItem: Equatable {
-    static func == (lhs: OrderItem, rhs: OrderItem) -> Bool {
+extension Food: Equatable {
+    static func == (lhs: Food, rhs: Food) -> Bool {
         return lhs.id == rhs.id &&
         lhs.title == rhs.title &&
+        lhs.weight == rhs.weight &&
+        lhs.text == rhs.text &&
         lhs.image == rhs.image &&
-        lhs.totalPrice == rhs.totalPrice &&
-        lhs.count == rhs.count &&
-        lhs.selectedAdditions == rhs.selectedAdditions
+        lhs.price == rhs.price &&
+        lhs.category == rhs.category &&
+        lhs.options == rhs.options &&
+        lhs.countSelected == rhs.countSelected
     }
 }
 

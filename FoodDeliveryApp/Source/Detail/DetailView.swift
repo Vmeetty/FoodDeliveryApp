@@ -190,7 +190,7 @@ struct DetailView: View {
             .frame(height: 50)
             
             Button {
-                food.countSelected = String(viewModel.count)
+//                food.countSelected = String(viewModel.count)
                 viewModel.addItemToCart(item: food)
                 close()
             } label: {
@@ -222,7 +222,22 @@ struct DetailView: View {
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
         .onChange(of: viewModel.orderItem) { newOrderItem in
-            model.orderItems.append(newOrderItem)
+            if model.orderItems.isEmpty {
+                model.orderItems.append(newOrderItem)
+            } else {
+                var matchedIndex: Int?
+                for (index, item) in model.orderItems.enumerated() {
+                    if item.id == newOrderItem.id {
+                        matchedIndex = index
+                    }
+                }
+                if let matchedIndex = matchedIndex {
+                    model.orderItems[matchedIndex].price += newOrderItem.price
+                    model.orderItems[matchedIndex].countSelected += newOrderItem.countSelected
+                } else {
+                    model.orderItems.append(newOrderItem)
+                }
+            }
             print(model.orderItems.map({ $0.title }))
         }
     }

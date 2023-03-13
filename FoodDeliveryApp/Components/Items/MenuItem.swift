@@ -27,7 +27,7 @@ struct MenuItem: View {
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .strokeStyle(cornerRadius: 12)
                         .matchedGeometryEffect(id: "currency\(dish.id)", in: namespace)
-                    Text(dish.price)
+                    Text(String(format: "%.2f", dish.price))
                         .font(.title2)
                         .foregroundColor(.white)
                         .matchedGeometryEffect(id: "price\(dish.id)", in: namespace)
@@ -58,15 +58,15 @@ struct MenuItem: View {
         .frame(height: 300)
         .padding(20)
         .overlay {
-            if dish.countSelected != "0" {
-                Text(dish.countSelected)
-                    .frame(width: 30.0, height: 30.0)
-                    .padding(2)
-                    .foregroundColor(.primary)
-                    .background(Color(UIColor.systemBackground), in: RoundedRectangle(cornerRadius: 15, style: .continuous))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                    .padding(35)
-            }
+//            if dish.countSelected != 0 {
+//                Text(dish.countSelected)
+//                    .frame(width: 30.0, height: 30.0)
+//                    .padding(2)
+//                    .foregroundColor(.primary)
+//                    .background(Color(UIColor.systemBackground), in: RoundedRectangle(cornerRadius: 15, style: .continuous))
+//                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+//                    .padding(35)
+//            }
             
         }
     }
@@ -75,6 +75,6 @@ struct MenuItem: View {
 struct CourseItem_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        MenuItem(namespace: namespace, dish: Food(title: "Маргарита", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "margarita", price: "185", category: "Pizza", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])]))
+        MenuItem(namespace: namespace, dish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0))
     }
 }
