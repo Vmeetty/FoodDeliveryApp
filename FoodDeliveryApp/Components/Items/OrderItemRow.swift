@@ -27,9 +27,9 @@ struct OrderItemRow: View {
                     closeButton
                 }
                 HStack(alignment: .center, spacing: 8) {
-                    CounterView()
+                    counter
                     Spacer()
-                    Text("\(item.price) грн")
+                    Text("\(String(format: "%.2f", item.price)) грн")
                 }
             }
         }
@@ -51,10 +51,48 @@ struct OrderItemRow: View {
                 .foregroundColor(.secondary)
         }
     }
+    
+    var counter: some View {
+        HStack(spacing: 15) {
+            Button {
+//                if viewModel.count > 1 {
+//                    viewModel.count -= 1
+//                    viewModel.calculateWith(foodItem: food)
+//                }
+            } label: {
+                Image(systemName: "minus")
+                    .font(.system(size: 17, weight: .bold))
+                    .foregroundColor(.secondary)
+                    .padding(8)
+                    .frame(width: 30, height: 30)
+                    .background(.ultraThinMaterial, in: Circle())
+//                    .backgroundStyle(cornerRadius: 18)
+            }
+            Text("\(item.countSelected)")
+                .lineLimit(1)
+            Button {
+//                viewModel.count += 1
+//                viewModel.calculateWith(foodItem: food)
+            } label: {
+                Image(systemName: "plus")
+                    .font(.system(size: 17, weight: .bold))
+                    .foregroundColor(.secondary)
+                    .padding(8)
+                    .frame(width: 30, height: 30)
+                    .background(.ultraThinMaterial, in: Circle())
+//                    .backgroundStyle(cornerRadius: 18)
+            }
+        }
+        .padding(2)
+        .background(
+            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                .opacity(0.05)
+        )
+    }
 }
 
 struct SectionRow_Previews: PreviewProvider {
     static var previews: some View {
-        OrderItemRow(item: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0)))
+        OrderItemRow(item: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 20000.00, category: "Burger", options: [Addition(title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 6)))
     }
 }
