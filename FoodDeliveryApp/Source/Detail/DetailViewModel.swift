@@ -15,7 +15,7 @@ class DetailViewModel: ObservableObject {
     @Published var viewState: CGSize = .zero
     @Published var appear = [false, false, false, false]
     @Published var count: Int = 1
-    @Published var localDishItem = Food(title: "", weight: "", text: "", image: "", price: 0.0, category: "", options: [], countSelected: 0)
+    @Published var localDishItem = Food(title: "", weight: "", text: "", image: "MIAMI", price: 0.0, category: "", options: [], countSelected: 0)
     
     func createLocalItem(food: Food) {
         localDishItem = Food(
@@ -49,7 +49,7 @@ class DetailViewModel: ObservableObject {
             }
         }
         total *= Double(count)
-        totalPrice = total // String(format: "%.2f", total)
+        totalPrice = total
     }
     
     func foodHasBeenChanged() {
@@ -73,7 +73,6 @@ class DetailViewModel: ObservableObject {
         }
         
         // Publishing new order item for populating the cart (with .onChange modifier)
-//        orderItem = OrderItem(title: title, image: item.image, totalPrice: totalPrice, count: self.count, selectedAdditions: additions.isEmpty ? nil : additions)
         orderItem = Food(
             id: item.id,
             title: item.title,

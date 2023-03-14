@@ -24,7 +24,7 @@ struct OrderItemRow: View {
                         .font(.body)
                         .fontWeight(.semibold)
                     Spacer()
-                    closeButton
+                    deleteButton
                 }
                 HStack(alignment: .center, spacing: 8) {
                     counter
@@ -37,7 +37,7 @@ struct OrderItemRow: View {
         .padding(20)
     }
     
-    var closeButton: some View {
+    var deleteButton: some View {
         Button {
 //            viewModel.isDragble ?
 //            withAnimation(.closeCard) {
