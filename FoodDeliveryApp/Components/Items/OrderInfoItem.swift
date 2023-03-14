@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OrderInfoItem: View {
+    var topic: Info = locationTimePayment[0]
     
-    var topic: Topic = topics[0]
     var body: some View {
         HStack(spacing: 16) {
             Image(systemName: topic.icon)

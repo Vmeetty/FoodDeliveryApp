@@ -65,7 +65,7 @@ struct LibraryView: View {
     
     var topicsSection: some View {
         VStack {
-            ForEach(Array(topics.enumerated()), id: \.offset) { index, topic in
+            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
                 VStack {
                     if index != 0 { Divider() }
                     OrderInfoItem(topic: topic)
