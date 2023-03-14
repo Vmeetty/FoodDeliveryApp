@@ -10,7 +10,7 @@ import SwiftUI
 struct OrderItemRow: View {
     @Binding var orderItem: Food
     @EnvironmentObject var cartViewModel: CartViewModel
-    @State var count = 0
+    @State var count: Int
     let deleteAction: () -> Void
     
     var body: some View {
@@ -64,7 +64,8 @@ struct OrderItemRow: View {
     var counter: some View {
         HStack(spacing: 5) {
             Button {
-                if orderItem.countSelected > 1 {
+                if count > 1 {
+                    count -= 1
                     orderItem.countSelected -= 1
                 }
             } label: {
@@ -76,11 +77,12 @@ struct OrderItemRow: View {
                     .background(.ultraThinMaterial, in: Circle())
             }
             
-            Text("\(orderItem.countSelected)")
+            Text("\(count)")
                 .lineLimit(1)
                 .frame(width: 30)
             
             Button {
+                count += 1
                 orderItem.countSelected += 1
             } label: {
                 Image(systemName: "plus")
@@ -143,7 +145,7 @@ struct OrderItemRow: View {
 
 struct SectionRow_Previews: PreviewProvider {
     static var previews: some View {
-        OrderItemRow(orderItem: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 1)), deleteAction: {
+        OrderItemRow(orderItem: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 1)), count: 1, deleteAction: {
             print("")
         })
     }

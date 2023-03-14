@@ -66,10 +66,13 @@ struct CartView: View {
                 
                 if index != 0 { Divider() }
                 
-                OrderItemRow(orderItem: $model.orderItems[index], deleteAction: {
-                    model.orderItems.remove(at: index)
-                })
-                    .environmentObject(viewModel)
+                OrderItemRow(
+                    orderItem: $model.orderItems[index],
+                    count: model.orderItems[index].countSelected,
+                    deleteAction: {
+                        model.orderItems.remove(at: index)
+                    })
+                .environmentObject(viewModel)
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
