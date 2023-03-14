@@ -46,6 +46,7 @@ struct DetailView: View {
         }
         .zIndex(1)
         .onAppear {
+            viewModel.modelReference = model
             viewModel.createLocalItem(food: food)
             fadeIn()
         }
@@ -191,7 +192,7 @@ struct DetailView: View {
             
             Button {
 //                food.countSelected = String(viewModel.count)
-                viewModel.addItemToCart(item: food)
+                viewModel.startAddingItemToCart(item: food)
                 close()
             } label: {
                 HStack {
@@ -221,27 +222,6 @@ struct DetailView: View {
         )
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
-        .onChange(of: viewModel.orderItem) { newOrderItem in
-            if model.orderItems.isEmpty {
-                model.orderItems.append(newOrderItem)
-            } else {
-                var matchedIndex: Int?
-                for (index, item) in model.orderItems.enumerated() {
-                    if item.id == newOrderItem.id {
-                        if item.options == newOrderItem.options {
-                            matchedIndex = index
-                        }
-                    }
-                }
-                if let matchedIndex = matchedIndex {
-                    model.orderItems[matchedIndex].price += newOrderItem.price
-                    model.orderItems[matchedIndex].countSelected += newOrderItem.countSelected
-                } else {
-                    model.orderItems.append(newOrderItem)
-                }
-            }
-            print(model.orderItems.map({ $0.title }))
-        }
     }
     
     var drag: some Gesture {

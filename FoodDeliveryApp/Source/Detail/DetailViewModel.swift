@@ -8,7 +8,6 @@
 import SwiftUI
 
 class DetailViewModel: ObservableObject {
-    @Published var orderItem = Food(title: "", weight: "", text: "", image: "", price: 0.0, category: "", options: [], countSelected: 0)
     @Published var foodModelChanged = false
     @Published var totalPrice: Double = 0.0
     @Published var isDragble = true
@@ -16,6 +15,7 @@ class DetailViewModel: ObservableObject {
     @Published var appear = [false, false, false, false]
     @Published var count: Int = 1
     @Published var localDishItem = Food(title: "", weight: "", text: "", image: "MIAMI", price: 0.0, category: "", options: [], countSelected: 0)
+    @Published var modelReference: Model?
     
     func createLocalItem(food: Food) {
         localDishItem = Food(
@@ -56,7 +56,7 @@ class DetailViewModel: ObservableObject {
         foodModelChanged = true
     }
     
-    func addItemToCart(item: Food) {
+    func startAddingItemToCart(item: Food) {
         var additions:[Addition] = []
         for addition in localDishItem.options {
             let additionTitle = addition.title
@@ -72,8 +72,7 @@ class DetailViewModel: ObservableObject {
             }
         }
         
-        // Publishing new order item for populating the cart (with .onChange modifier)
-        orderItem = Food(
+        let orderItem = Food(
             id: item.id,
             title: item.title,
             weight: item.weight,
@@ -83,5 +82,30 @@ class DetailViewModel: ObservableObject {
             category: item.category,
             options: additions,
             countSelected: count)
+        
+        addToCart(orderItem: orderItem) // adding to Cart
+    }
+    
+    func addToCart(orderItem: Food) {
+        if modelReference != nil {
+            if modelReference!.orderItems.isEmpty {
+                modelReference!.orderItems.append(orderItem)
+            } else {
+                var matchedIndex: Int?
+                for (index, item) in modelReference!.orderItems.enumerated() {
+                    if item.id == orderItem.id {
+                        if item.options == orderItem.options {
+                            matchedIndex = index
+                        }
+                    }
+                }
+                if let matchedIndex = matchedIndex {
+                    modelReference!.orderItems[matchedIndex].price += orderItem.price
+                    modelReference!.orderItems[matchedIndex].countSelected += orderItem.countSelected
+                } else {
+                    modelReference!.orderItems.append(orderItem)
+                }
+            }
+        }
     }
 }

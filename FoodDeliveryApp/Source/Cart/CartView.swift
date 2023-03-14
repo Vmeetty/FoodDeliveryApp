@@ -32,18 +32,6 @@ struct CartView: View {
         }
     }
     
-    var itemsSection: some View {
-        VStack(alignment: .leading) {
-            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, _ in
-                if index != 0 { Divider() }
-                OrderItemRow(item: $model.orderItems[index])
-            }
-        }
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .strokeStyle(cornerRadius: 30)
-        .padding(20)
-    }
-    
     var infoSection: some View {
         VStack {
             ForEach(Array(topics.enumerated()), id: \.offset) { index, topic in
@@ -58,6 +46,22 @@ struct CartView: View {
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
+    }
+    
+    var itemsSection: some View {
+        VStack(alignment: .leading) {
+            ForEach(Array(model.orderItems.enumerated()), id: \.offset) { index, _ in
+                if index != 0 { Divider() }
+                OrderItemRow(item: $model.orderItems[index])
+                    .environmentObject(viewModel)
+            }
+        }
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .strokeStyle(cornerRadius: 30)
+        .padding(20)
+        .onReceive(viewModel.$foodModelChanged) { newValue in
+            if newValue { viewModel.calculateWith() }
+        }
     }
 }
 

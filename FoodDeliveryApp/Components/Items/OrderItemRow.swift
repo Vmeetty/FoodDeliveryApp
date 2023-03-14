@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OrderItemRow: View {
     @Binding var item: Food
+    @EnvironmentObject var cartViewModel: CartViewModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 14) {
@@ -28,8 +29,8 @@ struct OrderItemRow: View {
                 }
                 HStack(alignment: .center, spacing: 8) {
                     counter
-                    Spacer()
                     Text("\(String(format: "%.2f", item.price)) грн")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
         }
@@ -53,12 +54,13 @@ struct OrderItemRow: View {
     }
     
     var counter: some View {
-        HStack(spacing: 15) {
+        HStack(spacing: 5) {
             Button {
-//                if viewModel.count > 1 {
+                if item.countSelected > 1 {
+                    item.countSelected -= 1
 //                    viewModel.count -= 1
 //                    viewModel.calculateWith(foodItem: food)
-//                }
+                }
             } label: {
                 Image(systemName: "minus")
                     .font(.system(size: 17, weight: .bold))
@@ -66,11 +68,12 @@ struct OrderItemRow: View {
                     .padding(8)
                     .frame(width: 30, height: 30)
                     .background(.ultraThinMaterial, in: Circle())
-//                    .backgroundStyle(cornerRadius: 18)
             }
             Text("\(item.countSelected)")
                 .lineLimit(1)
+                .frame(width: 30)
             Button {
+                item.countSelected += 1
 //                viewModel.count += 1
 //                viewModel.calculateWith(foodItem: food)
             } label: {
@@ -80,7 +83,6 @@ struct OrderItemRow: View {
                     .padding(8)
                     .frame(width: 30, height: 30)
                     .background(.ultraThinMaterial, in: Circle())
-//                    .backgroundStyle(cornerRadius: 18)
             }
         }
         .padding(2)
