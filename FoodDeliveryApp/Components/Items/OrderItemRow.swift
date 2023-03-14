@@ -11,6 +11,7 @@ struct OrderItemRow: View {
     @Binding var orderItem: Food
     @EnvironmentObject var cartViewModel: CartViewModel
     @State var count = 0
+    let deleteAction: () -> Void
     
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
@@ -52,7 +53,7 @@ struct OrderItemRow: View {
     
     var deleteButton: some View {
         Button {
-            
+            deleteAction()
         } label: {
             Image(systemName: "xmark")
                 .font(.system(size: 17, weight: .bold))
@@ -142,6 +143,8 @@ struct OrderItemRow: View {
 
 struct SectionRow_Previews: PreviewProvider {
     static var previews: some View {
-        OrderItemRow(orderItem: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 1)))
+        OrderItemRow(orderItem: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 1)), deleteAction: {
+            print("")
+        })
     }
 }

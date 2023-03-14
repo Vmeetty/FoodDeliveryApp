@@ -66,7 +66,9 @@ struct CartView: View {
                 
                 if index != 0 { Divider() }
                 
-                OrderItemRow(orderItem: $model.orderItems[index])
+                OrderItemRow(orderItem: $model.orderItems[index], deleteAction: {
+                    model.orderItems.remove(at: index)
+                })
                     .environmentObject(viewModel)
             }
         }
