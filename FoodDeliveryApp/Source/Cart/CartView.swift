@@ -66,80 +66,8 @@ struct CartView: View {
                 
                 if index != 0 { Divider() }
                 
-                HStack(alignment: .top, spacing: 14) {
-                    Image(model.orderItems[index].image)
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                        .mask(Circle())
-                        .background(Color(UIColor.systemBackground).opacity(0.3))
-                        .mask(Circle())
-                    VStack(alignment: .leading, spacing: 15) {
-                        HStack(alignment: .top, spacing: 8) {
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text(model.orderItems[index].title)
-                                    .font(.body)
-                                    .fontWeight(.semibold)
-                                if catchAddItemsTitlesBy(index: index) != "" {
-                                    Text(catchAddItemsTitlesBy(index: index))
-                                        .font(.footnote)
-                                        .fontWeight(.regular)
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                            Spacer()
-                            
-                            Button {
-                                model.orderItems.remove(at: index)
-                            } label: {
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 17, weight: .bold))
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                        HStack(alignment: .center, spacing: 8) {
-                            
-                            HStack(spacing: 5) {
-                                Button {
-                                    if model.orderItems[index].countSelected > 1 {
-                                        model.orderItems[index].countSelected -= 1
-                                    }
-                                } label: {
-                                    Image(systemName: "minus")
-                                        .font(.system(size: 17, weight: .bold))
-                                        .foregroundColor(.secondary)
-                                        .padding(8)
-                                        .frame(width: 30, height: 30)
-                                        .background(.ultraThinMaterial, in: Circle())
-                                }
-                                
-                                Text("\(model.orderItems[index].countSelected)")
-                                    .lineLimit(1)
-                                    .frame(width: 30)
-                                
-                                Button {
-                                    model.orderItems[index].countSelected += 1
-                                } label: {
-                                    Image(systemName: "plus")
-                                        .font(.system(size: 17, weight: .bold))
-                                        .foregroundColor(.secondary)
-                                        .padding(8)
-                                        .frame(width: 30, height: 30)
-                                        .background(.ultraThinMaterial, in: Circle())
-                                }
-                            }
-                            .padding(2)
-                            .background(
-                                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                                    .opacity(0.05)
-                            )
-                            
-                            Text("\(calculateTotalPriceFor(item: model.orderItems[index])) грн")
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .padding(20)
+                OrderItemRow(orderItem: $model.orderItems[index])
+                    .environmentObject(viewModel)
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
