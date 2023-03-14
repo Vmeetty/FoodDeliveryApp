@@ -78,7 +78,7 @@ class DetailViewModel: ObservableObject {
             weight: item.weight,
             text: item.text,
             image: item.image,
-            price: self.totalPrice,
+            price: item.price,
             category: item.category,
             options: additions,
             countSelected: count)

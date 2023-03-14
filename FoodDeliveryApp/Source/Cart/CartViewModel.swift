@@ -10,6 +10,7 @@ import SwiftUI
 class CartViewModel: ObservableObject {
     @Published var count: Int = 1
     @Published var totalPrice: Double = 0.0
+    @Published var orderItemsRef: [Food] = []
     
     func calculateWith() {
 //        var total: Double = 0

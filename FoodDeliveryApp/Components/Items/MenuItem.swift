@@ -10,7 +10,6 @@ import SwiftUI
 struct MenuItem: View {
     var namespace: Namespace.ID
     var dish: Food
-    @EnvironmentObject var model: Model
     
     var body: some View {
         VStack {
