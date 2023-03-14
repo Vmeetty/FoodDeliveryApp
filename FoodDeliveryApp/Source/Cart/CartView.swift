@@ -15,15 +15,17 @@ struct CartView: View {
         ZStack {
             Color("Background").ignoresSafeArea()
             
-            ScrollView {
+            Group {
                 if model.orderItems.isEmpty {
                     Text("В корзині нічого немає")
                         .font(.title2)
-                        .foregroundColor(.primary)
-                        .frame(maxHeight: .infinity)
+                        .frame(maxHeight: .infinity, alignment: .center)
+                        .offset(y: -200)
                 } else {
-                    infoSection
-                    itemsSection
+                    ScrollView {
+                        infoSection
+                        itemsSection
+                    }
                 }
             }
             .safeAreaInset(edge: .top) {
@@ -131,7 +133,7 @@ struct CartView: View {
                                     .opacity(0.05)
                             )
                             
-                            Text("\(calculateTotalPriceBy(index: index)) грн")
+                            Text("\(calculateTotalPriceFor(item: model.orderItems[index])) грн")
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         }
                     }
@@ -145,11 +147,11 @@ struct CartView: View {
         .padding(20)
     }
     
-    func calculateTotalPriceBy(index: Int) -> String {
+    func calculateTotalPriceFor(item: Food) -> String {
         var total: Double = 0
-        total += model.orderItems[index].price
+        total += item.price
 
-        for addition in model.orderItems[index].options {
+        for addition in item.options {
             for addItem in addition.values {
                 if addItem.isSelected {
                     if let addItemPrice = addItem.price {
@@ -161,7 +163,7 @@ struct CartView: View {
                 }
             }
         }
-        total *= Double(model.orderItems[index].countSelected)
+        total *= Double(item.countSelected)
         return String(format: "%.2f", total)
     }
     
