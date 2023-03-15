@@ -11,6 +11,6 @@ class CartViewModel: ObservableObject {
     @Published var contacts: [Contacts] = []
     
     func createContacts() {
-        contacts = [Contacts(title: "Квартира/офіс"), Contacts(title: "Під‘їзд"), Contacts(title: "Поверх"), Contacts(title: "Домофон"), Contacts(title: "Ваше ім‘я"), Contacts(title: "Телефон для зв‘язку"), Contacts(title: "Кількість приборів"), Contacts(title: "Коментар")]
+        contacts = [Contacts(title: "Квартира/офіс", answer: ""), Contacts(title: "Під‘їзд", answer: ""), Contacts(title: "Поверх", answer: ""), Contacts(title: "Домофон", answer: ""), Contacts(title: "Ваше ім‘я", answer: ""), Contacts(title: "Телефон для зв‘язку", answer: ""), Contacts(title: "Кількість приборів", answer: "1"), Contacts(title: "Коментар", answer: "")]
     }
 }

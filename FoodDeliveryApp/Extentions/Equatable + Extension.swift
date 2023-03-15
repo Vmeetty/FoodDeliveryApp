@@ -37,3 +37,11 @@ extension AdditionItem: Equatable {
         lhs.isSelected == rhs.isSelected
     }
 }
+
+extension Contacts: Equatable {
+    static func == (lhs: Contacts, rhs: Contacts) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.title == rhs.title &&
+        lhs.answer == rhs.answer
+    }
+}

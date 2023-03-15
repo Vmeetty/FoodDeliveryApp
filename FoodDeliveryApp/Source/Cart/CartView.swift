@@ -92,9 +92,12 @@ struct CartView: View {
                     
                     if index != 0 { Divider() }
                     
-                    OrderContactsItem(title: contact.title)
+                    OrderContactsItem(title: contact.title, answer: $viewModel.contacts[index].answer)
                         .padding(.vertical, 10)
                 }
+            }
+            .onChange(of: viewModel.contacts) { newValue in
+                print(viewModel.contacts)
             }
         }
         .padding(20)

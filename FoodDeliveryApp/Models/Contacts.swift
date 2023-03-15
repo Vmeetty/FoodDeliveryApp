@@ -10,4 +10,5 @@ import SwiftUI
 struct Contacts: Identifiable {
     var id = UUID()
     var title: String
+    var answer: String
 }

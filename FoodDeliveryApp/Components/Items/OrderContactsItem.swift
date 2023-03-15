@@ -9,8 +9,11 @@ import SwiftUI
 
 struct OrderContactsItem: View {
     var title: String
-    @State private var answer: String = ""
+    @Binding var answer: String
     @State private var count: Int = 1
+    @State private var showAlert = false
+    @FocusState private var fieldIsFocused: Bool
+    @State private var phoneAlertMessage = "Ваша відповідь"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -24,9 +27,35 @@ struct OrderContactsItem: View {
             case "Телефон для зв‘язку":
                 Text(title)
                     .fontWeight(.medium)
-                TextField("Ваша відповідь", text: $answer)
+                TextField("", text: $answer)
+                    .placeholder(when: answer.isEmpty, placeholder: {
+                        Text(phoneAlertMessage).foregroundColor(showAlert ? .pink : .secondary)
+                    })
                     .textContentType(.telephoneNumber)
                     .keyboardType(.phonePad)
+                    .overlay {
+                        Circle()
+                            .foregroundColor(showAlert ? .pink : .secondary)
+                            .frame(width: 7, height: 7)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .focused($fieldIsFocused)
+                    .onChange(of: fieldIsFocused, perform: { isFocused in
+                        if !isFocused {
+                            if answer == "" {
+                                phoneAlertMessage = "Будь ласка, вкажіть телефон"
+                                showAlert = true
+                            } else {
+                                showAlert = false
+                            }
+                        }
+                    })
+                    .onSubmit {
+                        if answer == "" {
+                            showAlert = true
+                        }
+                    }
+                
             case "Кількість приборів":
                 HStack(spacing: 0) {
                     Text(title)
@@ -35,9 +64,13 @@ struct OrderContactsItem: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                     CounterView(count: $count) {
-                        if count > 0 { count -= 1 }
+                        if count > 0 {
+                            count -= 1
+                            answer = String(count)
+                        }
                     } plusAction: {
                         count += 1
+                        answer = String(count)
                     }
                     .padding(2)
                     .background(
@@ -57,6 +90,6 @@ struct OrderContactsItem: View {
 
 struct OrderContactsItem_Previews: PreviewProvider {
     static var previews: some View {
-        OrderContactsItem(title: "Квартира/офіс")
+        OrderContactsItem(title: "Квартира/офіс", answer: .constant("№4"))
     }
 }
