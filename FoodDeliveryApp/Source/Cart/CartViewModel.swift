@@ -51,11 +51,9 @@ class CartViewModel: ObservableObject {
         calculations = [
             Calculation(title: "Замовлення", value: "\(String(format: "%.2f", orderAmount))"),
             Calculation(title: "Доставка", value: "\(String(format: "%.2f", delivery))"),
-            Calculation(title: "Чайові", value: "\(String(format: "%.2f", fee))"),
+            Calculation(title: "Чайові (%)", value: "\(String(format: "%.2f", fee))"),
             Calculation(title: "До сплати", value: "\(String(format: "%.2f", totalAmount))")
         ]
     }
     
 }
-
-// String(format: "%.2f", total)

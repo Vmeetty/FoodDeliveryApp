@@ -63,7 +63,7 @@ struct OrderContactsItem: View {
                         .lineLimit(1)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
-                    CounterView(count: count) {
+                    CounterView(count: $count) {
                         if count > 0 {
                             count -= 1
                             answer = String(count)

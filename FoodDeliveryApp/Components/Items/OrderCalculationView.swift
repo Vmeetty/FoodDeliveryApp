@@ -14,25 +14,35 @@ struct OrderCalculationView: View {
     
     var body: some View {
         HStack {
-            if calculation.title == "Чайові" {
+            if calculation.title == "Чайові (%)" {
                 HStack {
                     Text(calculation.title)
                         .fontWeight(.bold)
-                    CounterView(count: count) {
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    CounterView(count: $rate) {
                         if count > 0 {
-                            rate -= 1
                             count -= 1
+                            rate = count
                         }
                     } plusAction: {
-                        rate += 1
-                        count += 1
+                        if count < 15 {
+                            count += 1
+                            rate = count
+                        }
                     }
+                    .padding(2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 30, style: .continuous)
+                            .opacity(0.05)
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 Text("\(calculation.value) грн")
                     .tint(.secondary)
             } else {
                 Text(calculation.title)
                     .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 Text("\(calculation.value) грн")
                     .tint(.secondary)
             }

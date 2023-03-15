@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CounterView: View {
-    @State var count: Int
+    @Binding var count: Int
     let minusAction: () -> Void
     let plusAction: () -> Void
     
@@ -45,7 +45,7 @@ struct CounterView: View {
 
 struct CounterView_Previews: PreviewProvider {
     static var previews: some View {
-        CounterView(count: 1, minusAction: {
+        CounterView(count: .constant(1), minusAction: {
             
         }, plusAction: {
             

@@ -32,7 +32,21 @@ struct CartView: View {
                     itemsSection
                     contactsSection
                     calculationsSection
+                    makeOrderButton
+//                        .offset(y: -100)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 30, style: .continuous)
+//                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//                                .frame(height: 290)
+//        //                        .ignoresSafeArea()
+//                                .opacity(0.3)
+//
+//                        )
+//        //                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//                        .frame(maxHeight: .infinity, alignment: .bottom)
+//                        .ignoresSafeArea()
                 }
+                
             }
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
@@ -101,6 +115,9 @@ struct CartView: View {
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
+        .onChange(of: viewModel.rateValue) { newValue in
+            viewModel.calculate(orderItems: model.orderItems)
+        }
     }
     
     var calculationsSection: some View {
@@ -117,6 +134,26 @@ struct CartView: View {
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
+    }
+    
+    var makeOrderButton: some View {
+        Button {
+            
+        } label: {
+            Text("Замовити")
+                .fontWeight(.light)
+        }
+        .font(.headline)
+        .tint(.white)
+        .padding()
+        .frame(maxWidth: .infinity)
+        .frame(height: 50)
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(.linearGradient(colors: [.purple, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+        )
+        .padding(20)
+//        .padding(.bottom, 10)
     }
 }
 
