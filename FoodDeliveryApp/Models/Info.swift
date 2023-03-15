@@ -20,8 +20,3 @@ var locationTimePayment = [
     Info(title: "Оберіть спосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard")
 ]
 
-var contacts = [
-    Info(title: "Квартира", subtitle: "Авіаконструктора Сікорського 4Д", icon: "location"),
-    Info(title: "Час доставки", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock"),
-    Info(title: "Оберіть спосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard")
-]

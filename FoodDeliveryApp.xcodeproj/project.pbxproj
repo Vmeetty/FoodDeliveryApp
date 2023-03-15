@@ -65,6 +65,9 @@
 		844F4EA629BDB6AE000EE49E /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EA529BDB6AE000EE49E /* CartViewModel.swift */; };
 		844F4EAA29C0E482000EE49E /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EA929C0E482000EE49E /* Contacts.swift */; };
 		844F4EAC29C0E5C3000EE49E /* OrderContactsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EAB29C0E5C3000EE49E /* OrderContactsItem.swift */; };
+		844F4EB029C1F4D7000EE49E /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EAF29C1F4D7000EE49E /* Calculation.swift */; };
+		844F4EB229C1F6B6000EE49E /* OrderCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB129C1F6B6000EE49E /* OrderCalculationView.swift */; };
+		844F4EB429C200A6000EE49E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB329C200A6000EE49E /* Constants.swift */; };
 		8475B25E29B5D42B009653AC /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B25D29B5D42B009653AC /* CurrencyView.swift */; };
 		8475B26829B73C85009653AC /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B26729B73C85009653AC /* CloseButton.swift */; };
 		8475B26A29B7636D009653AC /* AdditionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B26929B7636D009653AC /* AdditionRow.swift */; };
@@ -133,6 +136,9 @@
 		844F4EA529BDB6AE000EE49E /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		844F4EA929C0E482000EE49E /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		844F4EAB29C0E5C3000EE49E /* OrderContactsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderContactsItem.swift; sourceTree = "<group>"; };
+		844F4EAF29C1F4D7000EE49E /* Calculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
+		844F4EB129C1F6B6000EE49E /* OrderCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCalculationView.swift; sourceTree = "<group>"; };
+		844F4EB329C200A6000EE49E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8475B25D29B5D42B009653AC /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		8475B26729B73C85009653AC /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		8475B26929B7636D009653AC /* AdditionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionRow.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				843AFD2429B0C0FC00026273 /* FoodDeliveryAppApp.swift */,
+				844F4EB329C200A6000EE49E /* Constants.swift */,
 				843AFD7229B0CF6600026273 /* Extentions */,
 				843AFD6729B0CE5500026273 /* Helpers */,
 				843AFDD129B2240F00026273 /* Managers */,
@@ -206,6 +213,7 @@
 				843AFD5529B0CB1400026273 /* TabBarItemModel.swift */,
 				843AFD5129B0CB1400026273 /* Info.swift */,
 				844F4EA929C0E482000EE49E /* Contacts.swift */,
+				844F4EAF29C1F4D7000EE49E /* Calculation.swift */,
 				843AFD4D29B0C69800026273 /* Model.swift */,
 				843AFD7929B0E35B00026273 /* CoinViewModel.swift */,
 				843AFDC429B0EA2200026273 /* Category.swift */,
@@ -270,6 +278,7 @@
 				843AFD8429B0E43900026273 /* OrderInfoItem.swift */,
 				844F4EAB29C0E5C3000EE49E /* OrderContactsItem.swift */,
 				843AFD8629B0E44F00026273 /* OrderItemRow.swift */,
+				844F4EB129C1F6B6000EE49E /* OrderCalculationView.swift */,
 				844F4EA229BD2803000EE49E /* CounterView.swift */,
 				8475B26929B7636D009653AC /* AdditionRow.swift */,
 				843AFD8829B0E49C00026273 /* CertificateView.swift */,
@@ -481,6 +490,7 @@
 				843AFDCA29B0F0C000026273 /* Food.swift in Sources */,
 				843AFD9C29B0E5D500026273 /* HomeView.swift in Sources */,
 				843AFDA629B0E65100026273 /* SectionView.swift in Sources */,
+				844F4EB429C200A6000EE49E /* Constants.swift in Sources */,
 				843AFD7629B0CF9100026273 /* Animation + Extension.swift in Sources */,
 				843AFD6029B0CB1400026273 /* CourseSection.swift in Sources */,
 				843AFD5C29B0CB1400026273 /* Suggestion.swift in Sources */,
@@ -489,6 +499,7 @@
 				843AFD5D29B0CB1400026273 /* PreferenceKeys.swift in Sources */,
 				843AFD9629B0E52C00026273 /* CircularView.swift in Sources */,
 				8475B26829B73C85009653AC /* CloseButton.swift in Sources */,
+				844F4EB029C1F4D7000EE49E /* Calculation.swift in Sources */,
 				844F4EAC29C0E5C3000EE49E /* OrderContactsItem.swift in Sources */,
 				84769A7329B788C1009AF71F /* String + Extention.swift in Sources */,
 				843AFD9229B0E50600026273 /* HexagonView.swift in Sources */,
@@ -519,6 +530,7 @@
 				843AFD7D29B0E3C900026273 /* FeaturedItem.swift in Sources */,
 				843AFD7A29B0E35B00026273 /* CoinViewModel.swift in Sources */,
 				843AFD8729B0E44F00026273 /* OrderItemRow.swift in Sources */,
+				844F4EB229C1F6B6000EE49E /* OrderCalculationView.swift in Sources */,
 				84769A7829B8C633009AF71F /* OrderItem.swift in Sources */,
 				843AFD2529B0C0FC00026273 /* FoodDeliveryAppApp.swift in Sources */,
 				843AFDA429B0E63700026273 /* DetailView.swift in Sources */,

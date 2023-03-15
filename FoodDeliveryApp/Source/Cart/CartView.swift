@@ -31,6 +31,7 @@ struct CartView: View {
                     infoSection
                     itemsSection
                     contactsSection
+                    calculationsSection
                 }
             }
             .safeAreaInset(edge: .top) {
@@ -49,6 +50,7 @@ struct CartView: View {
         }
         .onAppear {
             viewModel.createContacts()
+            viewModel.calculate(orderItems: model.orderItems)
         }
     }
     
@@ -89,15 +91,26 @@ struct CartView: View {
         VStack {
             ForEach(Array(viewModel.contacts.enumerated()), id: \.offset) { index, contact in
                 VStack {
-                    
                     if index != 0 { Divider() }
-                    
                     OrderContactsItem(title: contact.title, answer: $viewModel.contacts[index].answer)
                         .padding(.vertical, 10)
                 }
             }
-            .onChange(of: viewModel.contacts) { newValue in
-                print(viewModel.contacts)
+        }
+        .padding(20)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .strokeStyle(cornerRadius: 30)
+        .padding(.horizontal, 20)
+    }
+    
+    var calculationsSection: some View {
+        VStack {
+            ForEach(Array(viewModel.calculations.enumerated()), id: \.offset) { index, row in
+                VStack {
+                    if index != 0 { Divider() }
+                    OrderCalculationView(calculation: $viewModel.calculations[index], rate: $viewModel.rateValue)
+                        .padding(.vertical, 10)
+                }
             }
         }
         .padding(20)
