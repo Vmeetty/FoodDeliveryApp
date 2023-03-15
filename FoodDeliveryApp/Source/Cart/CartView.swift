@@ -89,7 +89,9 @@ struct CartView: View {
         VStack {
             ForEach(Array(viewModel.contacts.enumerated()), id: \.offset) { index, contact in
                 VStack {
+                    
                     if index != 0 { Divider() }
+                    
                     OrderContactsItem(title: contact.title)
                         .padding(.vertical, 10)
                 }
