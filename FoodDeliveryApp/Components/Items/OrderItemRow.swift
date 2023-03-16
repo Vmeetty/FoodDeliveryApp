@@ -67,6 +67,7 @@ struct OrderItemRow: View {
                 if count > 1 {
                     count -= 1
                     orderItem.countSelected -= 1
+                    cartViewModel.modelIsChanged.toggle()
                 }
             } label: {
                 Image(systemName: "minus")
@@ -84,6 +85,7 @@ struct OrderItemRow: View {
             Button {
                 count += 1
                 orderItem.countSelected += 1
+                cartViewModel.modelIsChanged.toggle()
             } label: {
                 Image(systemName: "plus")
                     .font(.system(size: 17, weight: .bold))

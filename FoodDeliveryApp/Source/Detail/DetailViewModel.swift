@@ -100,7 +100,6 @@ class DetailViewModel: ObservableObject {
                     }
                 }
                 if let matchedIndex = matchedIndex {
-//                    modelReference!.orderItems[matchedIndex].price += orderItem.price
                     modelReference!.orderItems[matchedIndex].countSelected += orderItem.countSelected
                 } else {
                     modelReference!.orderItems.append(orderItem)

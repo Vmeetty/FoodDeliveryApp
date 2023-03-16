@@ -91,14 +91,18 @@ struct CartView: View {
                 if index != 0 { Divider() }
                 
                 OrderItemRow(orderItem: $model.orderItems[index], count: model.orderItems[index].countSelected, deleteAction: {
-                        model.orderItems.remove(at: index)
-                    })
+                    model.orderItems.remove(at: index)
+                    viewModel.modelIsChanged.toggle()
+                })
                 .environmentObject(viewModel)
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .padding(20)
+        .onChange(of: viewModel.modelIsChanged) { newValue in
+            viewModel.calculate(orderItems: model.orderItems)
+        }
     }
     
     var contactsSection: some View {
