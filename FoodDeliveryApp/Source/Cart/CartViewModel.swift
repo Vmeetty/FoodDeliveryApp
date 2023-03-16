@@ -22,10 +22,7 @@ class CartViewModel: ObservableObject {
         var selectedAdditionItems: [AdditionItem] = []
         
         for orderItem in orderItems {
-            guard let price = Double(orderItem.price) else {
-                fatalError("orderItem.price ->> value format is not correct")
-            }
-            var itemAmount = price
+            var itemAmount = orderItem.price
             
             for addition in orderItem.options {
                 for additionItem in addition.values {

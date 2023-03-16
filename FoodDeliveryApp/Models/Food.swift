@@ -15,12 +15,12 @@ class Food: Identifiable, Codable {
     var weight: String
     var text: String
     var image: String
-    var price: String
+    var price: Double
     var category: String
     var options: [Addition]
     var countSelected: Int
     
-    init(id: UUID = UUID(), title: String, weight: String, text: String, image: String, price: String, category: String, options: [Addition], countSelected: Int) {
+    init(id: UUID = UUID(), title: String, weight: String, text: String, image: String, price: Double, category: String, options: [Addition], countSelected: Int) {
         self.id = id
         self.title = title
         self.weight = weight
