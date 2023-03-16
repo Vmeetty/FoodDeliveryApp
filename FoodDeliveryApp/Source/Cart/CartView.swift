@@ -55,6 +55,7 @@ struct CartView: View {
         }
         .onAppear {
             viewModel.modelReference = model
+            viewModel.rateValue = model.rateValue
             viewModel.createContacts()
             viewModel.calculate(orderItems: model.orderItems)
         }
@@ -128,6 +129,7 @@ struct CartView: View {
         .strokeStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
         .onChange(of: viewModel.rateValue) { newValue in
+            model.rateValue = newValue
             viewModel.calculate(orderItems: model.orderItems)
         }
         .onChange(of: viewModel.calculations) { calculations in

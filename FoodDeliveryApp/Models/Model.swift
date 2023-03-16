@@ -18,6 +18,7 @@ class Model: ObservableObject {
     // MARK: Cart
     @Published var orderItems: [Food] = []
     @Published var calculations: [Calculation] = []
+    @Published var rateValue: Int = 0
     
     init() {
         getCategories()

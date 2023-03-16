@@ -19,14 +19,6 @@ class CartViewModel: ObservableObject {
         
     }
     
-//    func checkRate() {
-//        if let modelReference = modelReference {
-//            if !modelReference.calculations.isEmpty {
-//
-//            }
-//        }
-//    }
-    
     func calculate(orderItems: [Food]) {
         var orderAmount: Double = 0.00
         
@@ -52,14 +44,11 @@ class CartViewModel: ObservableObject {
             
         }
         
-        if rateValue == 0 {
-            rateValue = getRate(of: orderAmount)
-        }
+        let delivery = K.Prices.DELIVERY
         
         let rate = Double(rateValue) / 100
-        
-        let delivery = K.Prices.DELIVERY
         let fee: Double = orderAmount * rate
+        
         let totalAmount = orderAmount + fee + delivery
         
         calculations = [
@@ -68,21 +57,5 @@ class CartViewModel: ObservableObject {
             Calculation(title: "Чайові (%)", value: "\(String(format: "%.2f", fee))"),
             Calculation(title: "До сплати", value: "\(String(format: "%.2f", totalAmount))")
         ]
-    }
-    
-    func getRate(of orderAmount: Double) -> Int {
-        if let modelReference = modelReference {
-            if !modelReference.calculations.isEmpty {
-                guard let fee = Double(modelReference.calculations[2].value) else {
-                    fatalError("calculation.value ->> value format is not correct")
-                }
-                
-                let rate = fee / orderAmount * 100
-                
-                return Int(rate)
-            }
-            return 0
-        }
-        return 0
     }
 }
