@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct OrderInfoItem: View {
-    var topic: Info = locationTimePayment[0]
+    var infoItem: Info = locationTimePayment[0]
     
     var body: some View {
         HStack(spacing: 16) {
-            Image(systemName: topic.icon)
+            Image(systemName: infoItem.icon)
                 .frame(width: 36, height: 36)
                 .background(.ultraThinMaterial)
                 .mask(Circle())
             VStack(alignment: .leading, spacing: 6) {
-                Text(topic.title)
+                Text(infoItem.title)
                     .fontWeight(.bold)
-                Text(topic.subtitle)
+                Text(infoItem.subtitle)
                     .font(.footnote)
                     .tint(.secondary)
             }

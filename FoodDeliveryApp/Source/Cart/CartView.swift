@@ -73,7 +73,7 @@ struct CartView: View {
             ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderInfoItem(topic: topic)
+                    OrderInfoItem(infoItem: topic)
                         .padding(.vertical, 10)
                 }
             }
@@ -115,17 +115,14 @@ struct CartView: View {
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
-        .onChange(of: viewModel.rateValue) { newValue in
-            viewModel.calculate(orderItems: model.orderItems)
-        }
     }
     
     var calculationsSection: some View {
         VStack {
-            ForEach(Array(viewModel.calculations.enumerated()), id: \.offset) { index, row in
+            ForEach(Array(model.calculations.enumerated()), id: \.offset) { index, _ in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderCalculationView(calculation: $viewModel.calculations[index], rate: $viewModel.rateValue)
+                    OrderCalculationView(calculations: $model.calculations, calculation: $model.calculations[index], rate: $viewModel.rateValue)
                         .padding(.vertical, 10)
                 }
             }
@@ -134,6 +131,12 @@ struct CartView: View {
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
+        .onChange(of: viewModel.rateValue) { newValue in
+            viewModel.calculate(orderItems: model.orderItems)
+        }
+        .onChange(of: viewModel.calculations) { calculations in
+            model.calculations = calculations
+        }
     }
     
     var makeOrderButton: some View {

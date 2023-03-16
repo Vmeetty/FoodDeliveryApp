@@ -68,7 +68,7 @@ struct LibraryView: View {
             ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderInfoItem(topic: topic)
+                    OrderInfoItem(infoItem: topic)
                 }
             }
         }

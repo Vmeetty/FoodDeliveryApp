@@ -45,3 +45,11 @@ extension Contacts: Equatable {
         lhs.answer == rhs.answer
     }
 }
+
+extension Calculation: Equatable {
+    static func == (lhs: Calculation, rhs: Calculation) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.title == rhs.title &&
+        lhs.value == rhs.value
+    }
+}

@@ -14,7 +14,10 @@ class Model: ObservableObject {
     @Published var categories: [Category] = []
     @Published var fullMenu: [Food] = []
     @Published var featuredPromotions: [Food] = []
+    
+    // MARK: Cart
     @Published var orderItems: [Food] = []
+    @Published var calculations: [Calculation] = []
     
     init() {
         getCategories()
