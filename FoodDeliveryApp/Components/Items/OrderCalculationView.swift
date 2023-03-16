@@ -37,6 +37,9 @@ struct OrderCalculationView: View {
                             .opacity(0.05)
                     )
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .onAppear {
+                        getRate()
+                    }
                 }
                 Text("\(calculation.value) грн")
                     .tint(.secondary)
@@ -48,9 +51,6 @@ struct OrderCalculationView: View {
                     .tint(.secondary)
             }
         }
-        .onAppear {
-            getRate()
-        }
     }
     
     func getRate() {
@@ -61,11 +61,8 @@ struct OrderCalculationView: View {
             guard let amount = Double(calculations[0].value) else {
                 fatalError("calculations[0].value ->> value format is not correct")
             }
-            let rate = String(format: "%.2f", fee / amount * 100)
-            
-            if let intRate = Int(rate) {
-                count = intRate
-            }
+            let rate = fee / amount * 100
+            count = Int(rate)
         }
     }
 }

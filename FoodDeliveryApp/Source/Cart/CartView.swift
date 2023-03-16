@@ -16,36 +16,27 @@ struct CartView: View {
             Color("Background").ignoresSafeArea()
             
             Group {
-//                if model.orderItems.isEmpty {
-//                    Text("В корзині нічого немає")
-//                        .font(.title2)
-//                        .frame(maxHeight: .infinity, alignment: .center)
-//                        .offset(y: -200)
-//                } else {
-//                    ScrollView {
-//                        infoSection
-//                        itemsSection
-//                    }
-//                }
-                ScrollView {
-                    infoSection
-                    itemsSection
-                    contactsSection
-                    calculationsSection
-                    makeOrderButton
-//                        .offset(y: -100)
-//                        .background(
-//                            RoundedRectangle(cornerRadius: 30, style: .continuous)
-//                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                                .frame(height: 290)
-//        //                        .ignoresSafeArea()
-//                                .opacity(0.3)
-//
-//                        )
-//        //                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//                        .frame(maxHeight: .infinity, alignment: .bottom)
-//                        .ignoresSafeArea()
+                if model.orderItems.isEmpty {
+                    Text("В корзині нічого немає")
+                        .font(.title2)
+                        .frame(maxHeight: .infinity, alignment: .center)
+                        .offset(y: -200)
+                } else {
+                    ScrollView {
+                        infoSection
+                        itemsSection
+                        contactsSection
+                        calculationsSection
+                        makeOrderButton
+                    }
                 }
+//                ScrollView {
+//                    infoSection
+//                    itemsSection
+//                    contactsSection
+//                    calculationsSection
+//                    makeOrderButton
+//                }
                 
             }
             .safeAreaInset(edge: .top) {
@@ -63,6 +54,7 @@ struct CartView: View {
             }
         }
         .onAppear {
+            viewModel.modelReference = model
             viewModel.createContacts()
             viewModel.calculate(orderItems: model.orderItems)
         }

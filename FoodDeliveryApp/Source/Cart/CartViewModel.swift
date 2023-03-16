@@ -12,18 +12,27 @@ class CartViewModel: ObservableObject {
     @Published var calculations: [Calculation] = []
     @Published var rateValue = 0
     @Published var modelIsChanged = false
+    @Published var modelReference: Model?
     
     func createContacts() {
         contacts = [Contacts(title: "Квартира/офіс", answer: ""), Contacts(title: "Під‘їзд", answer: ""), Contacts(title: "Поверх", answer: ""), Contacts(title: "Домофон", answer: ""), Contacts(title: "Ваше ім‘я", answer: ""), Contacts(title: "Телефон для зв‘язку", answer: ""), Contacts(title: "Кількість приборів", answer: "1"), Contacts(title: "Коментар", answer: "")]
         
     }
     
+//    func checkRate() {
+//        if let modelReference = modelReference {
+//            if !modelReference.calculations.isEmpty {
+//
+//            }
+//        }
+//    }
+    
     func calculate(orderItems: [Food]) {
         var orderAmount: Double = 0.00
-        var selectedAdditionItems: [AdditionItem] = []
         
         for orderItem in orderItems {
             var itemAmount = orderItem.price
+            var selectedAdditionItems: [AdditionItem] = []
             
             for addition in orderItem.options {
                 for additionItem in addition.values {
@@ -43,6 +52,10 @@ class CartViewModel: ObservableObject {
             
         }
         
+        if rateValue == 0 {
+            rateValue = getRate(of: orderAmount)
+        }
+        
         let rate = Double(rateValue) / 100
         
         let delivery = K.Prices.DELIVERY
@@ -57,4 +70,19 @@ class CartViewModel: ObservableObject {
         ]
     }
     
+    func getRate(of orderAmount: Double) -> Int {
+        if let modelReference = modelReference {
+            if !modelReference.calculations.isEmpty {
+                guard let fee = Double(modelReference.calculations[2].value) else {
+                    fatalError("calculation.value ->> value format is not correct")
+                }
+                
+                let rate = fee / orderAmount * 100
+                
+                return Int(rate)
+            }
+            return 0
+        }
+        return 0
+    }
 }
