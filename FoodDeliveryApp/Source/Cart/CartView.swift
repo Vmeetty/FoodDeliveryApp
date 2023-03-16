@@ -30,14 +30,6 @@ struct CartView: View {
                         makeOrderButton
                     }
                 }
-//                ScrollView {
-//                    infoSection
-//                    itemsSection
-//                    contactsSection
-//                    calculationsSection
-//                    makeOrderButton
-//                }
-                
             }
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
@@ -56,7 +48,6 @@ struct CartView: View {
         .onAppear {
             viewModel.modelReference = model
             viewModel.rateValue = model.rateValue
-            viewModel.createContacts()
             viewModel.calculate(orderItems: model.orderItems)
         }
     }
@@ -100,10 +91,10 @@ struct CartView: View {
     
     var contactsSection: some View {
         VStack {
-            ForEach(Array(viewModel.contacts.enumerated()), id: \.offset) { index, contact in
+            ForEach(Array(model.contacts.enumerated()), id: \.offset) { index, contact in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderContactsItem(title: contact.title, answer: $viewModel.contacts[index].answer)
+                    OrderContactsItem(title: contact.title, answer: $model.contacts[index].answer)
                         .padding(.vertical, 10)
                 }
             }

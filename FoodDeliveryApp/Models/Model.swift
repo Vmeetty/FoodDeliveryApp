@@ -19,11 +19,13 @@ class Model: ObservableObject {
     @Published var orderItems: [Food] = []
     @Published var calculations: [Calculation] = []
     @Published var rateValue: Int = 0
+    @Published var contacts: [Contacts] = []
     
     init() {
         getCategories()
         getMenu()
         getFeaturedPromotions()
+        getContacts()
     }
     
     //MARK: methods
@@ -70,6 +72,11 @@ class Model: ObservableObject {
             Food(title: "Іль Мачельяно", weight: "Вага 470 г", text: "Перетерті томати, моцарела, прошутто котто, ковбаски, салямі на На ваш вибір - с гострим перцем або ні . Алергени: злаки, лактоза.", image: "il-macheljano", price: 325.00, category: "Pizza", options: [Addition(id: 22, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])], countSelected: 0),
             Food(title: "Капрічіоза", weight: "Вага 500 г", text: "Перетерті томати, артишоки, прошуто кото, оливки каламата, свіжі печериці, моцарела. Алергени: злаки, лактоза.", image: "kaprichioza", price: 289.00, category: "Pizza", options: [Addition(id: 23, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])], countSelected: 0)
         ]
+    }
+    
+    func getContacts() {
+        contacts = [Contacts(title: "Квартира/офіс", answer: ""), Contacts(title: "Під‘їзд", answer: ""), Contacts(title: "Поверх", answer: ""), Contacts(title: "Домофон", answer: ""), Contacts(title: "Ваше ім‘я", answer: ""), Contacts(title: "Телефон для зв‘язку", answer: ""), Contacts(title: "Кількість приборів", answer: "1"), Contacts(title: "Коментар", answer: "")]
+        
     }
 }
 

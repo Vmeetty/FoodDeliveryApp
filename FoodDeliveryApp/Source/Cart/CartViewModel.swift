@@ -8,16 +8,10 @@
 import SwiftUI
 
 class CartViewModel: ObservableObject {
-    @Published var contacts: [Contacts] = []
     @Published var calculations: [Calculation] = []
     @Published var rateValue = 0
     @Published var modelIsChanged = false
     @Published var modelReference: Model?
-    
-    func createContacts() {
-        contacts = [Contacts(title: "Квартира/офіс", answer: ""), Contacts(title: "Під‘їзд", answer: ""), Contacts(title: "Поверх", answer: ""), Contacts(title: "Домофон", answer: ""), Contacts(title: "Ваше ім‘я", answer: ""), Contacts(title: "Телефон для зв‘язку", answer: ""), Contacts(title: "Кількість приборів", answer: "1"), Contacts(title: "Коментар", answer: "")]
-        
-    }
     
     func calculate(orderItems: [Food]) {
         var orderAmount: Double = 0.00

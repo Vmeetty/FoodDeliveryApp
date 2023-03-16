@@ -78,6 +78,11 @@ struct OrderContactsItem: View {
                             .opacity(0.05)
                     )
                     .frame(maxWidth: .infinity, alignment: .trailing)
+                    .onAppear {
+                        if let intAnswer = Int(answer) {
+                            count = intAnswer
+                        }
+                    }
                 }
             default:
                 Text(title)
