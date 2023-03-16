@@ -14,7 +14,7 @@ class DetailViewModel: ObservableObject {
     @Published var viewState: CGSize = .zero
     @Published var appear = [false, false, false, false]
     @Published var count: Int = 1
-    @Published var localDishItem = Food(title: "", weight: "", text: "", image: "MIAMI", price: 0.0, category: "", options: [], countSelected: 0)
+    @Published var localDishItem = Food(title: "", weight: "", text: "", image: "MIAMI", price: "", category: "", options: [], countSelected: 0)
     @Published var modelReference: Model?
     
     func createLocalItem(food: Food) {
@@ -29,12 +29,16 @@ class DetailViewModel: ObservableObject {
             options: food.options,
             countSelected: 0
         )
-        totalPrice = food.price
+        if let price = Double(food.price) {
+            totalPrice = price
+        }
     }
     
     func calculateWith() {
         var total: Double = 0
-        total += localDishItem.price
+        if let price = Double(localDishItem.price) {
+            total += price
+        }
 
         for addition in localDishItem.options {
             for addItem in addition.values {

@@ -26,7 +26,7 @@ struct MenuItem: View {
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                         .strokeStyle(cornerRadius: 12)
                         .matchedGeometryEffect(id: "currency\(dish.id)", in: namespace)
-                    Text(String(format: "%.2f", dish.price))
+                    Text(dish.price)
                         .font(.title2)
                         .foregroundColor(.white)
                         .matchedGeometryEffect(id: "price\(dish.id)", in: namespace)
@@ -74,6 +74,6 @@ struct MenuItem: View {
 struct CourseItem_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        MenuItem(namespace: namespace, dish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0))
+        MenuItem(namespace: namespace, dish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430.00", category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0))
     }
 }

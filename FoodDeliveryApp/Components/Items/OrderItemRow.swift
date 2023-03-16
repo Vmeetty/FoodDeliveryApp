@@ -102,7 +102,11 @@ struct OrderItemRow: View {
     
     func calculateTotalPriceBy() -> String {
         var total: Double = 0
-        total += orderItem.price
+        
+        guard let price = Double(orderItem.price) else {
+            fatalError("orderItem.price ->> value format is not correct")
+        }
+        total += price
         
         var selectedItems: [AdditionItem] = []
 
@@ -145,7 +149,7 @@ struct OrderItemRow: View {
 
 struct SectionRow_Previews: PreviewProvider {
     static var previews: some View {
-        OrderItemRow(orderItem: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 1)), count: 1, deleteAction: {
+        OrderItemRow(orderItem: .constant(Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: "430.00", category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 1)), count: 1, deleteAction: {
             print("")
         })
     }
