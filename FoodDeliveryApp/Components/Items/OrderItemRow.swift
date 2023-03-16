@@ -48,7 +48,6 @@ struct OrderItemRow: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding(20)
     }
     
     var deleteButton: some View {

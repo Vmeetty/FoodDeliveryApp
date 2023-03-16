@@ -83,4 +83,7 @@ class Model: ObservableObject {
 enum ModalEnum: String {
     case signIn
     case signUp
+    case adress
+    case date
+    case payment
 }

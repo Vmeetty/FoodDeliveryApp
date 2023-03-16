@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
+    @AppStorage("showModal") var showModal = false
     @EnvironmentObject var model: Model
     @StateObject var viewModel = CartViewModel()
     
@@ -54,11 +55,22 @@ struct CartView: View {
     
     var infoSection: some View {
         VStack {
-            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
+            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, item in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderInfoItem(infoItem: topic)
+                    OrderInfoItem(infoItem: item)
                         .padding(.vertical, 10)
+                        .onTapGesture {
+                            switch item.infoTab {
+                            case .location:
+                                model.selectedModalView = .adress
+                            case .time:
+                                model.selectedModalView = .date
+                            case .payment:
+                                model.selectedModalView = .payment
+                            }
+                            showModal = true
+                        }
                 }
             }
         }
@@ -81,9 +93,10 @@ struct CartView: View {
                 .environmentObject(viewModel)
             }
         }
+        .padding(20)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
-        .padding(20)
+        .padding(.horizontal)
         .onChange(of: viewModel.modelIsChanged) { newValue in
             viewModel.calculate(orderItems: model.orderItems)
         }
@@ -145,7 +158,8 @@ struct CartView: View {
                 .fill(.linearGradient(colors: [.purple, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
         )
         .padding(20)
-//        .padding(.bottom, 10)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .padding([.horizontal, .bottom], 20)
     }
 }
 

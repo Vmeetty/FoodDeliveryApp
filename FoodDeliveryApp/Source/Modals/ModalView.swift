@@ -29,6 +29,12 @@ struct ModalView: View {
                     SignUpView()
                 case .signIn:
                     SignInView()
+                case .adress:
+                    DeliveryTypeView()
+                case .date:
+                    DeliveryTimeView()
+                case .payment:
+                    PaymentTypeView()
                 }
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
