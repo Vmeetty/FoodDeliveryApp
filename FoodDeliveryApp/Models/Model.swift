@@ -7,25 +7,40 @@
 
 import Foundation
 
+enum ModalEnum: String {
+    case signIn
+    case signUp
+}
+
+enum PopUpEnum: String {
+    case type
+    case date
+    case payment
+}
+
 class Model: ObservableObject {
     // MARK: properties
     @Published var showDetail = false
+    @Published var showPopUp = false
     @Published var selectedModalView: ModalEnum = .signIn
+    @Published var selectedPopUpView: PopUpEnum = .type
     @Published var categories: [Category] = []
     @Published var fullMenu: [Food] = []
     @Published var featuredPromotions: [Food] = []
     
     // MARK: Cart
     @Published var orderItems: [Food] = []
+    @Published var locationTimePayment: [Info] = []
+    @Published var contacts: [Contacts] = []
     @Published var calculations: [Calculation] = []
     @Published var rateValue: Int = 0
-    @Published var contacts: [Contacts] = []
     
     init() {
         getCategories()
         getMenu()
         getFeaturedPromotions()
         getContacts()
+        getInfo()
     }
     
     //MARK: methods
@@ -78,12 +93,12 @@ class Model: ObservableObject {
         contacts = [Contacts(title: "Квартира/офіс", answer: ""), Contacts(title: "Під‘їзд", answer: ""), Contacts(title: "Поверх", answer: ""), Contacts(title: "Домофон", answer: ""), Contacts(title: "Ваше ім‘я", answer: ""), Contacts(title: "Телефон для зв‘язку", answer: ""), Contacts(title: "Кількість приборів", answer: "1"), Contacts(title: "Коментар", answer: "")]
         
     }
-}
-
-enum ModalEnum: String {
-    case signIn
-    case signUp
-    case adress
-    case date
-    case payment
+    
+    func getInfo() {
+        locationTimePayment = [
+            Info(title: "Доставка", subtitle: "Авіаконструктора Сікорського 4Д", icon: "location", infoTab: .location),
+            Info(title: "Час доставки", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock", infoTab: .time),
+            Info(title: "Оберіть спосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard", infoTab: .payment)
+        ]
+    }
 }

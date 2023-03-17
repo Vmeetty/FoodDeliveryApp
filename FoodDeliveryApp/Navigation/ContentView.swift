@@ -33,6 +33,10 @@ struct ContentView: View {
                 ModalView()
                     .zIndex(1)
             }
+            if model.showPopUp {
+                PopUpView()
+                    .zIndex(1)
+            }
         }
         .safeAreaInset(edge: .bottom) {
             Color.clear.frame(height: 88)

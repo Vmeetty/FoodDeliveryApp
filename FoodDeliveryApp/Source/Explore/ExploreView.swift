@@ -21,7 +21,7 @@ struct ExploreView: View {
                 Text("Topics".uppercased())
                     .titleStyle()
                 
-                topicsSection
+//                topicsSection
                 
                 Text("Popular".uppercased())
                     .titleStyle()
@@ -50,20 +50,20 @@ struct ExploreView: View {
         }
     }
     
-    var topicsSection: some View {
-        VStack {
-            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
-                VStack {
-                    if index != 0 { Divider() }
-                    OrderInfoItem(infoItem: topic)
-                }
-            }
-        }
-        .padding(20)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .strokeStyle(cornerRadius: 30)
-        .padding(.horizontal, 20)
-    }
+//    var topicsSection: some View {
+//        VStack {
+//            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
+//                VStack {
+//                    if index != 0 { Divider() }
+//                    OrderInfoItem(infoItem: topic)
+//                }
+//            }
+//        }
+//        .padding(20)
+//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//        .strokeStyle(cornerRadius: 30)
+//        .padding(.horizontal, 20)
+//    }
     
     var handbookSection: some View {
         HStack(alignment: .top, spacing: 16) {

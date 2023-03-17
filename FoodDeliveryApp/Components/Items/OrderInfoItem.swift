@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderInfoItem: View {
-    var infoItem: Info = locationTimePayment[0]
+    @Binding var infoItem: Info
     
     var body: some View {
         HStack(spacing: 16) {
@@ -30,6 +30,6 @@ struct OrderInfoItem: View {
 
 struct TopicItem_Previews: PreviewProvider {
     static var previews: some View {
-        OrderInfoItem()
+        OrderInfoItem(infoItem: .constant(Info(title: "Адреса", subtitle: "Авіаконструктора Сікорського 4Д", icon: "location", infoTab: .location)))
     }
 }

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CartView: View {
-    @AppStorage("showModal") var showModal = false
     @EnvironmentObject var model: Model
     @StateObject var viewModel = CartViewModel()
     
@@ -55,21 +54,23 @@ struct CartView: View {
     
     var infoSection: some View {
         VStack {
-            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, item in
+            ForEach(Array(model.locationTimePayment.enumerated()), id: \.offset) { index, item in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderInfoItem(infoItem: item)
+                    OrderInfoItem(infoItem: $model.locationTimePayment[index])
                         .padding(.vertical, 10)
                         .onTapGesture {
                             switch item.infoTab {
                             case .location:
-                                model.selectedModalView = .adress
+                                model.selectedPopUpView = .type
                             case .time:
-                                model.selectedModalView = .date
+                                model.selectedPopUpView = .date
                             case .payment:
-                                model.selectedModalView = .payment
+                                model.selectedPopUpView = .payment
                             }
-                            showModal = true
+                            withAnimation {
+                                model.showPopUp = true
+                            }
                         }
                 }
             }

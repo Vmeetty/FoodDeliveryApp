@@ -1,19 +1,18 @@
 //
-//  ModalView.swift
+//  PopUpView.swift
 //  FoodDeliveryApp
 //
-//  Created by admin on 3/2/23.
+//  Created by admin on 3/17/23.
 //
 
 import SwiftUI
 
-struct ModalView: View {
-    @AppStorage("showModal") var showModal = true
-    @AppStorage("isLogged") var isLogged = false
+struct PopUpView: View {
     @EnvironmentObject var model: Model
     @State var viewState: CGSize = .zero
     @State var isDismiss = false
     @State var appear = [false, false, false]
+    @AppStorage("optionSelected") var optionSelected = false
     
     var body: some View {
         ZStack {
@@ -24,11 +23,13 @@ struct ModalView: View {
                 }
             
             Group {
-                switch model.selectedModalView {
-                case .signUp:
-                    SignUpView()
-                case .signIn:
-                    SignInView()
+                switch model.selectedPopUpView {
+                case .type:
+                    DeliveryTypeView()
+                case .date:
+                    DeliveryTimeView()
+                case .payment:
+                    PaymentTypeView()
                 }
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -42,14 +43,6 @@ struct ModalView: View {
             .opacity(appear[0] ? 1 : 0)
             .offset(y: appear[0] ? 0 : 200)
             .padding(20)
-            .background(
-                Image("Blob 1")
-                    .offset(x: 200, y: -50)
-                    .opacity(appear[2] ? 1 : 0)
-                    .offset(y: appear[2] ? 0 : 10)
-                    .blur(radius: appear[2] ? 0 : 40)
-                    .allowsHitTesting(false)
-            )
             
             Button {
                 dismissModal()
@@ -76,10 +69,8 @@ struct ModalView: View {
                 appear[2] = true
             }
         }
-        .onChange(of: isLogged) { newValue in
-            if newValue {
-                dismissModal()
-            }
+        .onChange(of: optionSelected) { newValue in
+            dismissModal()
         }
     }
     
@@ -99,18 +90,17 @@ struct ModalView: View {
     }
     
     func dismissModal() {
-        withAnimation {
+        withAnimation(.linear.delay(0.3)) {
             isDismiss = true
         }
-        withAnimation(.linear.delay(0.3)) {
-            showModal = false
+        withAnimation(.linear.delay(0.6)) {
+            model.showPopUp = false
         }
     }
 }
 
-struct ModalView_Previews: PreviewProvider {
+struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalView()
-            .environmentObject(Model())
+        PopUpView()
     }
 }

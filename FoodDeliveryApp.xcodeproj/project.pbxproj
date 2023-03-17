@@ -76,6 +76,7 @@
 		8475B26A29B7636D009653AC /* AdditionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B26929B7636D009653AC /* AdditionRow.swift */; };
 		84769A7329B788C1009AF71F /* String + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7229B788C1009AF71F /* String + Extention.swift */; };
 		84769A7829B8C633009AF71F /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7729B8C633009AF71F /* OrderItem.swift */; };
+		849792E729C497D30003B491 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E629C497D30003B491 /* PopUpView.swift */; };
 		84CF721729B8D590004E92F1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF721629B8D590004E92F1 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +151,7 @@
 		8475B26929B7636D009653AC /* AdditionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionRow.swift; sourceTree = "<group>"; };
 		84769A7229B788C1009AF71F /* String + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extention.swift"; sourceTree = "<group>"; };
 		84769A7729B8C633009AF71F /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		849792E629C497D30003B491 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		84CF721629B8D590004E92F1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,6 +348,7 @@
 				844F4EBB29C3DBDB000EE49E /* DeliveryTimeView.swift */,
 				844F4EB529C3D87A000EE49E /* PaymentTypeView.swift */,
 				843AFDAB29B0E6B600026273 /* ModalView.swift */,
+				849792E629C497D30003B491 /* PopUpView.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				843AFD7029B0CF0F00026273 /* Modifier.swift in Sources */,
 				843AFD8529B0E43900026273 /* OrderInfoItem.swift in Sources */,
 				843AFD5D29B0CB1400026273 /* PreferenceKeys.swift in Sources */,
+				849792E729C497D30003B491 /* PopUpView.swift in Sources */,
 				844F4EBC29C3DBDB000EE49E /* DeliveryTimeView.swift in Sources */,
 				843AFD9629B0E52C00026273 /* CircularView.swift in Sources */,
 				8475B26829B73C85009653AC /* CloseButton.swift in Sources */,
