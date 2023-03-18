@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct PaymentTypeView: View {
-    enum Option {
-        case cash
-        case card
-    }
-    
-    @State var selected: Option = .cash
+    @State var selectedIndex: Int = 0
     @State var circleColor: Color = .blue
     @State var appear = [false, false, false]
     @EnvironmentObject var model: Model
@@ -28,13 +23,13 @@ struct PaymentTypeView: View {
             
             Divider()
             
-            Group {
-                Text("Готівкою при одержані")
-                    .checkStyle(icon: "banknote.fill")
+            ForEach(Array(K.PopUps.PAYMENT.enumerated()), id: \.offset) { index, item in
+                Text(item.title)
+                    .checkStyle(icon: item.icon)
                     .shadow(color: .clear, radius: 10, x: 0, y: 3)
                     .overlay(geometry)
                     .overlay {
-                        if selected == .cash {
+                        if selectedIndex == index {
                             Image(systemName: "checkmark")
                                 .tint(Color.white)
                                 .frame(width: 21, height: 21)
@@ -44,31 +39,12 @@ struct PaymentTypeView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .onTapGesture {
-                        selected = .cash
-                        optionSelected.toggle()
-                    }
-                
-                Text("Карткою при одержані")
-                    .checkStyle(icon: "creditcard.fill")
-                    .shadow(color: .clear, radius: 10, x: 0, y: 3)
-                    .overlay(geometry)
-                    .overlay {
-                        if selected == .card {
-                            Image(systemName: "checkmark")
-                                .tint(Color.white)
-                                .frame(width: 21, height: 21)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .padding()
-                        }
-                    }
-                    .onTapGesture {
-                        selected = .card
+                        selectedIndex = index
                         optionSelected.toggle()
                     }
             }
             .opacity(appear[2] ? 1 : 0)
             .offset(y: appear[2] ? 0 : 20)
-            
         }
         .padding(20)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))

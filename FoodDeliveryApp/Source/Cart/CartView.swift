@@ -44,6 +44,11 @@ struct CartView: View {
             .onTapGesture {
                 hideKeyboard()
             }
+            
+            if model.showPopUp {
+                PopUpView()
+                    .zIndex(1)
+            }
         }
         .onAppear {
             viewModel.modelReference = model

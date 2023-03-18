@@ -18,6 +18,7 @@ struct PopUpView: View {
         ZStack {
             Color.clear.background(.regularMaterial)
                 .ignoresSafeArea()
+                .opacity(0.8)
                 .onTapGesture {
                     dismissModal()
                 }
@@ -70,7 +71,7 @@ struct PopUpView: View {
             }
         }
         .onChange(of: optionSelected) { newValue in
-            dismissModal()
+            dismissModalWithDelay()
         }
     }
     
@@ -90,6 +91,15 @@ struct PopUpView: View {
     }
     
     func dismissModal() {
+        withAnimation {
+            isDismiss = true
+        }
+        withAnimation(.linear.delay(0.3)) {
+            model.showPopUp = false
+        }
+    }
+    
+    func dismissModalWithDelay() {
         withAnimation(.linear.delay(0.3)) {
             isDismiss = true
         }
