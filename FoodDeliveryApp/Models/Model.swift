@@ -31,6 +31,7 @@ class Model: ObservableObject {
     // MARK: Cart
     @Published var orderItems: [Food] = []
     @Published var locationTimePayment: [Info] = []
+    @Published var paymentIndexSelected: Int = 0
     @Published var contacts: [Contacts] = []
     @Published var calculations: [Calculation] = []
     @Published var rateValue: Int = 0

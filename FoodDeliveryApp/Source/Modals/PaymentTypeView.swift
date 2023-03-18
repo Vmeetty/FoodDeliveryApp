@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct PaymentTypeView: View {
-    @State var selectedIndex: Int = 0
-    @State var circleColor: Color = .blue
+    @State var circleColor: Color = .pink
     @State var appear = [false, false, false]
     @EnvironmentObject var model: Model
     @AppStorage("optionSelected") var optionSelected = false
@@ -29,7 +28,7 @@ struct PaymentTypeView: View {
                     .shadow(color: .clear, radius: 10, x: 0, y: 3)
                     .overlay(geometry)
                     .overlay {
-                        if selectedIndex == index {
+                        if model.paymentIndexSelected == index {
                             Image(systemName: "checkmark")
                                 .tint(Color.white)
                                 .frame(width: 21, height: 21)
@@ -39,7 +38,9 @@ struct PaymentTypeView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .onTapGesture {
-                        selectedIndex = index
+                        model.paymentIndexSelected = index
+                        model.locationTimePayment[2].subtitle = item.title
+                        model.locationTimePayment[2].icon = item.icon
                         optionSelected.toggle()
                     }
             }
@@ -74,6 +75,14 @@ struct PaymentTypeView: View {
             Color.clear.preference(key: CirclePreferenceKey.self, value: proxy.frame(in: .named("container")).minY)
         }
     }
+    
+//    func putInTheModel() {
+//        for (index, infoItem) in model.locationTimePayment.enumerated() {
+//            if infoItem.infoTab == .payment {
+//                model.locationTimePayment[index].subtitle = K.PopUps.PAYMENT[selectedIndex]
+//            }
+//        }
+//    }
 }
 
 struct PaymentTypeView_Previews: PreviewProvider {
