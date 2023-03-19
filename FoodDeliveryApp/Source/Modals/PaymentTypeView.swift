@@ -39,8 +39,11 @@ struct PaymentTypeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .onTapGesture {
                         model.paymentIndexSelected = index
+                        
+                        // setup payment type model by index
                         model.locationTimePayment[2].subtitle = item.title
                         model.locationTimePayment[2].icon = item.icon
+                        
                         optionSelected.toggle()
                     }
             }
@@ -75,14 +78,6 @@ struct PaymentTypeView: View {
             Color.clear.preference(key: CirclePreferenceKey.self, value: proxy.frame(in: .named("container")).minY)
         }
     }
-    
-//    func putInTheModel() {
-//        for (index, infoItem) in model.locationTimePayment.enumerated() {
-//            if infoItem.infoTab == .payment {
-//                model.locationTimePayment[index].subtitle = K.PopUps.PAYMENT[selectedIndex]
-//            }
-//        }
-//    }
 }
 
 struct PaymentTypeView_Previews: PreviewProvider {

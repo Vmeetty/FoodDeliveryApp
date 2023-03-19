@@ -13,6 +13,7 @@ struct K {
     }
     
     struct PopUps {
+        static let DELIVERY_TYPE = [PaymentPopUpData(title: "Доставка", icon: "box.truck.badge.clock.fill"), PaymentPopUpData(title: "Самовивіз", icon: "figure.wave")]
         static let PAYMENT = [PaymentPopUpData(title: "Готівкою при одержані", icon: "banknote.fill"), PaymentPopUpData(title: "Карткою при одержані", icon: "creditcard.fill")]
     }
 }

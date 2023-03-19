@@ -8,86 +8,47 @@
 import SwiftUI
 
 struct DeliveryTypeView: View {
-    enum Field {
-        case email
-        case password
-    }
-    
-    @State var email = ""
-    @State var password = ""
-    @FocusState var focusedField: Field?
-    @State var yCircle: CGFloat = 120
-    @State var emailY: CGFloat = 0
-    @State var passwordY: CGFloat = 0
-    @State var circleColor: Color = .blue
+    @State var circleColor: Color = .pink
     @State var appear = [false, false, false]
     @EnvironmentObject var model: Model
-    @AppStorage("isLogged") var isLogged = false
+    @AppStorage("optionSelected") var optionSelected = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Оберіть тип доставки")
-                .font(.largeTitle).bold()
-                .opacity(appear[0] ? 1 : 0)
-                .offset(y: appear[0] ? 0 : 20)
-            Text("Access 120+ hours of courses, tutorials and livestreams")
+            Text("Доставка/Отримання")
                 .font(.headline)
                 .opacity(appear[1] ? 1 : 0)
                 .offset(y: appear[1] ? 0 : 20)
             
-            Group {
-                TextField("Email", text: $email)
-                    .inputStyle(icon: "mail")
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .focused($focusedField, equals: .email)
-                    .shadow(color: focusedField == .email ? .primary.opacity(0.3) : .clear, radius: 10, x: 0, y: 3)
+            Divider()
+            
+            ForEach(Array(K.PopUps.DELIVERY_TYPE.enumerated()), id: \.offset) { index, item in
+                Text(item.title)
+                    .checkStyle(icon: item.icon)
+                    .shadow(color: .clear, radius: 10, x: 0, y: 3)
                     .overlay(geometry)
-                    .onPreferenceChange(CirclePreferenceKey.self) { value in
-                        emailY = value
-                        yCircle = value
+                    .overlay {
+                        if model.paymentIndexSelected == index {
+                            Image(systemName: "checkmark")
+                                .tint(Color.white)
+                                .frame(width: 21, height: 21)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding()
+                        }
                     }
-                SecureField("Password", text: $password)
-                    .inputStyle(icon: "lock")
-                    .textContentType(.password)
-                    .focused($focusedField, equals: .password)
-                    .shadow(color: focusedField == .password ? .primary.opacity(0.3) : .clear, radius: 10, x: 0, y: 3)
-                    .overlay(geometry)
-                    .onPreferenceChange(CirclePreferenceKey.self) { value in
-                        passwordY = value
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .onTapGesture {
+                        model.paymentIndexSelected = index
+                        
+                        // setup delivery type model by index
+                        model.locationTimePayment[0].subtitle = item.title
+                        model.locationTimePayment[0].icon = item.icon
+                        
+                        optionSelected.toggle()
                     }
-                Button {
-                    isLogged = true
-                } label: {
-                    Text("Sign in")
-                        .frame(maxWidth: .infinity)
-                }
-                .font(.headline)
-                .blendMode(.overlay)
-                .buttonStyle(.angular)
-                .tint(.accentColor)
-                .controlSize(.large)
-                .shadow(color: Color("Shadow").opacity(0.2), radius: 30, x: 0, y: 20)
-                
-                Divider()
-                
-                HStack {
-                    Text("No account yet?")
-                    Button {
-                        model.selectedModalView = .signUp
-                    } label: {
-                        Text("**Sign up**")
-                    }
-                }
-                .font(.footnote)
-                .foregroundColor(.secondary)
-                .tint(.secondary)
             }
             .opacity(appear[2] ? 1 : 0)
             .offset(y: appear[2] ? 0 : 20)
-            
         }
         .padding(20)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -95,17 +56,10 @@ struct DeliveryTypeView: View {
             Circle().fill(circleColor)
                 .frame(width: 68, height: 68)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .offset(y: yCircle)
                 .opacity(appear[2] ? 1 : 0)
         )
         .coordinateSpace(name: "container")
         .strokeStyle(cornerRadius: 30)
-        .onChange(of: focusedField) { value in
-            withAnimation {
-                yCircle = focusedField == .email ? emailY : passwordY
-                circleColor = focusedField == .email ? .blue : .red
-            }
-        }
         .onAppear {
             withAnimation(.spring().delay(0.1)) {
                 appear[0] = true
