@@ -13,7 +13,7 @@ enum ModalEnum: String {
 }
 
 enum PopUpEnum: String {
-    case type
+    case location
     case date
     case payment
 }
@@ -23,7 +23,7 @@ class Model: ObservableObject {
     @Published var showDetail = false
     @Published var showPopUp = false
     @Published var selectedModalView: ModalEnum = .signIn
-    @Published var selectedPopUpView: PopUpEnum = .type
+    @Published var selectedPopUpView: PopUpEnum = .location
     @Published var categories: [Category] = []
     @Published var fullMenu: [Food] = []
     @Published var featuredPromotions: [Food] = []
@@ -97,7 +97,7 @@ class Model: ObservableObject {
     
     func getInfo() {
         locationTimePayment = [
-            Info(title: "Доставка", subtitle: "Авіаконструктора Сікорського 4Д", icon: "location", infoTab: .location),
+            Info(title: "Доставка", subtitle: "Вкажіть адресу доставки", icon: "location", infoTab: .location),
             Info(title: "Час доставки", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock", infoTab: .time),
             Info(title: "Оберіть спосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard", infoTab: .payment)
         ]

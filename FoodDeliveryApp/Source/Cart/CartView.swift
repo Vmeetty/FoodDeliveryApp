@@ -67,7 +67,7 @@ struct CartView: View {
                         .onTapGesture {
                             switch item.infoTab {
                             case .location:
-                                model.selectedPopUpView = .type
+                                model.selectedPopUpView = .location
                             case .time:
                                 model.selectedPopUpView = .date
                             case .payment:

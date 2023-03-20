@@ -69,7 +69,7 @@
 		844F4EB229C1F6B6000EE49E /* OrderCalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB129C1F6B6000EE49E /* OrderCalculationView.swift */; };
 		844F4EB429C200A6000EE49E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB329C200A6000EE49E /* Constants.swift */; };
 		844F4EB629C3D87A000EE49E /* PaymentTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB529C3D87A000EE49E /* PaymentTypeView.swift */; };
-		844F4EB829C3DBA9000EE49E /* DeliveryTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB729C3DBA9000EE49E /* DeliveryTypeView.swift */; };
+		844F4EB829C3DBA9000EE49E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EB729C3DBA9000EE49E /* MapView.swift */; };
 		844F4EBC29C3DBDB000EE49E /* DeliveryTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EBB29C3DBDB000EE49E /* DeliveryTimeView.swift */; };
 		8475B25E29B5D42B009653AC /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B25D29B5D42B009653AC /* CurrencyView.swift */; };
 		8475B26829B73C85009653AC /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475B26729B73C85009653AC /* CloseButton.swift */; };
@@ -77,6 +77,7 @@
 		84769A7329B788C1009AF71F /* String + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7229B788C1009AF71F /* String + Extention.swift */; };
 		84769A7829B8C633009AF71F /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7729B8C633009AF71F /* OrderItem.swift */; };
 		849792E729C497D30003B491 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E629C497D30003B491 /* PopUpView.swift */; };
+		849792E929C6F1160003B491 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E829C6F1160003B491 /* LocationManager.swift */; };
 		84CF721729B8D590004E92F1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF721629B8D590004E92F1 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -144,7 +145,7 @@
 		844F4EB129C1F6B6000EE49E /* OrderCalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCalculationView.swift; sourceTree = "<group>"; };
 		844F4EB329C200A6000EE49E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		844F4EB529C3D87A000EE49E /* PaymentTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypeView.swift; sourceTree = "<group>"; };
-		844F4EB729C3DBA9000EE49E /* DeliveryTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTypeView.swift; sourceTree = "<group>"; };
+		844F4EB729C3DBA9000EE49E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		844F4EBB29C3DBDB000EE49E /* DeliveryTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTimeView.swift; sourceTree = "<group>"; };
 		8475B25D29B5D42B009653AC /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
 		8475B26729B73C85009653AC /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		84769A7229B788C1009AF71F /* String + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extention.swift"; sourceTree = "<group>"; };
 		84769A7729B8C633009AF71F /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		849792E629C497D30003B491 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		849792E829C6F1160003B491 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		84CF721629B8D590004E92F1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,7 +346,7 @@
 			children = (
 				843AFDA729B0E68C00026273 /* SignUpView.swift */,
 				843AFDA929B0E6A100026273 /* SignInView.swift */,
-				844F4EB729C3DBA9000EE49E /* DeliveryTypeView.swift */,
+				844F4EB729C3DBA9000EE49E /* MapView.swift */,
 				844F4EBB29C3DBDB000EE49E /* DeliveryTimeView.swift */,
 				844F4EB529C3D87A000EE49E /* PaymentTypeView.swift */,
 				843AFDAB29B0E6B600026273 /* ModalView.swift */,
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				843AFDD229B2241F00026273 /* Networking */,
+				849792E829C6F1160003B491 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				8475B25E29B5D42B009653AC /* CurrencyView.swift in Sources */,
 				843AFD8129B0E40B00026273 /* SmallCourseItem.swift in Sources */,
 				843AFD5F29B0CB1400026273 /* Handbook.swift in Sources */,
+				849792E929C6F1160003B491 /* LocationManager.swift in Sources */,
 				843AFD6D29B0CEB400026273 /* Styles.swift in Sources */,
 				843AFD6C29B0CEB400026273 /* InputStyle.swift in Sources */,
 				843AFDB129B0E6F300026273 /* SearchView.swift in Sources */,
@@ -546,7 +550,7 @@
 				843AFD8729B0E44F00026273 /* OrderItemRow.swift in Sources */,
 				844F4EB229C1F6B6000EE49E /* OrderCalculationView.swift in Sources */,
 				844F4EB629C3D87A000EE49E /* PaymentTypeView.swift in Sources */,
-				844F4EB829C3DBA9000EE49E /* DeliveryTypeView.swift in Sources */,
+				844F4EB829C3DBA9000EE49E /* MapView.swift in Sources */,
 				84769A7829B8C633009AF71F /* OrderItem.swift in Sources */,
 				843AFD2529B0C0FC00026273 /* FoodDeliveryAppApp.swift in Sources */,
 				843AFDA429B0E63700026273 /* DetailView.swift in Sources */,
@@ -682,6 +686,7 @@
 				DEVELOPMENT_TEAM = NYBC469U45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Щоб швидко визначати адресу доставки, надайте, будь ласка, доступ до геолокації.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -711,6 +716,7 @@
 				DEVELOPMENT_TEAM = NYBC469U45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Щоб швидко визначати адресу доставки, надайте, будь ласка, доступ до геолокації.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
