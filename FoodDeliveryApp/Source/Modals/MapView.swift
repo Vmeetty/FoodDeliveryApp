@@ -20,6 +20,7 @@ struct MapView: View {
         ZStack {
             Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
                 .tint(Color(.systemPink))
+                .ignoresSafeArea()
                 .onAppear {
                     locationManager.checkIfLocationServicesIsEnabled()
                 }
@@ -49,16 +50,8 @@ struct MapView: View {
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             .padding(20)
-//            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//            .padding([.horizontal, .bottom], 20)
         }
         
-    }
-    
-    var geometry: some View {
-        GeometryReader { proxy in
-            Color.clear.preference(key: CirclePreferenceKey.self, value: proxy.frame(in: .named("container")).minY)
-        }
     }
 }
 

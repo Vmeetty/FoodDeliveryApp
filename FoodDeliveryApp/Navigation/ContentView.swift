@@ -27,7 +27,7 @@ struct ContentView: View {
             }
             
             TabBar()
-                .offset(y: model.showDetail ? 250 : 0)
+                .offset(y: model.showDetail || model.showMap ? 250 : 0)
             
             if showModal {
                 ModalView()

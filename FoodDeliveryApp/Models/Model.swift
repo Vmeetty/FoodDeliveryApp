@@ -22,6 +22,7 @@ class Model: ObservableObject {
     // MARK: properties
     @Published var showDetail = false
     @Published var showPopUp = false
+    @Published var showMap = false
     @Published var selectedModalView: ModalEnum = .signIn
     @Published var selectedPopUpView: PopUpEnum = .location
     @Published var categories: [Category] = []

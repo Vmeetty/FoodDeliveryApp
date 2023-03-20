@@ -45,9 +45,15 @@ struct CartView: View {
                 hideKeyboard()
             }
             
-            if model.showPopUp {
-                PopUpView()
-                    .zIndex(1)
+            if model.showPopUp || model.showMap {
+                switch model.selectedPopUpView {
+                case .location:
+                    MapPopUpView()
+                        .zIndex(1)
+                default:
+                    PopUpView()
+                        .zIndex(1)
+                }
             }
         }
         .onAppear {
@@ -68,13 +74,13 @@ struct CartView: View {
                             switch item.infoTab {
                             case .location:
                                 model.selectedPopUpView = .location
+                                showMap()
                             case .time:
                                 model.selectedPopUpView = .date
+                                showPop()
                             case .payment:
                                 model.selectedPopUpView = .payment
-                            }
-                            withAnimation {
-                                model.showPopUp = true
+                                showPop()
                             }
                         }
                 }
@@ -166,6 +172,18 @@ struct CartView: View {
         .padding(20)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .padding([.horizontal, .bottom], 20)
+    }
+    
+    func showPop() {
+        withAnimation {
+            model.showPopUp = true
+        }
+    }
+    
+    func showMap() {
+        withAnimation {
+            model.showMap = true
+        }
     }
 }
 

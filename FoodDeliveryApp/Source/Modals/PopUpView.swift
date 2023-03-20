@@ -25,12 +25,12 @@ struct PopUpView: View {
             
             Group {
                 switch model.selectedPopUpView {
-                case .location:
-                    MapView()
                 case .date:
                     DeliveryTimeView()
                 case .payment:
                     PaymentTypeView()
+                default:
+                    EmptyView()
                 }
             }
             .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
@@ -112,5 +112,6 @@ struct PopUpView: View {
 struct PopUpView_Previews: PreviewProvider {
     static var previews: some View {
         PopUpView()
+            .environmentObject(Model())
     }
 }
