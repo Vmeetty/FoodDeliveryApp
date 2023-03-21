@@ -155,7 +155,7 @@ struct CartView: View {
     
     var makeOrderButton: some View {
         Button {
-            
+            viewModel.createOrder()
         } label: {
             Text("Замовити")
                 .fontWeight(.light)

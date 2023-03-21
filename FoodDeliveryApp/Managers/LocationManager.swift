@@ -73,8 +73,8 @@ final class LocationManager: NSObject, ObservableObject {
                     {
                         print("reverse geodcode fail: \(error!.localizedDescription)")
                     }
-                    let pm = placemarks! as [CLPlacemark]
-
+                if let pm = placemarks as? [CLPlacemark] {
+                    
                     if pm.count > 0 {
                         let pm = placemarks![0]
                         print(pm.country)
@@ -90,9 +90,13 @@ final class LocationManager: NSObject, ObservableObject {
                         if pm.subThoroughfare != nil {
                             addressString = addressString + pm.subThoroughfare!
                         }
-
+                        
                         self.adressStr = addressString
-                  }
+                    }
+                } else {
+                    print("Show alert that app can't get user location. Check your internet connection")
+                }
+
             })
 
         }

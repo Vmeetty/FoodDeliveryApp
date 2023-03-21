@@ -52,4 +52,14 @@ class CartViewModel: ObservableObject {
             Calculation(title: "До сплати", value: "\(String(format: "%.2f", totalAmount))")
         ]
     }
+    
+    func createOrder() {
+        if let modelReference = modelReference {
+            let orderItems = modelReference.orderItems
+            let info = modelReference.locationTimePayment
+            let contacts = modelReference.contacts
+            let calculations = modelReference.calculations
+            print(modelReference)
+        }
+    }
 }

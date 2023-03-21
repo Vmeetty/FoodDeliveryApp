@@ -7,17 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8B324D32-7795-42F9-8F03-E772BBECF5C5"
+            uuid = "2A848CF9-8CA9-4BA1-A997-C79FAA7D12F4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodDeliveryApp/Components/Items/OrderContactsItem.swift"
+            filePath = "FoodDeliveryApp/Source/Cart/CartViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "createOrder()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
