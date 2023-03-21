@@ -28,8 +28,6 @@ final class LocationManager: NSObject, ObservableObject {
         } else {
             print("Showing an alert letting them know this is off and to go turn it on.")
         }
-//        DispatchQueue.global().async {
-//        }
     }
     
     private func checkLocationAuthorization() {

@@ -48,7 +48,7 @@ struct CartView: View {
             if model.showPopUp || model.showMap {
                 switch model.selectedPopUpView {
                 case .location:
-                    MapPopUpView()
+                    MapView()
                         .zIndex(1)
                 default:
                     PopUpView()
@@ -158,7 +158,7 @@ struct CartView: View {
             viewModel.createOrder()
         } label: {
             Text("Замовити")
-                .fontWeight(.light)
+                .fontWeight(.bold)
         }
         .font(.headline)
         .tint(.white)
