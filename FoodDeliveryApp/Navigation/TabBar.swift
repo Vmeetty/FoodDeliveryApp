@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabBar: View {
-    
+    @EnvironmentObject private var model: Model
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     @State var selectedColor: Color = .teal
     @State var tabBarItemWidth: CGFloat = 0
@@ -34,7 +34,7 @@ struct TabBar: View {
     }
     
     var buttons: some View {
-        ForEach(tabBarItems) { item in
+        ForEach(Array(tabBarItems.enumerated()), id: \.offset) { index, item in
             Button {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                     selectedTab = item.tab
@@ -61,6 +61,21 @@ struct TabBar: View {
             }
             .onPreferenceChange(TabItemPreferenceKey.self) { value in
                 tabBarItemWidth = value
+            }
+            .overlay {
+                if !model.orderItems.isEmpty {
+                    if index == 2 {
+                        ZStack {
+                            Circle()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.red)
+                            Text("\(model.orderItems.count)")
+                                .font(.footnote)
+                                .foregroundColor(.white)
+                        }
+                        .offset(x: 13, y: -15)
+                    }
+                }
             }
         }
     }
