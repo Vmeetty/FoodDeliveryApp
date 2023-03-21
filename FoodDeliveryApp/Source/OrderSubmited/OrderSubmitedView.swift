@@ -17,22 +17,13 @@ struct OrderSubmitedView: View {
             Color("Background").ignoresSafeArea()
             
             ScrollView {
-                
-                CertificateView()
-                    .frame(height: 220)
-                    .background(
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .fill(.linearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .padding()
-                            .offset(y: -30)
-                    )
-                    .background(
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .fill(.linearGradient(colors: [.teal, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .padding(40)
-                            .offset(y: -60)
-                    )
-                    .padding(20)
+                VStack {
+                    OrderView()
+                        .padding(20)
+                    
+                    Text("Дякуємо за замовлення!")
+                        .foregroundColor(.primary)
+                }
             }
             .safeAreaInset(edge: .top, content: {
                 Color.clear.frame(height: 90)

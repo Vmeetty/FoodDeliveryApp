@@ -87,6 +87,7 @@
 		849792E729C497D30003B491 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E629C497D30003B491 /* PopUpView.swift */; };
 		849792E929C6F1160003B491 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E829C6F1160003B491 /* LocationManager.swift */; };
 		84CF721729B8D590004E92F1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF721629B8D590004E92F1 /* DetailViewModel.swift */; };
+		84EF136529CA144A00407CC2 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF136429CA144A00407CC2 /* OrderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,7 @@
 		849792E629C497D30003B491 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		849792E829C6F1160003B491 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		84CF721629B8D590004E92F1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		84EF136429CA144A00407CC2 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 				844F4EA229BD2803000EE49E /* CounterView.swift */,
 				8475B26929B7636D009653AC /* AdditionRow.swift */,
 				843AFD8829B0E49C00026273 /* CertificateView.swift */,
+				84EF136429CA144A00407CC2 /* OrderView.swift */,
 				843AFDC229B0E9F600026273 /* CategoryItem.swift */,
 			);
 			path = Items;
@@ -602,6 +605,7 @@
 				849792E929C6F1160003B491 /* LocationManager.swift in Sources */,
 				843AFD6D29B0CEB400026273 /* Styles.swift in Sources */,
 				843AFD6C29B0CEB400026273 /* InputStyle.swift in Sources */,
+				84EF136529CA144A00407CC2 /* OrderView.swift in Sources */,
 				843AFDB129B0E6F300026273 /* SearchView.swift in Sources */,
 				843AFDA229B0E61B00026273 /* LibraryView.swift in Sources */,
 				844A912929C9DA7C004EB336 /* MapsViewModel.swift in Sources */,
