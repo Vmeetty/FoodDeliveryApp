@@ -67,6 +67,7 @@
 		844A912B29C9DB8D004EB336 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912A29C9DB8D004EB336 /* MapAnnotationView.swift */; };
 		844A912D29C9DD22004EB336 /* MapPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912C29C9DD22004EB336 /* MapPreviewView.swift */; };
 		844A912F29C9F131004EB336 /* RestrantsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912E29C9F131004EB336 /* RestrantsMapView.swift */; };
+		844A913229CA0987004EB336 /* OrderSubmitedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A913129CA0987004EB336 /* OrderSubmitedView.swift */; };
 		844F4EA129BBC90F000EE49E /* Equatable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EA029BBC90F000EE49E /* Equatable + Extension.swift */; };
 		844F4EA329BD2803000EE49E /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EA229BD2803000EE49E /* CounterView.swift */; };
 		844F4EA629BDB6AE000EE49E /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F4EA529BDB6AE000EE49E /* CartViewModel.swift */; };
@@ -150,6 +151,7 @@
 		844A912A29C9DB8D004EB336 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		844A912C29C9DD22004EB336 /* MapPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPreviewView.swift; sourceTree = "<group>"; };
 		844A912E29C9F131004EB336 /* RestrantsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrantsMapView.swift; sourceTree = "<group>"; };
+		844A913129CA0987004EB336 /* OrderSubmitedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSubmitedView.swift; sourceTree = "<group>"; };
 		844F4EA029BBC90F000EE49E /* Equatable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equatable + Extension.swift"; sourceTree = "<group>"; };
 		844F4EA229BD2803000EE49E /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		844F4EA529BDB6AE000EE49E /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				843AFD9929B0E5AE00026273 /* Detail */,
 				844F4EA429BDB697000EE49E /* Cart */,
 				843AFDA129B0E61B00026273 /* LibraryView.swift */,
+				844A913029CA0965004EB336 /* OrderSubmited */,
 				843AFDCE29B0F43700026273 /* Explore */,
 				843AFDAD29B0E6CE00026273 /* Sheets */,
 				843AFD9A29B0E5BC00026273 /* Modals */,
@@ -448,6 +451,14 @@
 				849792E829C6F1160003B491 /* LocationManager.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		844A913029CA0965004EB336 /* OrderSubmited */ = {
+			isa = PBXGroup;
+			children = (
+				844A913129CA0987004EB336 /* OrderSubmitedView.swift */,
+			);
+			path = OrderSubmited;
 			sourceTree = "<group>";
 		};
 		844F4EA429BDB697000EE49E /* Cart */ = {
@@ -568,6 +579,7 @@
 				843AFD9229B0E50600026273 /* HexagonView.swift in Sources */,
 				843AFDC529B0EA2200026273 /* Category.swift in Sources */,
 				843AFDAC29B0E6B600026273 /* ModalView.swift in Sources */,
+				844A913229CA0987004EB336 /* OrderSubmitedView.swift in Sources */,
 				844A912D29C9DD22004EB336 /* MapPreviewView.swift in Sources */,
 				843AFD8929B0E49C00026273 /* CertificateView.swift in Sources */,
 				843AFDAF29B0E6DF00026273 /* AccountView.swift in Sources */,

@@ -61,6 +61,9 @@ struct CartView: View {
             viewModel.rateValue = model.rateValue
             viewModel.calculate(orderItems: model.orderItems)
         }
+        .sheet(isPresented: $viewModel.orderSubmited) {
+            OrderSubmitedView()
+        }
     }
     
     var infoSection: some View {

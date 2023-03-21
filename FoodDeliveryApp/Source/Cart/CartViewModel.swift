@@ -12,6 +12,7 @@ class CartViewModel: ObservableObject {
     @Published var rateValue = 0
     @Published var modelIsChanged = false
     @Published var modelReference: Model?
+    @Published var orderSubmited = false
     
     func calculate(orderItems: [Food]) {
         var orderAmount: Double = 0.00
@@ -60,6 +61,8 @@ class CartViewModel: ObservableObject {
             let contacts = modelReference.contacts
             let calculations = modelReference.calculations
             print(modelReference)
+            
+            orderSubmited = true
         }
     }
 }
