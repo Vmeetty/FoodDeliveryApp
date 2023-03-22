@@ -36,6 +36,7 @@ class Model: ObservableObject {
     @Published var contacts: [Contacts] = []
     @Published var calculations: [Calculation] = []
     @Published var rateValue: Int = 0
+    @Published var submitedOrders: [SubmitedOrder] = []
     
     init() {
         getCategories()

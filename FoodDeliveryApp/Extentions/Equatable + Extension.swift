@@ -53,3 +53,9 @@ extension Calculation: Equatable {
         lhs.value == rhs.value
     }
 }
+
+extension SubmitedOrder: Equatable {
+    static func == (lhs: SubmitedOrder, rhs: SubmitedOrder) -> Bool {
+        return lhs.id == rhs.id 
+    }
+}

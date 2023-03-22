@@ -55,15 +55,38 @@ struct CartView: View {
                         .zIndex(1)
                 }
             }
+            
+            if viewModel.orderSubmited {
+                if let submitedOrder = viewModel.submitedOrder {
+                    OrderSubmitedView(submitedOrder: submitedOrder)
+                }
+            }
         }
         .onAppear {
             viewModel.modelReference = model
             viewModel.rateValue = model.rateValue
             viewModel.calculate(orderItems: model.orderItems)
         }
-        .sheet(isPresented: $viewModel.orderSubmited) {
-            OrderSubmitedView()
+    }
+    
+    var history: some View {
+        HStack {
+            Text("Історія замовлень")
+                .font(.headline)
+                .foregroundColor(.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Circle()
+                .frame(width: 30, height: 30)
+                .foregroundColor(.black)
+                .overlay {
+                    Text("\(model.submitedOrders.count)")
+                }
         }
+        .background(
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .backgroundStyle(cornerRadius: 30)
+        )
     }
     
     var infoSection: some View {

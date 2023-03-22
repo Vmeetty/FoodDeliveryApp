@@ -62,21 +62,17 @@ class CartViewModel: ObservableObject {
     
     func createOrder() {
         if let modelReference = modelReference {
-            // date
-            // adress
-            // payment
             let info = modelReference.locationTimePayment
-            
-            // list of goods with options
-            let newItems = createNewOrderItem(orderItems: modelReference.orderItems)
-            
-            // calculations
+            let submitedItems = createNewOrderItem(orderItems: modelReference.orderItems)
             let calculations = modelReference.calculations
             
-            let submitedOrder = SubmitedOrder(info: info, items: newItems, calculations: calculations)
+            let submitedOrder = SubmitedOrder(info: info, items: submitedItems, calculations: calculations)
             self.submitedOrder = submitedOrder
+            self.modelReference?.submitedOrders.append(submitedOrder)
             
-            orderSubmited = true
+            withAnimation(.easeInOut) {
+                orderSubmited = true
+            }
         }
     }
     
