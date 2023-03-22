@@ -13,45 +13,53 @@ struct LibraryView: View {
             Color("Background").ignoresSafeArea()
             
             ScrollView {
+                HStack {
+                    Text("Бонуси".uppercased())
+                        .titleStyle()
+                    Text("Баланс: 27")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.secondary)
+                    Image(systemName: "star.fill")
+                        .font(.subheadline)
+                        .padding(.trailing, 20)
+                        .foregroundColor(.secondary)
+                        .offset(y: -1)
+                }
+                bonusSection
                 
-                CertificateView()
-                    .frame(height: 220)
-                    .background(
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .fill(.linearGradient(colors: [.purple, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .padding()
-                            .offset(y: -30)
-                    )
-                    .background(
-                        RoundedRectangle(cornerRadius: 30, style: .continuous)
-                            .fill(.linearGradient(colors: [.teal, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .padding(40)
-                            .offset(y: -60)
-                    )
-                    .padding(20)
-                
-                Text("History".uppercased())
+                Text("Акції".uppercased())
                     .titleStyle()
-                
-                coursesSection
-                
-                Text("Topics".uppercased())
-                    .titleStyle()
-                
-//                topicsSection
-                
+                promotionsSection
             }
             .safeAreaInset(edge: .top, content: {
-                Color.clear.frame(height: 90)
+                Color.clear.frame(height: 70)
             })
             .overlay {
-                NavigationBar(hasScrolled: .constant(true), title: "Certificates")
+                NavigationBar(hasScrolled: .constant(true), title: "Спеціальні пропозиції")
             }
             .background(Image("Blob 1").offset(x: -100, y: -400))
         }
     }
     
-    var coursesSection: some View {
+    var promotionsSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 25) {
+                ForEach(handbooks) { handbook in
+                    HandbookItem(handbook: handbook)
+                }
+            }
+            .padding(.horizontal, 20)
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
+        }
+    }
+    
+    var bonusSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(courses) { course in
@@ -62,21 +70,6 @@ struct LibraryView: View {
             Spacer()
         }
     }
-    
-//    var topicsSection: some View {
-//        VStack {
-//            ForEach(Array(locationTimePayment.enumerated()), id: \.offset) { index, topic in
-//                VStack {
-//                    if index != 0 { Divider() }
-//                    OrderInfoItem(infoItem: topic)
-//                }
-//            }
-//        }
-//        .padding(20)
-//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//        .strokeStyle(cornerRadius: 30)
-//        .padding(.horizontal, 20)
-//    }
 }
 
 struct LibraryView_Previews: PreviewProvider {

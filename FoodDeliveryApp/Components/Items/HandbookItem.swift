@@ -15,12 +15,12 @@ struct HandbookItem: View {
         VStack(alignment: .leading, spacing: 8) {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(.black.opacity(0.2))
-                .frame(height: 90)
+                .frame(height: 250)
                 .overlay {
                     Image(handbook.image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 100)
+                        .frame(width: 300, height: 250)
                 }
             
             Text(handbook.title)
@@ -36,8 +36,8 @@ struct HandbookItem: View {
             Spacer()
         }
         .padding()
-        .frame(maxWidth: 200)
-        .frame(height: 260)
+        .frame(maxWidth: 270)
+        .frame(height: 400)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
         .strokeStyle(cornerRadius: 30)
         .background(
