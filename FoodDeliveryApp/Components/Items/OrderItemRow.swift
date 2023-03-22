@@ -27,8 +27,8 @@ struct OrderItemRow: View {
                         Text(orderItem.title)
                             .font(.body)
                             .fontWeight(.semibold)
-                        if catchAddItemsTitlesBy() != "" {
-                            Text(catchAddItemsTitlesBy())
+                        if cartViewModel.catchAddItemsTitles(orderItem: orderItem) != "" {
+                            Text(cartViewModel.catchAddItemsTitles(orderItem: orderItem))
                                 .font(.footnote)
                                 .fontWeight(.regular)
                                 .foregroundColor(.secondary)
@@ -124,23 +124,6 @@ struct OrderItemRow: View {
         
         total *= Double(orderItem.countSelected)
         return String(format: "%.2f", total)
-    }
-    
-    private func catchAddItemsTitlesBy() -> String {
-        var tempStrArray: [String] = []
-        for option in orderItem.options {
-            for value in option.values {
-                if value.isSelected {
-                    tempStrArray.append(value.title)
-                }
-            }
-        }
-        
-        var tempStr = ""
-        for (index, addTitlte) in tempStrArray.enumerated() {
-            tempStr += index == 0 ? addTitlte : ", \(addTitlte)"
-        }
-        return tempStr
     }
 }
 

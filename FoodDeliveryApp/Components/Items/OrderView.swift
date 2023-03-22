@@ -26,7 +26,7 @@ struct OrderView: View {
             }
             Spacer()
             VStack(alignment: .leading, spacing: 8) {
-                Text("Час доставки")
+                Text("Час отримання")
                     .font(.title3.weight(.semibold))
                 Text("Березень 29, 15:00 - 16:00")
                     .font(.subheadline.weight(.medium))
