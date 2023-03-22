@@ -68,8 +68,8 @@ struct TabBar: View {
                         ZStack {
                             Circle()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(.red)
-                            Text("\(model.orderItems.count)")
+                                .foregroundColor(.pink)
+                            Text(countOfItems())
                                 .font(.footnote)
                                 .foregroundColor(.white)
                         }
@@ -121,6 +121,14 @@ struct TabBar: View {
             if selectedTab == .notifications { Spacer() }
         }
         .padding(.horizontal, 8)
+    }
+    
+    private func countOfItems() -> String {
+        var count = 0
+        for item in model.orderItems {
+            count += item.countSelected
+        }
+        return String(count)
     }
 }
 
