@@ -23,7 +23,54 @@ struct OrderSubmitedView: View {
                         .font(.title.weight(.semibold))
                         .padding(.leading, 20)
                     
-                    OrderView(submitedOrder: submitedOrder)
+//                    OrderView(submitedOrder: submitedOrder)
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(Array(submitedOrder.items.enumerated()), id: \.offset) { index, item in
+                                HStack(alignment: .top) {
+                                    VStack(alignment: .leading) {
+                                        Text(item.title + " - \(item.count)шт")
+                                            .font(.subheadline.weight(.semibold))
+                                            .foregroundStyle(.primary)
+                                        Text(item.additions)
+                                            .font(.footnote.weight(.regular))
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Text(item.price + " грн")
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
+                            }
+                            Divider()
+                                .padding(.vertical)
+                        }
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 8) {
+                            if submitedOrder.info.indices.contains(0) {
+                                Text(submitedOrder.info[0].title)
+                                    .font(.title3.weight(.semibold))
+                                Text(submitedOrder.info[0].subtitle)
+                                    .font(.subheadline.weight(.medium))
+                            }
+                            if submitedOrder.info.indices.contains(1) {
+                                Text(submitedOrder.info[1].title)
+                                    .font(.title3.weight(.semibold))
+                                Text(submitedOrder.info[1].subtitle)
+                                    .font(.subheadline.weight(.medium))
+                            }
+                            if submitedOrder.info.indices.contains(2) {
+                                Text(submitedOrder.info[2].title)
+                                    .font(.title3.weight(.semibold))
+                                Text(submitedOrder.info[2].subtitle)
+                                    .font(.subheadline.weight(.medium))
+                            }
+                        }
+                        .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(20)
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+                    .strokeStyle(cornerRadius: 30)
+                    .padding(20)
                     
                     Text("Дякуємо, що ти є!")
                         .foregroundColor(.primary)

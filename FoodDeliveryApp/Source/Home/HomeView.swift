@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @Namespace var namespace
     @EnvironmentObject var model: Model
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = HomeViewModel()
     @State var selectedFeaturedCourse = featuredCourses[0]
     
@@ -18,6 +19,7 @@ struct HomeView: View {
             
             Color("Background")
                 .ignoresSafeArea()
+            
             
             ScrollView {
                 
@@ -56,6 +58,12 @@ struct HomeView: View {
             .overlay {
                 NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Меню")
             }
+//            .background(
+//                Image("Blob 1")
+//                    .frame(maxHeight: .infinity, alignment: .top)
+////                    .offset(x: -200, y: -450)
+//                    .offset(x: -150, y: -250)
+//            )
             
             if model.showDetail {
                 DetailView(namespace: namespace, food: viewModel.selectedDish)
@@ -100,19 +108,10 @@ struct HomeView: View {
             ForEach(featuredCourses) { course in
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
-                    FeaturedItem(course: course)
-                        .padding(.vertical, 40)
+                    PromotionItem(course: course)
                         .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
-                        .shadow(color: Color.ShadowColor.opacity(0.3), radius: 10, x: 0, y: 10)
+                        .shadow(color: Color.ShadowColor.opacity(0.2), radius: 4, x: 0, y: 5)
                         .blur(radius: abs(minX) / 40)
-                        .overlay {
-                            Image(course.image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 230)
-                                .offset(x: 32, y: -80)
-                                .offset(x: minX / 2)
-                        }
                         .onTapGesture {
                             selectedFeaturedCourse = course
                             viewModel.showFeaturedCourse = true
@@ -121,11 +120,12 @@ struct HomeView: View {
             }
         }
         .tabViewStyle(.page)
-        .frame(height: 430)
-        .background(
-            Image("Blob 1")
-                .offset(x: 250, y: -100)
-        )
+        .frame(height: 260)
+        .padding(.vertical)
+//        .background(
+//            Image("Blob 1")
+//                .offset(x: 250, y: -100)
+//        )
         .sheet(isPresented: $viewModel.showFeaturedCourse) {
 //            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
         }
