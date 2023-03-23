@@ -18,6 +18,14 @@ struct Course: Identifiable {
 }
 
 var featuredCourses = [
+    Course(title: "Даруємо Маргариту", subtitle: "20 sections - 3 hours", text: "До замовлення від 650 грн на самовиніс", image: "pizza", background: "Background 5", logo: "Logo 2"),
+    Course(title: "Даруємо Хумус", subtitle: "20 sections - 3 hours", text: "До замовлення від 450грн на самовиніс", image: "humus", background: "Background 4", logo: "Logo 4"),
+    Course(title: "Літній салат даром", subtitle: "20 sections - 3 hours", text: "На кожне 3 замовлення даруємо велику порцію салату", image: "salad", background: "Background 1", logo: "Logo 1"),
+    Course(title: "Крафтові бургери", subtitle: "20 sections - 3 hours", text: "Нові Крафтові бургери в нашому меню", image: "burger", background: "Background 2", logo: "Logo 3"),
+    
+]
+
+var promos = [
     Course(title: "SwiftUI for iOS 15", subtitle: "20 sections - 3 hours", text: "Build an iOS app for iOS 15 with custom layouts, animations and ...", image: "avocado", background: "Background 5", logo: "Logo 2"),
     Course(title: "UI Design for iOS 15", subtitle: "20 sections - 3 hours", text: "Design an iOS app for iOS 15 with custom layouts, animations and ...", image: "banner_2", background: "Background 4", logo: "Logo 4"),
     Course(title: "Flutter for designers", subtitle: "20 sections - 3 hours", text: "Flutter is a relatively new toolkit that makes it easy to build cross-platform apps that look gorgeous and is easy to use.", image: "banner_3", background: "Background 1", logo: "Logo 1"),

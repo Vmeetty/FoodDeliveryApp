@@ -88,6 +88,7 @@
 		84CF721729B8D590004E92F1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF721629B8D590004E92F1 /* DetailViewModel.swift */; };
 		84EF136529CA144A00407CC2 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF136429CA144A00407CC2 /* OrderView.swift */; };
 		84EF136729CCA22B00407CC2 /* PromotionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF136629CCA22B00407CC2 /* PromotionItem.swift */; };
+		84EF136929CCBFDC00407CC2 /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF136829CCBFDC00407CC2 /* FeaturedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +174,7 @@
 		84CF721629B8D590004E92F1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		84EF136429CA144A00407CC2 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		84EF136629CCA22B00407CC2 /* PromotionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionItem.swift; sourceTree = "<group>"; };
+		84EF136829CCBFDC00407CC2 /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				84EF136629CCA22B00407CC2 /* PromotionItem.swift */,
+				84EF136829CCBFDC00407CC2 /* FeaturedItem.swift */,
 				843AFD7E29B0E3E600026273 /* MenuItem.swift */,
 				843AFD8029B0E40B00026273 /* SmallCourseItem.swift */,
 				843AFD8229B0E42000026273 /* HandbookItem.swift */,
@@ -564,6 +567,7 @@
 				843AFD7029B0CF0F00026273 /* Modifier.swift in Sources */,
 				843AFD8529B0E43900026273 /* OrderInfoItem.swift in Sources */,
 				844A912329C9D61D004EB336 /* Location.swift in Sources */,
+				84EF136929CCBFDC00407CC2 /* FeaturedItem.swift in Sources */,
 				843AFD5D29B0CB1400026273 /* PreferenceKeys.swift in Sources */,
 				849792E729C497D30003B491 /* PopUpView.swift in Sources */,
 				844F4EBC29C3DBDB000EE49E /* DeliveryTimeView.swift in Sources */,

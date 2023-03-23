@@ -24,6 +24,7 @@ struct HomeView: View {
             ScrollView {
                 
                 scrollDetaction
+//                promo
                 featured
                 categoriesSection
                 
@@ -61,8 +62,8 @@ struct HomeView: View {
 //            .background(
 //                Image("Blob 1")
 //                    .frame(maxHeight: .infinity, alignment: .top)
-////                    .offset(x: -200, y: -450)
-//                    .offset(x: -150, y: -250)
+//                    .offset(x: -200, y: -450)
+////                    .offset(x: -150, y: -250)
 //            )
             
             if model.showDetail {
@@ -103,33 +104,32 @@ struct HomeView: View {
         })
     }
     
-    var featured: some View {
-        TabView {
-            ForEach(featuredCourses) { course in
-                GeometryReader { proxy in
-                    let minX = proxy.frame(in: .global).minX
-                    PromotionItem(course: course)
-                        .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
-                        .shadow(color: Color.ShadowColor.opacity(0.2), radius: 4, x: 0, y: 5)
-                        .blur(radius: abs(minX) / 40)
-                        .onTapGesture {
-                            selectedFeaturedCourse = course
-                            viewModel.showFeaturedCourse = true
-                        }
-                }
-            }
-        }
-        .tabViewStyle(.page)
-        .frame(height: 260)
-        .padding(.vertical)
-//        .background(
-//            Image("Blob 1")
-//                .offset(x: 250, y: -100)
-//        )
-        .sheet(isPresented: $viewModel.showFeaturedCourse) {
-//            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
-        }
-    }
+    
+        // MARK: banner style fore promotions
+    
+//    var promo: some View {
+//        TabView {
+//            ForEach(featuredCourses) { course in
+//                GeometryReader { proxy in
+//                    let minX = proxy.frame(in: .global).minX
+//                    PromotionItem(course: course)
+//                        .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
+//                        .shadow(color: Color.ShadowColor.opacity(0.2), radius: 4, x: 0, y: 5)
+//                        .blur(radius: abs(minX) / 40)
+//                        .onTapGesture {
+//                            selectedFeaturedCourse = course
+//                            viewModel.showFeaturedCourse = true
+//                        }
+//                }
+//            }
+//        }
+//        .tabViewStyle(.page)
+//        .frame(height: 260)
+//        .padding(.vertical)
+//        .sheet(isPresented: $viewModel.showFeaturedCourse) {
+////            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
+//        }
+//    }
     
     var categoriesSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -148,6 +148,42 @@ struct HomeView: View {
             }
             .padding(.horizontal, 20)
             Spacer()
+        }
+    }
+    
+    var featured: some View {
+        TabView {
+            ForEach(featuredCourses) { course in
+                GeometryReader { proxy in
+                    let minX = proxy.frame(in: .global).minX
+                    FeaturedItem(course: course)
+                        .padding(.vertical, 20)
+                        .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
+                        .shadow(color: Color.ShadowColor.opacity(0.2), radius: 5, x: 0, y: 5)
+                        .blur(radius: abs(minX) / 40)
+                        .overlay {
+                            Image(course.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 240)
+                                .offset(x: 90, y: 20)
+                                .offset(x: minX / 2)
+                        }
+                        .onTapGesture {
+                            selectedFeaturedCourse = course
+                            viewModel.showFeaturedCourse = true
+                        }
+                }
+            }
+        }
+        .tabViewStyle(.page)
+        .frame(height: 270)
+        .background(
+            Image("Blob 1")
+                .offset(x: 250, y: -100)
+        )
+        .sheet(isPresented: $viewModel.showFeaturedCourse) {
+            //            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
         }
     }
 }
