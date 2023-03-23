@@ -82,7 +82,7 @@ class CartViewModel: ObservableObject {
         for orderItem in orderItems {
             let id = orderItem.id
             let title = orderItem.title
-            let options = catchAddItemsTitles(orderItem: orderItem)
+            let options = catchAdditionItemsTitles(orderItem: orderItem)
             let count = String(orderItem.countSelected)
             let price = String(calculateItemAmount(orderItem: orderItem))
             let submitedItem = SubmitedItem(id: id, title: title, additions: options, count: count, price: price)
@@ -92,7 +92,7 @@ class CartViewModel: ObservableObject {
         return submitedItems
     }
     
-    func catchAddItemsTitles(orderItem: Food) -> String {
+    func catchAdditionItemsTitles(orderItem: Food) -> String {
         var tempStrArray: [String] = []
         for option in orderItem.options {
             for value in option.values {
@@ -103,8 +103,10 @@ class CartViewModel: ObservableObject {
         }
         
         var tempStr = ""
-        for (index, addTitlte) in tempStrArray.enumerated() {
-            tempStr += index == 0 ? addTitlte : ", \(addTitlte)"
+        if !tempStrArray.isEmpty {
+            for (index, addTitlte) in tempStrArray.enumerated() {
+                tempStr += index == 0 ? addTitlte : ", \(addTitlte)"
+            }
         }
         return tempStr
     }

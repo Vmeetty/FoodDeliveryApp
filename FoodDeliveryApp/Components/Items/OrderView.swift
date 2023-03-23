@@ -33,18 +33,24 @@ struct OrderView: View {
             }
             Spacer()
             VStack(alignment: .leading, spacing: 8) {
-                Text(submitedOrder.info[0].title)
-                    .font(.title3.weight(.semibold))
-                Text(submitedOrder.info[0].subtitle)
-                    .font(.subheadline.weight(.medium))
-                Text(submitedOrder.info[1].title)
-                    .font(.title3.weight(.semibold))
-                Text(submitedOrder.info[1].subtitle)
-                    .font(.subheadline.weight(.medium))
-                Text(submitedOrder.info[2].title)
-                    .font(.title3.weight(.semibold))
-                Text(submitedOrder.info[2].subtitle)
-                    .font(.subheadline.weight(.medium))
+                if submitedOrder.info.indices.contains(0) {
+                    Text(submitedOrder.info[0].title)
+                        .font(.title3.weight(.semibold))
+                    Text(submitedOrder.info[0].subtitle)
+                        .font(.subheadline.weight(.medium))
+                }
+                if submitedOrder.info.indices.contains(1) {
+                    Text(submitedOrder.info[1].title)
+                        .font(.title3.weight(.semibold))
+                    Text(submitedOrder.info[1].subtitle)
+                        .font(.subheadline.weight(.medium))
+                }
+                if submitedOrder.info.indices.contains(2) {
+                    Text(submitedOrder.info[2].title)
+                        .font(.title3.weight(.semibold))
+                    Text(submitedOrder.info[2].subtitle)
+                        .font(.subheadline.weight(.medium))
+                }
             }
             .foregroundStyle(.secondary)
         }

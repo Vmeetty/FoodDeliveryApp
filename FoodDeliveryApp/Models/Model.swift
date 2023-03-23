@@ -100,8 +100,8 @@ class Model: ObservableObject {
     func getInfo() {
         locationTimePayment = [
             Info(title: "Доставка", subtitle: "Вкажіть адресу доставки", icon: "location", infoTab: .location),
-            Info(title: "Час доставки", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock", infoTab: .time),
-            Info(title: "Оберіть спосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard", infoTab: .payment)
+            Info(title: "Час отримання", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock", infoTab: .time),
+            Info(title: "Cпосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard", infoTab: .payment)
         ]
     }
 }

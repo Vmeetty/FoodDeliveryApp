@@ -17,10 +17,6 @@ struct CartView: View {
             
             Group {
                 if model.orderItems.isEmpty {
-//                    Text("В корзині нічого немає")
-//                        .font(.title2)
-//                        .frame(maxHeight: .infinity, alignment: .center)
-//                        .offset(y: -200)
                     Text("В корзині нічого немає")
                         .font(.title2)
                         .foregroundColor(.white)

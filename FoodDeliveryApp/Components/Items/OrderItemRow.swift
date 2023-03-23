@@ -27,8 +27,8 @@ struct OrderItemRow: View {
                         Text(orderItem.title)
                             .font(.body)
                             .fontWeight(.semibold)
-                        if cartViewModel.catchAddItemsTitles(orderItem: orderItem) != "" {
-                            Text(cartViewModel.catchAddItemsTitles(orderItem: orderItem))
+                        if cartViewModel.catchAdditionItemsTitles(orderItem: orderItem) != "" {
+                            Text(cartViewModel.catchAdditionItemsTitles(orderItem: orderItem))
                                 .font(.footnote)
                                 .fontWeight(.regular)
                                 .foregroundColor(.secondary)
