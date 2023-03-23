@@ -39,7 +39,7 @@ struct PromotionsView: View {
                 Color.clear.frame(height: 70)
             })
             .overlay {
-                NavigationBar(hasScrolled: .constant(true), title: "Спеціальні пропозиції")
+                NavigationBar(hasScrolled: .constant(true), title: "Акції і бонуси")
             }
             .background(Image("Blob 1").offset(x: -100, y: -400))
         }

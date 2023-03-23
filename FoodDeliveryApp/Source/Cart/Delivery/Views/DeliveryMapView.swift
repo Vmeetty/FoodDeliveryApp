@@ -21,7 +21,7 @@ struct DeliveryMapView: View {
             Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
                 .tint(Color(.systemPink))
                 .ignoresSafeArea()
-                .grayscale(1)
+//                .grayscale(1)
                 .onAppear {
                     locationManager.checkIfLocationServicesIsEnabled()
                 }

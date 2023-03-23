@@ -15,7 +15,7 @@ struct OrderView: View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading, spacing: 8) {
                 ForEach(submitedOrder.items) { item in
-                    HStack {
+                    HStack(alignment: .top) {
                         VStack(alignment: .leading) {
                             Text(item.title + " - \(item.count)шт")
                                 .font(.subheadline.weight(.semibold))

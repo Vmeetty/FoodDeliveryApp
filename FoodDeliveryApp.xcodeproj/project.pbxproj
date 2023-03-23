@@ -47,7 +47,7 @@
 		843AFD9C29B0E5D500026273 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9B29B0E5D500026273 /* HomeView.swift */; };
 		843AFD9E29B0E5EF00026273 /* PromotionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9D29B0E5EF00026273 /* PromotionsView.swift */; };
 		843AFDA029B0E60200026273 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFD9F29B0E60200026273 /* CartView.swift */; };
-		843AFDA229B0E61B00026273 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA129B0E61B00026273 /* LibraryView.swift */; };
+		843AFDA229B0E61B00026273 /* OrdersHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA129B0E61B00026273 /* OrdersHistoryView.swift */; };
 		843AFDA429B0E63700026273 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA329B0E63700026273 /* DetailView.swift */; };
 		843AFDA629B0E65100026273 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA529B0E65100026273 /* SectionView.swift */; };
 		843AFDA829B0E68C00026273 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDA729B0E68C00026273 /* SignUpView.swift */; };
@@ -132,7 +132,7 @@
 		843AFD9B29B0E5D500026273 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		843AFD9D29B0E5EF00026273 /* PromotionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsView.swift; sourceTree = "<group>"; };
 		843AFD9F29B0E60200026273 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
-		843AFDA129B0E61B00026273 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		843AFDA129B0E61B00026273 /* OrdersHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersHistoryView.swift; sourceTree = "<group>"; };
 		843AFDA329B0E63700026273 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		843AFDA529B0E65100026273 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		843AFDA729B0E68C00026273 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -343,8 +343,7 @@
 				843AFDCB29B0F2B200026273 /* Home */,
 				843AFD9929B0E5AE00026273 /* Detail */,
 				844F4EA429BDB697000EE49E /* Cart */,
-				843AFDA129B0E61B00026273 /* LibraryView.swift */,
-				844A913029CA0965004EB336 /* OrderSubmited */,
+				843AFDA129B0E61B00026273 /* OrdersHistoryView.swift */,
 				843AFDCE29B0F43700026273 /* Promotions */,
 				843AFDAD29B0E6CE00026273 /* Sheets */,
 				843AFD9A29B0E5BC00026273 /* Modals */,
@@ -456,20 +455,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		844A913029CA0965004EB336 /* OrderSubmited */ = {
-			isa = PBXGroup;
-			children = (
-				844A913129CA0987004EB336 /* OrderSubmitedView.swift */,
-			);
-			path = OrderSubmited;
-			sourceTree = "<group>";
-		};
 		844F4EA429BDB697000EE49E /* Cart */ = {
 			isa = PBXGroup;
 			children = (
 				844A912429C9D9E4004EB336 /* Delivery */,
 				843AFD9F29B0E60200026273 /* CartView.swift */,
 				844F4EA529BDB6AE000EE49E /* CartViewModel.swift */,
+				844A913129CA0987004EB336 /* OrderSubmitedView.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -607,7 +599,7 @@
 				843AFD6C29B0CEB400026273 /* InputStyle.swift in Sources */,
 				84EF136529CA144A00407CC2 /* OrderView.swift in Sources */,
 				843AFDB129B0E6F300026273 /* SearchView.swift in Sources */,
-				843AFDA229B0E61B00026273 /* LibraryView.swift in Sources */,
+				843AFDA229B0E61B00026273 /* OrdersHistoryView.swift in Sources */,
 				844A912929C9DA7C004EB336 /* MapsViewModel.swift in Sources */,
 				843AFD5929B0CB1400026273 /* Coin.swift in Sources */,
 				8475B26A29B7636D009653AC /* AdditionRow.swift in Sources */,

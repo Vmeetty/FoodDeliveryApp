@@ -44,7 +44,7 @@ extension RestrantsMapView {
                     }
             }
         })
-        .grayscale(1)
+//        .grayscale(1)
     }
     
     private var locationsPreviewStack: some View {

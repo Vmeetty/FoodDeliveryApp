@@ -19,13 +19,13 @@ struct OrderSubmitedView: View {
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("Ваше замовлення вже готується")
+                    Text("Твоє замовлення вже готується")
                         .font(.title.weight(.semibold))
                         .padding(.leading, 20)
                     
                     OrderView(submitedOrder: submitedOrder)
                     
-                    Text("Дякуємо за замовлення!")
+                    Text("Дякуємо, що ти є!")
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }

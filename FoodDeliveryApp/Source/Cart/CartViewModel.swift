@@ -68,7 +68,7 @@ class CartViewModel: ObservableObject {
             
             let submitedOrder = SubmitedOrder(info: info, items: submitedItems, calculations: calculations)
             self.submitedOrder = submitedOrder
-            self.modelReference?.submitedOrders.append(submitedOrder)
+            self.modelReference?.ordersHistory.append(submitedOrder)
             
             withAnimation(.easeInOut) {
                 orderSubmited = true

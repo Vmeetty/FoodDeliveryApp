@@ -17,10 +17,17 @@ struct CartView: View {
             
             Group {
                 if model.orderItems.isEmpty {
+//                    Text("В корзині нічого немає")
+//                        .font(.title2)
+//                        .frame(maxHeight: .infinity, alignment: .center)
+//                        .offset(y: -200)
                     Text("В корзині нічого немає")
                         .font(.title2)
+                        .foregroundColor(.white)
                         .frame(maxHeight: .infinity, alignment: .center)
-                        .offset(y: -200)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 20)
+                        .offset(y: 200)
                 } else {
                     ScrollView {
                         infoSection
@@ -79,7 +86,7 @@ struct CartView: View {
                 .frame(width: 30, height: 30)
                 .foregroundColor(.black)
                 .overlay {
-                    Text("\(model.submitedOrders.count)")
+                    Text("\(model.ordersHistory.count)")
                 }
         }
         .background(

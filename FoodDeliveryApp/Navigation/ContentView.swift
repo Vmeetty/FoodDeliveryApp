@@ -23,7 +23,7 @@ struct ContentView: View {
             case .notifications:
                 CartView()
             case .library:
-                LibraryView()
+                OrdersHistoryView()
             }
             
             TabBar()
