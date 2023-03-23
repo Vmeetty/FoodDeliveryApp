@@ -1,5 +1,5 @@
 //
-//  LibraryView.swift
+//  PromotionsView.swift
 //  FoodDeliveryApp
 //
 //  Created by admin on 3/2/23.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct LibraryView: View {
+struct PromotionsView: View {
+    
+    @StateObject var viewModel = PromotionsViewModel()
     
     var body: some View {
         ZStack {
@@ -73,8 +75,8 @@ struct LibraryView: View {
     }
 }
 
-struct LibraryView_Previews: PreviewProvider {
+struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
-        LibraryView()
+        PromotionsView()
     }
 }
