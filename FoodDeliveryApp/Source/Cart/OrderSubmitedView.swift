@@ -26,7 +26,7 @@ struct OrderSubmitedView: View {
 //                    OrderView(submitedOrder: submitedOrder)
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading, spacing: 8) {
-                            ForEach(Array(submitedOrder.items.enumerated()), id: \.offset) { index, item in
+                            ForEach(submitedOrder.items) { item in
                                 HStack(alignment: .top) {
                                     VStack(alignment: .leading) {
                                         Text(item.title + " - \(item.count)шт")
@@ -82,7 +82,7 @@ struct OrderSubmitedView: View {
             })
             .background(Image("Blob 1").offset(x: -100, y: -400))
         }
-        .onAppear {
+        .onDisappear {
             model.orderItems.removeAll()
         }
     }
