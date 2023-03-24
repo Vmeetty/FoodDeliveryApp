@@ -169,10 +169,10 @@ struct HomeView: View {
                                 .offset(x: 90, y: 20)
                                 .offset(x: minX / 2)
                         }
-                        .onTapGesture {
-                            selectedFeaturedCourse = course
-                            viewModel.showFeaturedCourse = true
-                        }
+//                        .onTapGesture {
+//                            selectedFeaturedCourse = course
+//                            viewModel.showFeaturedCourse = true
+//                        }
                 }
             }
         }
@@ -180,10 +180,10 @@ struct HomeView: View {
         .frame(height: 270)
         .background(
             Image("Blob 1")
-                .offset(x: 250, y: -100)
+                .offset(x: -300, y: -110)
         )
         .sheet(isPresented: $viewModel.showFeaturedCourse) {
-            //            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
+//                        CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
         }
     }
 }

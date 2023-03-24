@@ -21,8 +21,6 @@ var featuredCourses = [
     Course(title: "Даруємо Маргариту", subtitle: "20 sections - 3 hours", text: "До замовлення від 650 грн на самовиніс", image: "pizza", background: "Background 5", logo: "Logo 2"),
     Course(title: "Даруємо Хумус", subtitle: "20 sections - 3 hours", text: "До замовлення від 450грн на самовиніс", image: "humus", background: "Background 4", logo: "Logo 4"),
     Course(title: "Літній салат даром", subtitle: "20 sections - 3 hours", text: "На кожне 3 замовлення даруємо велику порцію салату", image: "salad", background: "Background 1", logo: "Logo 1"),
-    Course(title: "Крафтові бургери", subtitle: "20 sections - 3 hours", text: "Нові Крафтові бургери в нашому меню", image: "burger", background: "Background 2", logo: "Logo 3"),
-    
 ]
 
 var promos = [

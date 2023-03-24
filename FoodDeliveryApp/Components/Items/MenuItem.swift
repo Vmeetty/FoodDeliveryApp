@@ -40,7 +40,7 @@ struct MenuItem: View {
                     .cornerRadius(30)
                     .blur(radius: 30)
                     .matchedGeometryEffect(id: "blur\(dish.id)", in: namespace)
-                    .opacity(0.8)
+                    .opacity(0.6)
             )
         }
         .foregroundColor(.white)

@@ -14,11 +14,12 @@ struct CategoryItem: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
-            Image(systemName: category.icon)
+            Image(category.icon)
                 .resizable()
+                .tint(selectedId == category.id ? .white : .secondary)
+                .foregroundColor(.red)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 32, height: 32)
-                .foregroundColor(selectedId == category.id ? .white : .secondary)
             
             Text(category.title)
                 .font(.footnote)
@@ -41,6 +42,6 @@ struct CategoryItem: View {
 
 struct CategoryItem_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryItem(category: Category(title: "Pizza", icon: "eyedropper"), selectedId: .constant(UUID()))
+        CategoryItem(category: Category(title: "Pizza", icon: "pizza-icon"), selectedId: .constant(UUID()))
     }
 }
