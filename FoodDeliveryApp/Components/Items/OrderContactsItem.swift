@@ -56,7 +56,7 @@ struct OrderContactsItem: View {
                         }
                     }
                 
-            case "Кількість приборів":
+            case "Прибори":
                 HStack(spacing: 0) {
                     Text(title)
                         .fontWeight(.medium)
