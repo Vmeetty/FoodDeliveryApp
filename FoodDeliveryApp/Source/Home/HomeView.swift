@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    var columns = [GridItem(.adaptive(minimum: 300), spacing: 20)]
+    
     @Namespace var namespace
     @EnvironmentObject var model: Model
     @Environment(\.colorScheme) var colorScheme
@@ -20,35 +22,36 @@ struct HomeView: View {
             Color("Background")
                 .ignoresSafeArea()
             
+            if model.showDetail {
+                DetailView(namespace: namespace, food: viewModel.selectedDish)
+                    .zIndex(1)
+            }
             
             ScrollView {
-                
                 scrollDetaction
 //                promo
                 featured
                 categoriesSection
                 
-                if !model.showDetail {
-                    ForEach(viewModel.selectedMenu) { dish in
-                        MenuItem(namespace: namespace, dish: dish)
-                            .onTapGesture {
-                                withAnimation(.openCard) {
-                                    viewModel.selectedDish = dish
-                                    model.showDetail = true
-                                }
-                            }
+                if model.showDetail {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(courses) { course in
+                            Rectangle()
+                                .fill(.white)
+                                .frame(height: 300)
+                                .cornerRadius(30)
+                                .shadow(color: Color("Shadow").opacity(0.2), radius: 20, x: 0, y: 10)
+                                .opacity(0.3)
+                        }
                     }
-                }
-                else {
-                    ForEach(viewModel.selectedMenu) { dish in
-                        Rectangle()
-                            .fill(.white)
-                            .frame(height: 300)
-                            .cornerRadius(30)
-                            .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
-                            .opacity(0.3)
-                            .padding(.horizontal, 30)
+                    .padding(.horizontal, 20)
+                    .offset(y: -80)
+                } else {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        listOfItems.frame(height: 300)
                     }
+                    .padding(.horizontal, 20)
+//                    .offset(y: -80)
                 }
             }
             .coordinateSpace(name: "Scroll")
@@ -56,47 +59,46 @@ struct HomeView: View {
             .safeAreaInset(edge: .top, content: {
                 Color.clear.frame(height: 70)
             })
-            .overlay {
-                NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Меню")
-            }
-//            .background(
-//                Image("Blob 1")
-//                    .frame(maxHeight: .infinity, alignment: .top)
-//                    .offset(x: -200, y: -450)
-////                    .offset(x: -150, y: -250)
-//            )
-            
-            if model.showDetail {
-                DetailView(namespace: namespace, food: viewModel.selectedDish)
-                    .zIndex(1)
-                    .transition(.asymmetric(
-                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
-                        removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
-                    ))
-            }
         }
-        .statusBarHidden(!viewModel.showStatusBar)
         .onChange(of: model.showDetail) { newValue in
-            withAnimation(.closeCard) {
+            withAnimation {
                 if newValue {
                     viewModel.showStatusBar = false
                 } else {
                     viewModel.showStatusBar = true
                 }
+                model.showNav.toggle()
             }
         }
+        .overlay {
+            NavigationBar(hasScrolled: $viewModel.hasScrolled, title: "Меню")
+        }
+        .statusBarHidden(!viewModel.showStatusBar)
         .onAppear {
             viewModel.menu = model.fullMenu
             viewModel.changeMenuBy(model.categories[viewModel.selectedCategoryIndex])
         }
     }
-
+    
+    var listOfItems: some View {
+        ForEach(viewModel.selectedMenu) { dish in
+            MenuItem(namespace: namespace, dish: dish)
+                .accessibilityElement(children: .combine)
+                .accessibilityAddTraits(.isButton)
+                .onTapGesture {
+                    withAnimation(.openCard) {
+                        viewModel.selectedDish = dish
+                        model.showDetail = true
+                    }
+                }
+        }
+    }
     
     var scrollDetaction: some View {
         GeometryReader { proxy in
-            Color.clear.preference(key: ScrollPreferenceKey.self, value: proxy.frame(in: .named("Scroll")).minY)
+            let offset = proxy.frame(in: .named("Scroll")).minY
+            Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
         }
-        .frame(height: 0)
         .onPreferenceChange(ScrollPreferenceKey.self ,perform: { value in
             withAnimation(.easeInOut(duration: 0.2)) {
                 viewModel.hasScrolled = value < 0 ? true : false
@@ -104,32 +106,6 @@ struct HomeView: View {
         })
     }
     
-    
-        // MARK: banner style fore promotions
-    
-//    var promo: some View {
-//        TabView {
-//            ForEach(featuredCourses) { course in
-//                GeometryReader { proxy in
-//                    let minX = proxy.frame(in: .global).minX
-//                    PromotionItem(course: course)
-//                        .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
-//                        .shadow(color: Color.ShadowColor.opacity(0.2), radius: 4, x: 0, y: 5)
-//                        .blur(radius: abs(minX) / 40)
-//                        .onTapGesture {
-//                            selectedFeaturedCourse = course
-//                            viewModel.showFeaturedCourse = true
-//                        }
-//                }
-//            }
-//        }
-//        .tabViewStyle(.page)
-//        .frame(height: 260)
-//        .padding(.vertical)
-//        .sheet(isPresented: $viewModel.showFeaturedCourse) {
-////            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
-//        }
-//    }
     
     var categoriesSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -195,3 +171,28 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+// MARK: banner style fore promotions
+
+//    var promo: some View {
+//        TabView {
+//            ForEach(featuredCourses) { course in
+//                GeometryReader { proxy in
+//                    let minX = proxy.frame(in: .global).minX
+//                    PromotionItem(course: course)
+//                        .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
+//                        .shadow(color: Color.ShadowColor.opacity(0.2), radius: 4, x: 0, y: 5)
+//                        .blur(radius: abs(minX) / 40)
+//                        .onTapGesture {
+//                            selectedFeaturedCourse = course
+//                            viewModel.showFeaturedCourse = true
+//                        }
+//                }
+//            }
+//        }
+//        .tabViewStyle(.page)
+//        .frame(height: 260)
+//        .padding(.vertical)
+//        .sheet(isPresented: $viewModel.showFeaturedCourse) {
+////            CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
+//        }
+//    }

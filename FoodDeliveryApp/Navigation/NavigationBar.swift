@@ -11,6 +11,8 @@ struct NavigationBar: View {
     @Binding var hasScrolled: Bool
     @State var showSerch = false
     @State var showAccount = false
+    
+    @EnvironmentObject var model: Model
     @AppStorage("showModal") var showModal = false
     @AppStorage("isLogged") var isLogged = false
     var title = ""
@@ -63,6 +65,8 @@ struct NavigationBar: View {
             .offset(y: hasScrolled ? -4 : 0)
             
         }
+        .offset(y: model.showNav ? 0 : -120)
+        .accessibility(hidden: !model.showNav)
         .frame(height: hasScrolled ? 44 : 70)
         .frame(maxHeight: .infinity, alignment: .top)
     }
@@ -71,5 +75,6 @@ struct NavigationBar: View {
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
         NavigationBar(hasScrolled: .constant(false), title: "Featured")
+            .environmentObject(Model())
     }
 }

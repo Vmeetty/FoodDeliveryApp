@@ -25,6 +25,12 @@ class Model: ObservableObject {
     @Published var showMap = false
     @Published var selectedModalView: ModalEnum = .signIn
     @Published var selectedPopUpView: PopUpEnum = .location
+    // Tab Bar
+    @Published var showTab: Bool = true
+    
+    // Navigation Bar
+    @Published var showNav: Bool = true
+    
     @Published var categories: [Category] = []
     @Published var fullMenu: [Food] = []
     @Published var featuredPromotions: [Food] = []
@@ -59,6 +65,7 @@ class Model: ObservableObject {
     
     func getMenu() {
         fullMenu = [
+            Food(title: "Ранкова булочка з рваною індичкою", weight: "Вага 540 г", text: "Рвана індичка, турецький йогурт, соус чермула, свіжі овочі та дайкон", image: "burg_0", price: 270.00, category: "Burger", options: [Addition(id: 1, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 1, title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])], countSelected: 0),
             Food(title: "Ранкова булочка з м’ясом", weight: "Вага 540 г", text: "З телятиною, овочами, чедером, яйцем, фетою, айолі та солодким чилі-соусом", image: "burg_1", price: 265.00, category: "Burger", options: [Addition(id: 1, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 2, title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])], countSelected: 0),
             Food(title: "Ранкова булочка з хрусткою куркою", weight: "Вага 340 г", text: "З  хрусткою курочкою тонкацу, овочами, фетою, айолі та солодким чилі-соусом", image: "burg_2", price: 265.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0),
             Food(title: "Ранкова булочка з сиром", weight: "Вага 430 г", text: "З халумі, камамбером, фетою, айолі та джемом з чорної смородини", image: "burg_3", price: 235.00, category: "Burger", options: [Addition(id: 5, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])], countSelected: 0),
