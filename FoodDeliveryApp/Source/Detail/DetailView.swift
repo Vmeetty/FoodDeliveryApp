@@ -27,6 +27,7 @@ struct DetailView: View {
             ScrollView {
                 cover
                 additionsSection
+                    .padding(.bottom, 220)
                     .opacity(appear[2] ? 1 : 0)
             }
             .coordinateSpace(name: "scroll")
@@ -48,9 +49,6 @@ struct DetailView: View {
                 .opacity(appear[2] ? 1 : 0)
         }
         .zIndex(1)
-//        .onChange(of: model.showDetail) { show in
-//           fadeOut()
-//        }
         .onAppear {
             viewModel.modelReference = model
             viewModel.createLocalItem(food: food)
@@ -74,7 +72,6 @@ struct DetailView: View {
                     .matchedGeometryEffect(id: "background\(food.id)", in: namespace)
                     .offset(y: scrollY > 0 ? -scrollY : 0)
                     .scaleEffect(scrollY > 0 ? scrollY / 1000 + 1 : 1)
-                    .blur(radius: scrollY > 0 ? scrollY / 10 : 0)
                     .accessibility(hidden: true)
             )
             .mask(
@@ -132,9 +129,9 @@ struct DetailView: View {
                         .backgroundStyle(cornerRadius: 30)
                         .opacity(appear[0] ? 1 : 0)
                 )
-                .offset(y: scrollY > 0 ? -scrollY * 1.8 : 0)
+                .offset(y: scrollY > 0 ? -scrollY : 0)
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .offset(y: 50)
+                .offset(y: 100)
                 .padding(20)
             )
         }
@@ -152,7 +149,7 @@ struct DetailView: View {
         .background(.ultraThinMaterial)
         .backgroundStyle(cornerRadius: 30)
         .padding(.horizontal, 20)
-        .offset(y: 50)
+        .offset(y: 90)
         .onReceive(viewModel.$foodModelChanged) { newValue in
             if newValue { viewModel.calculateWith() }
         }
