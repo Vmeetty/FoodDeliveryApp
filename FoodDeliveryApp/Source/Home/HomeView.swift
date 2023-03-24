@@ -24,11 +24,10 @@ struct HomeView: View {
             
             if model.showDetail {
                 DetailView(namespace: namespace, food: viewModel.selectedDish)
-                    .zIndex(1)
             }
             
             ScrollView {
-                scrollDetaction
+                scrollDetection
 //                promo
                 featured
                 categoriesSection
@@ -54,7 +53,7 @@ struct HomeView: View {
 //                    .offset(y: -80)
                 }
             }
-            .coordinateSpace(name: "Scroll")
+            .coordinateSpace(name: "scroll")
             
             .safeAreaInset(edge: .top, content: {
                 Color.clear.frame(height: 70)
@@ -94,16 +93,20 @@ struct HomeView: View {
         }
     }
     
-    var scrollDetaction: some View {
+    var scrollDetection: some View {
         GeometryReader { proxy in
-            let offset = proxy.frame(in: .named("Scroll")).minY
+            let offset = proxy.frame(in: .named("scroll")).minY
             Color.clear.preference(key: ScrollPreferenceKey.self, value: offset)
         }
-        .onPreferenceChange(ScrollPreferenceKey.self ,perform: { value in
-            withAnimation(.easeInOut(duration: 0.2)) {
-                viewModel.hasScrolled = value < 0 ? true : false
+        .onPreferenceChange(ScrollPreferenceKey.self) { value in
+            withAnimation(.easeInOut) {
+                if value < 0 {
+                    viewModel.hasScrolled = true
+                } else {
+                    viewModel.hasScrolled = false
+                }
             }
-        })
+        }
     }
     
     
