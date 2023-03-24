@@ -85,7 +85,7 @@ struct DetailView: View {
                     .offset(y: scrollY > 0 ? -scrollY : 0)
                     .scaleEffect(scrollY > 0 ? scrollY / 500 + 1 : 1)
                     .opacity(1)
-                    .opacity(appear[1] ? 1 : 0)
+                    .matchedGeometryEffect(id: "waves\(food.id)", in: namespace)
                     .accessibility(hidden: true)
             )
             .overlay(
@@ -244,14 +244,15 @@ struct DetailView: View {
         .ignoresSafeArea()
     }
     
-    func close() {
-        withAnimation {
-            viewState = .zero
-        }
-        withAnimation(.closeCard.delay(0.2)) {
+    private func close() {
+        withAnimation(.closeCard.delay(0.1)) {
             model.showDetail = false
-//            model.selectedCourse = 0
         }
+        withAnimation(.closeCard) {
+            viewModel.viewState = .zero
+        }
+        
+        viewModel.isDragble = false
     }
     
     var drag: some Gesture {

@@ -56,6 +56,13 @@ struct MenuItem: View {
             RoundedRectangle(cornerRadius: 30)
                 .matchedGeometryEffect(id: "mask\(dish.id)", in: namespace)
         )
+        .overlay(
+            Image(horizontalSizeClass == .compact ? "Waves 1" : "Waves 2")
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .offset(y: 0)
+                .opacity(0)
+                .matchedGeometryEffect(id: "waves\(dish.id)", in: namespace)
+        )
     }
 }
 

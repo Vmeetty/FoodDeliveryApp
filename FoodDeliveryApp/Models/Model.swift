@@ -54,12 +54,12 @@ class Model: ObservableObject {
     //MARK: methods
     func getCategories() {
         categories = [
-            Category(title: "Burger", icon: "hamburger-icon"),
-            Category(title: "Pizza", icon: "pizza-icon"),
-            Category(title: "Soup", icon: "soup-icon"),
-            Category(title: "Salat", icon: "salads-icon"),
-            Category(title: "Bar", icon: "bar-icon"),
-            Category(title: "Sushi", icon: "sushi-icon"),
+            Category(title: "Burger", icon: "heart.circle.fill"),
+            Category(title: "Pizza", icon: "eyedropper"),
+            Category(title: "Soup", icon: "laptopcomputer"),
+            Category(title: "Salat", icon: "iphone"),
+            Category(title: "Bar", icon: "eyedropper"),
+            Category(title: "Sushi", icon: "laptopcomputer"),
         ]
     }
     

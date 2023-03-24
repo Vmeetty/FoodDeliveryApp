@@ -49,6 +49,7 @@ struct HomeView: View {
                         listOfItems.frame(height: 300)
                     }
                     .padding(.horizontal, 20)
+                    .padding(.vertical)
                 }
             }
             .coordinateSpace(name: "scroll")
@@ -123,7 +124,7 @@ struct HomeView: View {
                         }
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(20)
             Spacer()
         }
     }
@@ -142,8 +143,8 @@ struct HomeView: View {
                             Image(course.image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height: 240)
-                                .offset(x: 90, y: 20)
+                                .frame(height: 200)
+                                .offset(x: 100, y: 30)
                                 .offset(x: minX / 2)
                         }
 //                        .onTapGesture {
