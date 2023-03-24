@@ -34,7 +34,7 @@ struct HomeView: View {
                 
                 if model.showDetail {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(courses) { course in
+                        ForEach(viewModel.selectedMenu) { dish in
                             Rectangle()
                                 .fill(.white)
                                 .frame(height: 300)
@@ -44,13 +44,11 @@ struct HomeView: View {
                         }
                     }
                     .padding(.horizontal, 20)
-                    .offset(y: -80)
                 } else {
                     LazyVGrid(columns: columns, spacing: 20) {
                         listOfItems.frame(height: 300)
                     }
                     .padding(.horizontal, 20)
-//                    .offset(y: -80)
                 }
             }
             .coordinateSpace(name: "scroll")
