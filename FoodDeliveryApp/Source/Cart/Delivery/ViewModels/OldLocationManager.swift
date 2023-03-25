@@ -1,5 +1,5 @@
 //
-//  LocationManager.swift
+//  OldLocationManager.swift
 //  FoodDeliveryApp
 //
 //  Created by admin on 3/19/23.
@@ -7,7 +7,7 @@
 
 import MapKit
 
-final class LocationManager: NSObject, ObservableObject {
+final class OldLocationManager: NSObject, ObservableObject {
     
     @Published var location: CLLocation?
     @Published var showingAlert = false
@@ -137,7 +137,7 @@ final class LocationManager: NSObject, ObservableObject {
 //    }
 }
 
-extension LocationManager: CLLocationManagerDelegate {
+extension OldLocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("status\(status)")
         checkLocationAuthorization()

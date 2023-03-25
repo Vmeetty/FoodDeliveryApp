@@ -59,8 +59,14 @@
 		843AFDCA29B0F0C000026273 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDC929B0F0C000026273 /* Food.swift */; };
 		843AFDCD29B0F2C900026273 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDCC29B0F2C900026273 /* HomeViewModel.swift */; };
 		843AFDD029B0F44700026273 /* PromotionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AFDCF29B0F44700026273 /* PromotionsViewModel.swift */; };
-		8444BC1529CDAA6600C98896 /* TempDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC1429CDAA6600C98896 /* TempDetailView.swift */; };
 		8444BC1729CDB8EF00C98896 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC1629CDB8EF00C98896 /* IconView.swift */; };
+		8444BC1929CF1C7D00C98896 /* DeliveryMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC1829CF1C7D00C98896 /* DeliveryMapViewRepresentable.swift */; };
+		8444BC1B29CF1F1700C98896 /* TempDeliveryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC1A29CF1F1700C98896 /* TempDeliveryMapView.swift */; };
+		8444BC1D29CF203100C98896 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC1C29CF203100C98896 /* LocationManager.swift */; };
+		8444BC2229CF276700C98896 /* LocationSearchActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2129CF276700C98896 /* LocationSearchActivationView.swift */; };
+		8444BC2429CF2CB600C98896 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2329CF2CB600C98896 /* LocationSearchView.swift */; };
+		8444BC2629CF320500C98896 /* LocationSearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2529CF320500C98896 /* LocationSearchResultRow.swift */; };
+		8444BC2829CF398500C98896 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2729CF398500C98896 /* LocationSearchViewModel.swift */; };
 		844A90E729C87AD7004EB336 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A90E629C87AD7004EB336 /* MapView.swift */; };
 		844A912129C9D5F5004EB336 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912029C9D5F5004EB336 /* LocationsDataService.swift */; };
 		844A912329C9D61D004EB336 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912229C9D61D004EB336 /* Location.swift */; };
@@ -86,7 +92,7 @@
 		84769A7329B788C1009AF71F /* String + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7229B788C1009AF71F /* String + Extention.swift */; };
 		84769A7829B8C633009AF71F /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769A7729B8C633009AF71F /* OrderItem.swift */; };
 		849792E729C497D30003B491 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E629C497D30003B491 /* PopUpView.swift */; };
-		849792E929C6F1160003B491 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E829C6F1160003B491 /* LocationManager.swift */; };
+		849792E929C6F1160003B491 /* OldLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849792E829C6F1160003B491 /* OldLocationManager.swift */; };
 		84CF721729B8D590004E92F1 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF721629B8D590004E92F1 /* DetailViewModel.swift */; };
 		84EF136529CA144A00407CC2 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF136429CA144A00407CC2 /* OrderView.swift */; };
 		84EF136729CCA22B00407CC2 /* PromotionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF136629CCA22B00407CC2 /* PromotionItem.swift */; };
@@ -147,8 +153,14 @@
 		843AFDC929B0F0C000026273 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		843AFDCC29B0F2C900026273 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		843AFDCF29B0F44700026273 /* PromotionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsViewModel.swift; sourceTree = "<group>"; };
-		8444BC1429CDAA6600C98896 /* TempDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDetailView.swift; sourceTree = "<group>"; };
 		8444BC1629CDB8EF00C98896 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		8444BC1829CF1C7D00C98896 /* DeliveryMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMapViewRepresentable.swift; sourceTree = "<group>"; };
+		8444BC1A29CF1F1700C98896 /* TempDeliveryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempDeliveryMapView.swift; sourceTree = "<group>"; };
+		8444BC1C29CF203100C98896 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		8444BC2129CF276700C98896 /* LocationSearchActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchActivationView.swift; sourceTree = "<group>"; };
+		8444BC2329CF2CB600C98896 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
+		8444BC2529CF320500C98896 /* LocationSearchResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultRow.swift; sourceTree = "<group>"; };
+		8444BC2729CF398500C98896 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 		844A90E629C87AD7004EB336 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		844A912029C9D5F5004EB336 /* LocationsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
 		844A912229C9D61D004EB336 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -174,7 +186,7 @@
 		84769A7229B788C1009AF71F /* String + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extention.swift"; sourceTree = "<group>"; };
 		84769A7729B8C633009AF71F /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		849792E629C497D30003B491 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
-		849792E829C6F1160003B491 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		849792E829C6F1160003B491 /* OldLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldLocationManager.swift; sourceTree = "<group>"; };
 		84CF721629B8D590004E92F1 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		84EF136429CA144A00407CC2 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		84EF136629CCA22B00407CC2 /* PromotionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionItem.swift; sourceTree = "<group>"; };
@@ -321,6 +333,7 @@
 				84EF136429CA144A00407CC2 /* OrderView.swift */,
 				843AFDC229B0E9F600026273 /* CategoryItem.swift */,
 				8444BC1629CDB8EF00C98896 /* IconView.swift */,
+				8444BC2529CF320500C98896 /* LocationSearchResultRow.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -364,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				843AFDA329B0E63700026273 /* DetailView.swift */,
-				8444BC1429CDAA6600C98896 /* TempDetailView.swift */,
 				84CF721629B8D590004E92F1 /* DetailViewModel.swift */,
 			);
 			path = Detail;
@@ -415,6 +427,7 @@
 			children = (
 				844A912029C9D5F5004EB336 /* LocationsDataService.swift */,
 				843AFDD229B2241F00026273 /* Networking */,
+				8444BC1C29CF203100C98896 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -434,6 +447,32 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8444BC1E29CF270000C98896 /* LocationSearch */ = {
+			isa = PBXGroup;
+			children = (
+				8444BC1F29CF274600C98896 /* View */,
+				8444BC2029CF274E00C98896 /* ViewModel */,
+			);
+			path = LocationSearch;
+			sourceTree = "<group>";
+		};
+		8444BC1F29CF274600C98896 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8444BC2329CF2CB600C98896 /* LocationSearchView.swift */,
+				8444BC2129CF276700C98896 /* LocationSearchActivationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8444BC2029CF274E00C98896 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8444BC2729CF398500C98896 /* LocationSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		844A912429C9D9E4004EB336 /* Delivery */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,7 +486,9 @@
 			isa = PBXGroup;
 			children = (
 				844A90E629C87AD7004EB336 /* MapView.swift */,
+				8444BC1829CF1C7D00C98896 /* DeliveryMapViewRepresentable.swift */,
 				844F4EB729C3DBA9000EE49E /* DeliveryMapView.swift */,
+				8444BC1A29CF1F1700C98896 /* TempDeliveryMapView.swift */,
 				844A912E29C9F131004EB336 /* RestrantsMapView.swift */,
 				844A912A29C9DB8D004EB336 /* MapAnnotationView.swift */,
 				844A912C29C9DD22004EB336 /* MapPreviewView.swift */,
@@ -459,7 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				844A912829C9DA7C004EB336 /* MapsViewModel.swift */,
-				849792E829C6F1160003B491 /* LocationManager.swift */,
+				849792E829C6F1160003B491 /* OldLocationManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -467,6 +508,7 @@
 		844F4EA429BDB697000EE49E /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				8444BC1E29CF270000C98896 /* LocationSearch */,
 				844A912429C9D9E4004EB336 /* Delivery */,
 				843AFD9F29B0E60200026273 /* CartView.swift */,
 				844F4EA529BDB6AE000EE49E /* CartViewModel.swift */,
@@ -572,8 +614,10 @@
 				843AFD6029B0CB1400026273 /* CourseSection.swift in Sources */,
 				843AFD5C29B0CB1400026273 /* Suggestion.swift in Sources */,
 				843AFD7029B0CF0F00026273 /* Modifier.swift in Sources */,
+				8444BC2829CF398500C98896 /* LocationSearchViewModel.swift in Sources */,
 				843AFD8529B0E43900026273 /* OrderInfoItem.swift in Sources */,
 				844A912329C9D61D004EB336 /* Location.swift in Sources */,
+				8444BC2229CF276700C98896 /* LocationSearchActivationView.swift in Sources */,
 				84EF136929CCBFDC00407CC2 /* FeaturedItem.swift in Sources */,
 				843AFD5D29B0CB1400026273 /* PreferenceKeys.swift in Sources */,
 				849792E729C497D30003B491 /* PopUpView.swift in Sources */,
@@ -583,6 +627,7 @@
 				844F4EB029C1F4D7000EE49E /* Calculation.swift in Sources */,
 				844F4EAC29C0E5C3000EE49E /* OrderContactsItem.swift in Sources */,
 				84769A7329B788C1009AF71F /* String + Extention.swift in Sources */,
+				8444BC2429CF2CB600C98896 /* LocationSearchView.swift in Sources */,
 				843AFD9229B0E50600026273 /* HexagonView.swift in Sources */,
 				843AFDC529B0EA2200026273 /* Category.swift in Sources */,
 				843AFDAC29B0E6B600026273 /* ModalView.swift in Sources */,
@@ -590,11 +635,13 @@
 				844A912D29C9DD22004EB336 /* MapPreviewView.swift in Sources */,
 				843AFD8929B0E49C00026273 /* CertificateView.swift in Sources */,
 				843AFDAF29B0E6DF00026273 /* AccountView.swift in Sources */,
+				8444BC1B29CF1F1700C98896 /* TempDeliveryMapView.swift in Sources */,
 				843AFD6929B0CE7300026273 /* PlayShape.swift in Sources */,
 				844F4EA129BBC90F000EE49E /* Equatable + Extension.swift in Sources */,
 				843AFD4E29B0C69800026273 /* Model.swift in Sources */,
 				844F4EA629BDB6AE000EE49E /* CartViewModel.swift in Sources */,
 				843AFDAA29B0E6A100026273 /* SignInView.swift in Sources */,
+				8444BC2629CF320500C98896 /* LocationSearchResultRow.swift in Sources */,
 				844A912B29C9DB8D004EB336 /* MapAnnotationView.swift in Sources */,
 				844A912F29C9F131004EB336 /* RestrantsMapView.swift in Sources */,
 				844A912129C9D5F5004EB336 /* LocationsDataService.swift in Sources */,
@@ -606,7 +653,7 @@
 				8475B25E29B5D42B009653AC /* CurrencyView.swift in Sources */,
 				843AFD8129B0E40B00026273 /* SmallCourseItem.swift in Sources */,
 				843AFD5F29B0CB1400026273 /* Handbook.swift in Sources */,
-				849792E929C6F1160003B491 /* LocationManager.swift in Sources */,
+				849792E929C6F1160003B491 /* OldLocationManager.swift in Sources */,
 				843AFD6D29B0CEB400026273 /* Styles.swift in Sources */,
 				843AFD6C29B0CEB400026273 /* InputStyle.swift in Sources */,
 				84EF136529CA144A00407CC2 /* OrderView.swift in Sources */,
@@ -617,14 +664,15 @@
 				8475B26A29B7636D009653AC /* AdditionRow.swift in Sources */,
 				843AFD8F29B0E4E200026273 /* PlayView.swift in Sources */,
 				844A90E729C87AD7004EB336 /* MapView.swift in Sources */,
+				8444BC1929CF1C7D00C98896 /* DeliveryMapViewRepresentable.swift in Sources */,
 				843AFD7A29B0E35B00026273 /* CoinViewModel.swift in Sources */,
 				843AFD8729B0E44F00026273 /* OrderItemRow.swift in Sources */,
 				844F4EB229C1F6B6000EE49E /* OrderCalculationView.swift in Sources */,
 				844F4EB629C3D87A000EE49E /* PaymentTypeView.swift in Sources */,
 				844F4EB829C3DBA9000EE49E /* DeliveryMapView.swift in Sources */,
 				84769A7829B8C633009AF71F /* OrderItem.swift in Sources */,
+				8444BC1D29CF203100C98896 /* LocationManager.swift in Sources */,
 				843AFD2529B0C0FC00026273 /* FoodDeliveryAppApp.swift in Sources */,
-				8444BC1529CDAA6600C98896 /* TempDetailView.swift in Sources */,
 				843AFDA429B0E63700026273 /* DetailView.swift in Sources */,
 				843AFD6629B0CE2200026273 /* TabBar.swift in Sources */,
 			);

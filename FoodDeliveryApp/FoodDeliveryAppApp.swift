@@ -11,12 +11,14 @@ import SwiftUI
 struct FoodDeliveryAppApp: App {
     @StateObject var model = Model()
     @StateObject var mapsViewModel = MapsViewModel()
+    @StateObject var locationSearchViewModel = LocationSearchViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(model)
                 .environmentObject(mapsViewModel)
+                .environmentObject(locationSearchViewModel)
         }
     }
 }

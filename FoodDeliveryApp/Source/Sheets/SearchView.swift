@@ -28,7 +28,9 @@ struct SearchView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        dismiss.callAsFunction()
+                        withAnimation {
+                            dismiss()
+                        }
                     } label: {
                         Text("Done")
                     }
@@ -123,5 +125,6 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView(selectedDish: Food(title: "MIAMI", weight: "Вага 340 г", text: "Перетерті томати, моцарела, базилік. Алергени: злаки, лактоза.", image: "MIAMI", price: 430.00, category: "Burger", options: [Addition(id: 1, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])], countSelected: 0))
+            .environmentObject(Model())
     }
 }

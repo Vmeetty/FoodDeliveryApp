@@ -9,53 +9,69 @@ import SwiftUI
 import MapKit
 
 struct DeliveryMapView: View {
-    @State var circleColor: Color = .pink
-    @State var appear = [false, false, false]
+//    @State var circleColor: Color = .pink
+//    @State var appear = [false, false, false]
     @EnvironmentObject var model: Model
     @AppStorage("optionSelected") var optionSelected = false
+//
+//    @StateObject var locationManager = OldLocationManager()
     
-    @StateObject var locationManager = LocationManager()
+    @State var showLocationSearchView = false
     
     var body: some View {
-        ZStack {
-            Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
-                .tint(Color(.systemPink))
+        ZStack(alignment: .bottom) {
+//            Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
+//                .tint(Color(.systemPink))
+//                .ignoresSafeArea()
+////                .grayscale(1)
+//                .onAppear {
+//                    locationManager.checkIfLocationServicesIsEnabled()
+//                }
+//                .onChange(of: locationManager.location) { newValue in
+//                    if let location = newValue {
+//                        let latitude = String(describing: location.coordinate.latitude)
+//                        let longitude = String(describing: location.coordinate.longitude)
+//                        locationManager.getAddressFromLatLon(pdblLatitude: latitude, withLongitude: longitude)
+//                    }
+//                }
+            DeliveryMapViewRepresentable()
                 .ignoresSafeArea()
-//                .grayscale(1)
-                .onAppear {
-                    locationManager.checkIfLocationServicesIsEnabled()
-                }
-                .onChange(of: locationManager.location) { newValue in
-                    if let location = newValue {
-                        let latitude = String(describing: location.coordinate.latitude)
-                        let longitude = String(describing: location.coordinate.longitude)
-                        locationManager.getAddressFromLatLon(pdblLatitude: latitude, withLongitude: longitude)
+            
+            VStack(spacing: 13) {
+                
+                confirmButton
+                
+                LocationSearchActivationView()
+                    .padding(.horizontal, 20)
+                    .onTapGesture {
+                        showLocationSearchView.toggle()
                     }
-                }
-            Button {
-                model.locationTimePayment[0].title = "Доставка"
-                model.locationTimePayment[0].subtitle = locationManager.adressStr
-//                model.locationTimePayment[0].icon = item.icon
-                optionSelected.toggle()
-            } label: {
-                Text("Доставка за цією адресою")
-                    .fontWeight(.bold)
+                    .sheet(isPresented: $showLocationSearchView) {
+                        LocationSearchView(showLocationSearchView: $showLocationSearchView)
+                    }
             }
-            .font(.headline)
-            .tint(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .frame(height: 50)
-            .background(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(.linearGradient(colors: [.purple, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
-            )
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .padding(.horizontal, 20)
-            .offset(y: 70)
         }
-        
+    }
+    
+    var confirmButton: some View {
+        Button {
+            model.locationTimePayment[0].title = "Доставка"
+//            model.locationTimePayment[0].subtitle = locationManager.adressStr
+            optionSelected.toggle()
+        } label: {
+            Text("Доставка за цією адресою")
+                .fontWeight(.bold)
+        }
+        .font(.headline)
+        .tint(.white)
+        .padding()
+        .frame(maxWidth: .infinity)
+        .frame(height: 50)
+        .background(
+            RoundedRectangle(cornerRadius: 30, style: .continuous)
+                .fill(.linearGradient(colors: [.purple, .red], startPoint: .topLeading, endPoint: .bottomTrailing))
+        )
+        .padding(.horizontal, 20)
     }
 }
 
