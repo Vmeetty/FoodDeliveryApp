@@ -17,6 +17,7 @@ struct OrderItemRow: View {
         HStack(alignment: .top, spacing: 14) {
             Image(orderItem.image)
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 70, height: 70)
                 .mask(Circle())
                 .background(Color(UIColor.systemBackground).opacity(0.3))

@@ -9,41 +9,19 @@ import SwiftUI
 import MapKit
 
 struct DeliveryMapView: View {
-//    @State var circleColor: Color = .pink
-//    @State var appear = [false, false, false]
-    
     @State var locationTitle: String?
     @State var subTitle: String?
+    @State var showLocationSearchView = false
+    
     @EnvironmentObject var model: Model
     @AppStorage("optionSelected") var optionSelected = false
-//
-//    @StateObject var locationManager = OldLocationManager()
-    
-    @State var showLocationSearchView = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
-//            Map(coordinateRegion: $locationManager.region, showsUserLocation: true)
-//                .tint(Color(.systemPink))
-//                .ignoresSafeArea()
-////                .grayscale(1)
-//                .onAppear {
-//                    locationManager.checkIfLocationServicesIsEnabled()
-//                }
-//                .onChange(of: locationManager.location) { newValue in
-//                    if let location = newValue {
-//                        let latitude = String(describing: location.coordinate.latitude)
-//                        let longitude = String(describing: location.coordinate.longitude)
-//                        locationManager.getAddressFromLatLon(pdblLatitude: latitude, withLongitude: longitude)
-//                    }
-//                }
             DeliveryMapViewRepresentable(title: $locationTitle, subtitle: $subTitle)
                 .ignoresSafeArea()
             
             VStack(spacing: 13) {
-                
-                confirmButton
-                
                 LocationSearchActivationView(locationTitle: $locationTitle)
                     .padding(.horizontal, 20)
                     .onTapGesture {
@@ -52,6 +30,7 @@ struct DeliveryMapView: View {
                     .sheet(isPresented: $showLocationSearchView) {
                         LocationSearchView(locationTitle: $locationTitle, showLocationSearchView: $showLocationSearchView)
                     }
+                confirmButton
             }
         }
     }
