@@ -10,6 +10,9 @@ import MapKit
 
 struct DeliveryMapViewRepresentable: UIViewRepresentable {
     
+    @Binding var title: String?
+    @Binding var subtitle: String?
+    
     let mapView = MKMapView()
     let locationManager = LocationManager()
     @EnvironmentObject var locationSearchViewModel: LocationSearchViewModel
@@ -30,7 +33,7 @@ struct DeliveryMapViewRepresentable: UIViewRepresentable {
                 span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
             )
             mapView.setRegion(newCoordinateRegion, animated: true)
-            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
+//            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
         }
     }
     
@@ -60,21 +63,40 @@ extension DeliveryMapViewRepresentable {
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
             let region = MKCoordinateRegion(center: coordinate, span: span)
+            let location = CLLocation(latitude: latitude, longitude: longitude)
             
             //            getAddressFromLatLon(pdblLatitude: String(latitude), withLongitude: String(longitude))
+            reverseGeocode(location: location)
             parent.mapView.setRegion(region, animated: true)
-            addAndSelectAnnotation(withCoordinate: coordinate)
         }
         
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            pin.isDraggable = true
+            pin.tintColor = .systemPink
+            pin.animatesDrop = true
+            
+            return pin
+        }
+        
+        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+            
+            guard let latitude = view.annotation?.coordinate.latitude else { return }
+            guard let longitude = view.annotation?.coordinate.longitude else { return }
+            let location: CLLocation = CLLocation(latitude:latitude, longitude: longitude)
+            
+            reverseGeocode(location: location)
+        }
+      
         // MARK: - Helpers
         
-        func addAndSelectAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
-            parent.mapView.removeAnnotations(parent.mapView.annotations)
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            parent.mapView.addAnnotation(annotation)
-            parent.mapView.selectAnnotation(annotation, animated: true)
+        func reverseGeocode(location: CLLocation) {
+            CLGeocoder().reverseGeocodeLocation(location) { places, error in
+                if let places = places {
+                    self.parent.title = places.first?.name
+                    self.parent.subtitle = places.first?.locality
+                }
+            }
         }
         
         func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {

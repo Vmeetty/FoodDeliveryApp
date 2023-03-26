@@ -11,7 +11,9 @@ import MapKit
 struct DeliveryMapView: View {
 //    @State var circleColor: Color = .pink
 //    @State var appear = [false, false, false]
+    
     @State var locationTitle: String?
+    @State var subTitle: String?
     @EnvironmentObject var model: Model
     @AppStorage("optionSelected") var optionSelected = false
 //
@@ -35,7 +37,7 @@ struct DeliveryMapView: View {
 //                        locationManager.getAddressFromLatLon(pdblLatitude: latitude, withLongitude: longitude)
 //                    }
 //                }
-            DeliveryMapViewRepresentable()
+            DeliveryMapViewRepresentable(title: $locationTitle, subtitle: $subTitle)
                 .ignoresSafeArea()
             
             VStack(spacing: 13) {
