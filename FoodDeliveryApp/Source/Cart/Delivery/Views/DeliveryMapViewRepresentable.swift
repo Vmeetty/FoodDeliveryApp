@@ -26,6 +26,7 @@ struct DeliveryMapViewRepresentable: UIViewRepresentable {
         return mapView
     }
     
+    // update region everytime we set new coordinate by LocationSearchView
     func updateUIView(_ uiView: UIViewType, context: Context) {
         if let coordinate = locationSearchViewModel.selectedLocationCoordinate {
             let newCoordinateRegion = MKCoordinateRegion(
@@ -33,7 +34,7 @@ struct DeliveryMapViewRepresentable: UIViewRepresentable {
                 span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
             )
             mapView.setRegion(newCoordinateRegion, animated: true)
-//            context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
+            context.coordinator.addAnnotation(withCoordinate: coordinate)
         }
     }
     
@@ -56,7 +57,7 @@ extension DeliveryMapViewRepresentable {
         }
         
         // MARK: - MKMapViewDelegate
-        
+        // calling one time when detecting current user location
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
             let latitude = userLocation.coordinate.latitude
             let longitude = userLocation.coordinate.longitude
@@ -65,7 +66,6 @@ extension DeliveryMapViewRepresentable {
             let region = MKCoordinateRegion(center: coordinate, span: span)
             let location = CLLocation(latitude: latitude, longitude: longitude)
             
-            //            getAddressFromLatLon(pdblLatitude: String(latitude), withLongitude: String(longitude))
             reverseGeocode(location: location)
             parent.mapView.setRegion(region, animated: true)
         }
@@ -89,6 +89,17 @@ extension DeliveryMapViewRepresentable {
         }
       
         // MARK: - Helpers
+        
+        func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+            parent.mapView.showsUserLocation = false
+            parent.mapView.removeAnnotations(parent.mapView.annotations)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            parent.mapView.addAnnotation(annotation)
+            parent.mapView.selectAnnotation(annotation, animated: true)
+        }
+        
         
         func reverseGeocode(location: CLLocation) {
             CLGeocoder().reverseGeocodeLocation(location) { places, error in
