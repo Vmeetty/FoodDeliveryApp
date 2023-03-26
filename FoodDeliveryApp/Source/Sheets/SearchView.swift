@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @State var text = ""
     @State var show = false
-    @State var selectedDish: Food = Food(title: "", weight: "", text: "", image: "", price: 0.00, category: "", options: [Addition(id: 1, title: "", values: [])], countSelected: 0)
+    @State var selectedDish: Food?
     @Namespace var namespace
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var model: Model
@@ -54,8 +54,8 @@ struct SearchView: View {
             ForEach (Array(results.enumerated()), id: \.offset) { index, dish in
                 if index != 0 { Divider() }
                 Button {
-                    show = true
                     selectedDish = dish
+                    show = true
                 } label: {
                     HStack(alignment: .top, spacing: 12) {
                         Image(dish.image)
@@ -101,7 +101,9 @@ struct SearchView: View {
                 .accessibilityHidden(true)
         )
         .sheet(isPresented: $show) {
-            DetailView(namespace: namespace, food: selectedDish)
+            if let selectedDish = selectedDish {
+                DetailView(namespace: namespace, food: selectedDish)
+            }
         }
     }
     
