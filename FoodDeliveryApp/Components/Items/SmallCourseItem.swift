@@ -16,12 +16,17 @@ struct SmallCourseItem: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(.black.opacity(0.1))
                 .overlay (
-                    Image(course.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 105)
+                    HStack(alignment: .center) {
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.yellow)
+                            .frame(width: 35, height: 35)
+                            .shadow(color: Color.ShadowColor.opacity(0.1), radius: 5, x: 0, y: 1)
+                        Text("x \(course.subtitle)")
+                    }
                 )
-            Text(course.subtitle)
+            Text(course.subtitle + " бонусів")
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .lineLimit(1)

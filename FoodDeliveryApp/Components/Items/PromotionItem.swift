@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PromotionItem: View {
-    var course: Course = promos[0]
+    var course: Promo = promos[0]
     
     var body: some View {
         RoundedRectangle(cornerRadius: 30, style: .continuous)

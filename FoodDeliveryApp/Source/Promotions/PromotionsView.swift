@@ -10,6 +10,7 @@ import SwiftUI
 struct PromotionsView: View {
     
     @StateObject var viewModel = PromotionsViewModel()
+    @State var showInfo = false
     
     var body: some View {
         ZStack {
@@ -17,22 +18,42 @@ struct PromotionsView: View {
             
             ScrollView {
                 HStack {
-                    Text("Бонуси".uppercased())
-                        .titleStyle()
-                    Text("Баланс: 27")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.secondary)
-                    Image(systemName: "star.fill")
-                        .font(.subheadline)
-                        .padding(.trailing, 20)
-                        .foregroundColor(.secondary)
-                        .offset(y: -1)
+                    HStack {
+                        Text("Бонуси".uppercased())
+                            .font(.footnote.weight(.semibold))
+                            .foregroundColor(.secondary)
+                        Image(systemName: "info.circle")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .offset(y: -1)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 20)
+                    .onTapGesture {
+                        withAnimation {
+                            showInfo.toggle()
+                        }
+                    }
+                    
+                    HStack {
+                        Text("Баланс: 27")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.secondary)
+                        Image(systemName: "star.fill")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .offset(y: -1)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing, 20)
                 }
+                
                 bonusSection
                 
                 Text("Акції".uppercased())
                     .titleStyle()
+                
                 promotionsSection
             }
             .safeAreaInset(edge: .top, content: {
@@ -41,15 +62,37 @@ struct PromotionsView: View {
             .overlay {
                 NavigationBar(hasScrolled: .constant(true), title: "Акції і бонуси")
             }
+            .overlay {
+                VStack(alignment: .leading, spacing: 8) {
+                    ForEach(bonusInfo) { bonus in
+                        Text(bonus.title)
+                    }
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(.linearGradient(colors: [.purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing))
+                )
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .offset(x: 20, y: 110)
+                .opacity(showInfo ? 1 : 0)
+            }
             .background(Image("Blob 1").offset(x: -100, y: -400))
+        }
+        .onTapGesture {
+            withAnimation {
+                showInfo = false
+            }
         }
     }
     
     var promotionsSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 25) {
-                ForEach(handbooks) { handbook in
-                    HandbookItem(handbook: handbook)
+                ForEach(promos) { promo in
+                    HandbookItem(promo: promo)
                 }
             }
             .padding(.horizontal, 20)
