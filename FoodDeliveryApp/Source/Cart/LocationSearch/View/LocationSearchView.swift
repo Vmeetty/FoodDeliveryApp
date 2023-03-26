@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationSearchView: View {
+    @Binding var locationTitle: String?
     @Binding var showLocationSearchView: Bool
     @EnvironmentObject var viewModel: LocationSearchViewModel
     
@@ -34,6 +35,7 @@ struct LocationSearchView: View {
                     ForEach(viewModel.results, id: \.self) { result in
                         LocationSearchResultRow(title: result.title, subtitle: result.subtitle)
                             .onTapGesture {
+                                locationTitle = result.title
                                 viewModel.selectLocation(result)
                                 showLocationSearchView.toggle()
                             }
@@ -46,6 +48,6 @@ struct LocationSearchView: View {
 
 struct LocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSearchView(showLocationSearchView: .constant(true))
+        LocationSearchView(locationTitle: .constant("Вкажіть адресу"), showLocationSearchView: .constant(true))
     }
 }

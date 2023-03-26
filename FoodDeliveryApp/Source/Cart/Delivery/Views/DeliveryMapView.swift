@@ -11,6 +11,7 @@ import MapKit
 struct DeliveryMapView: View {
 //    @State var circleColor: Color = .pink
 //    @State var appear = [false, false, false]
+    @State var locationTitle: String?
     @EnvironmentObject var model: Model
     @AppStorage("optionSelected") var optionSelected = false
 //
@@ -41,13 +42,13 @@ struct DeliveryMapView: View {
                 
                 confirmButton
                 
-                LocationSearchActivationView()
+                LocationSearchActivationView(locationTitle: $locationTitle)
                     .padding(.horizontal, 20)
                     .onTapGesture {
                         showLocationSearchView.toggle()
                     }
                     .sheet(isPresented: $showLocationSearchView) {
-                        LocationSearchView(showLocationSearchView: $showLocationSearchView)
+                        LocationSearchView(locationTitle: $locationTitle, showLocationSearchView: $showLocationSearchView)
                     }
             }
         }
@@ -56,7 +57,7 @@ struct DeliveryMapView: View {
     var confirmButton: some View {
         Button {
             model.locationTimePayment[0].title = "Доставка"
-//            model.locationTimePayment[0].subtitle = locationManager.adressStr
+            model.locationTimePayment[0].subtitle = locationTitle ?? "Адреса не вказана"
             optionSelected.toggle()
         } label: {
             Text("Доставка за цією адресою")

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LocationSearchActivationView: View {
+    @Binding var locationTitle: String?
+    
     var body: some View {
         HStack {
             Circle()
@@ -17,7 +19,7 @@ struct LocationSearchActivationView: View {
                 .padding(.leading, 10)
             
             
-            Text("Вказати іншу адресу")
+            Text(locationTitle ?? "Вкажіть адресу")
                 .foregroundColor(Color(.darkGray))
             Spacer()
         }
@@ -34,6 +36,6 @@ struct LocationSearchActivationView: View {
 
 struct LocationSearchActivationView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSearchActivationView()
+        LocationSearchActivationView(locationTitle: .constant("Вкажіть адресу"))
     }
 }
