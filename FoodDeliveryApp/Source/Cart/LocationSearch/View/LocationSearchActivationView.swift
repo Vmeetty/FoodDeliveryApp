@@ -19,7 +19,7 @@ struct LocationSearchActivationView: View {
                 .padding(.leading, 10)
             
             
-            Text(locationTitle ?? "Вкажіть адресу")
+            Text(locationTitle ?? "Вкажіть іншу адресу")
                 .foregroundColor(Color(.darkGray))
             Spacer()
         }

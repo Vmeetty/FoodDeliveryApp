@@ -26,7 +26,7 @@ struct DeliveryMapViewRepresentable: UIViewRepresentable {
         return mapView
     }
     
-    // update region everytime we set new coordinate by LocationSearchView
+    // update region everytime we set new coordinate by LocationSearchView or loading mapview
     func updateUIView(_ uiView: UIViewType, context: Context) {
         if let coordinate = locationSearchViewModel.selectedLocationCoordinate {
             let newCoordinateRegion = MKCoordinateRegion(
@@ -84,6 +84,10 @@ extension DeliveryMapViewRepresentable {
             guard let latitude = view.annotation?.coordinate.latitude else { return }
             guard let longitude = view.annotation?.coordinate.longitude else { return }
             let location: CLLocation = CLLocation(latitude:latitude, longitude: longitude)
+            
+            if newState == .ending {
+                parent.locationSearchViewModel.selectedLocationCoordinate = location.coordinate
+            }
             
             reverseGeocode(location: location)
         }
