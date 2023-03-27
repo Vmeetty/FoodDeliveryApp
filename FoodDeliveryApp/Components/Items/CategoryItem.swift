@@ -17,7 +17,8 @@ struct CategoryItem: View {
             LinearGradient(gradient: Gradient(colors: [.purple, .orange, .purple]), startPoint: .top, endPoint: .bottom)
                 .mask {
                     VStack(alignment: .center, spacing: 10) {
-                        Image(systemName: category.icon)
+                        Image(category.icon)
+                            .renderingMode(.template)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 32, height: 32)
@@ -40,7 +41,8 @@ struct CategoryItem: View {
                 .frame(height: 100)
         } else {
             VStack(alignment: .center, spacing: 10) {
-                Image(systemName: category.icon)
+                Image(category.icon)
+                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(.secondary)
