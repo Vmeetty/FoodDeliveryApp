@@ -14,7 +14,7 @@ struct HomeView: View {
     @EnvironmentObject var model: Model
     @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = HomeViewModel()
-    @State var selectedFeaturedCourse = featuredCourses[0]
+    @State var selectedPromo = homePromotions[0]
     
     var body: some View {
         ZStack {
@@ -131,26 +131,26 @@ struct HomeView: View {
     
     var featured: some View {
         TabView {
-            ForEach(featuredCourses) { course in
+            ForEach(homePromotions) { promo in
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
-                    FeaturedItem(course: course)
+                    FeaturedItem(course: promo)
                         .padding(.vertical, 20)
                         .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
                         .shadow(color: Color.ShadowColor.opacity(0.2), radius: 5, x: 0, y: 5)
                         .blur(radius: abs(minX) / 40)
                         .overlay {
-                            Image(course.image)
+                            Image(promo.image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 200)
                                 .offset(x: 100, y: 30)
                                 .offset(x: minX / 2)
                         }
-//                        .onTapGesture {
-//                            selectedFeaturedCourse = course
-//                            viewModel.showFeaturedCourse = true
-//                        }
+                        .onTapGesture {
+                            selectedPromo = promo
+                            viewModel.showPromotion = true
+                        }
                 }
             }
         }
@@ -160,8 +160,8 @@ struct HomeView: View {
             Image("Blob 1")
                 .offset(x: -300, y: -110)
         )
-        .sheet(isPresented: $viewModel.showFeaturedCourse) {
-//                        CourseDetaileView(namespace: namespace, course: $selectedFeaturedCourse, show: $viewModel.showFeaturedCourse)
+        .sheet(isPresented: $viewModel.showPromotion) {
+            SectionView(promo: $selectedPromo)
         }
     }
 }

@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct SectionView: View {
-    @Binding var section: CourseSection
+    @Binding var promo: Course
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
             ScrollView {
                 cover
-                    .overlay {
-                        PlayView()
-                            .overlay {
-                                CircularView(value: section.progress, lineWidth: 5)
-                                    .padding(24)
-                            }
-                    }
                 
                 content
                     .offset(y: 120)
@@ -41,14 +34,14 @@ struct SectionView: View {
         .frame(maxWidth: .infinity)
         .foregroundStyle(.black)
         .background(
-            Image(section.image)
+            Image(promo.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(20)
                 .frame(maxWidth: 500)
         )
         .background(
-            Image(section.background)
+            Image(promo.background)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
         )
@@ -93,13 +86,13 @@ struct SectionView: View {
     
     var overlayContent: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(section.title)
+            Text(promo.title)
                 .font(.largeTitle.weight(.bold))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(section.subtitle.uppercased())
+            Text(promo.subtitle.uppercased())
                 .font(.footnote.weight(.semibold))
-            Text(section.text)
+            Text(promo.text)
                 .font(.footnote)
             Divider()
             HStack {
@@ -127,6 +120,6 @@ struct SectionView: View {
 
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(section: .constant(courseSections[0]))
+        SectionView(promo: .constant(homePromotions[0]))
     }
 }

@@ -13,7 +13,7 @@ struct DetailView: View {
     var isAnimated = true
     
     @State var viewState: CGSize = .zero
-    @State var showSection = false
+//    @State var showSection = false
     @State var appear = [false, false, false]
     @State var selectedSection = courseSections[0]
     
@@ -297,8 +297,6 @@ struct DetailView: View {
         appear[0] = false
         appear[1] = false
         appear[2] = false
-//        withAnimation(.easeIn(duration: 0.1)) {
-//        }
     }
 }
 
