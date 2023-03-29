@@ -31,7 +31,7 @@ struct DeliveryMapViewRepresentable: UIViewRepresentable {
         if let coordinate = locationSearchViewModel.selectedLocationCoordinate {
             let newCoordinateRegion = MKCoordinateRegion(
                 center: coordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             )
             mapView.setRegion(newCoordinateRegion, animated: true)
             context.coordinator.addAnnotation(withCoordinate: coordinate)
@@ -62,7 +62,7 @@ extension DeliveryMapViewRepresentable {
             let latitude = userLocation.coordinate.latitude
             let longitude = userLocation.coordinate.longitude
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let region = MKCoordinateRegion(center: coordinate, span: span)
             let location = CLLocation(latitude: latitude, longitude: longitude)
             
