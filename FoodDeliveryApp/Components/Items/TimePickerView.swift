@@ -27,7 +27,7 @@ struct TimePickerView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(infoItem.title)
                     .fontWeight(.bold)
-                DatePicker("", selection: $currentTime, in: Date()...)
+                DatePicker("", selection: $currentTime, in: Date.now.addingTimeInterval(5400)...)
                     .labelsHidden()
             }
             Spacer()

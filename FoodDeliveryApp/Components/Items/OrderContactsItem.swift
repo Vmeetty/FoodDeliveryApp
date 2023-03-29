@@ -10,10 +10,10 @@ import SwiftUI
 struct OrderContactsItem: View {
     var title: String
     @Binding var answer: String
+    @Binding var showAlert: Bool
     @State private var count: Int = 1
-    @State private var showAlert = false
-    @FocusState private var fieldIsFocused: Bool
     @State private var phoneAlertMessage = "Ваша відповідь"
+    @FocusState private var fieldIsFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -50,11 +50,11 @@ struct OrderContactsItem: View {
                             }
                         }
                     })
-                    .onSubmit {
-                        if answer == "" {
-                            showAlert = true
-                        }
-                    }
+//                    .onSubmit {
+//                        if answer == "" {
+//                            showAlert = true
+//                        }
+//                    }
                 
             case "Прибори":
                 HStack(spacing: 0) {
@@ -95,6 +95,6 @@ struct OrderContactsItem: View {
 
 struct OrderContactsItem_Previews: PreviewProvider {
     static var previews: some View {
-        OrderContactsItem(title: "Квартира/офіс", answer: .constant("№4"))
+        OrderContactsItem(title: "Квартира/офіс", answer: .constant("№4"), showAlert: .constant(false))
     }
 }

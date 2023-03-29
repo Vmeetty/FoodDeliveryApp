@@ -14,6 +14,9 @@ class CartViewModel: ObservableObject {
     @Published var modelReference: Model?
     @Published var orderSubmited = false
     @Published var submitedOrder: SubmitedOrder?
+    @Published var showDeliveryAlert = false
+    @Published var showPhoneAlert = false
+    
     
     func calculate(orderItems: [Food]) {
         var orderAmount: Double = 0.00
@@ -62,16 +65,23 @@ class CartViewModel: ObservableObject {
     
     func createOrder() {
         if let modelReference = modelReference {
-            let info = modelReference.locationTimePayment
-            let submitedItems = createNewOrderItem(orderItems: modelReference.orderItems)
-            let calculations = modelReference.calculations
-            
-            let submitedOrder = SubmitedOrder(info: info, items: submitedItems, calculations: calculations)
-            self.submitedOrder = submitedOrder
-            self.modelReference?.ordersHistory.append(submitedOrder)
-            
-            withAnimation(.easeInOut) {
-                orderSubmited = true
+            if cartValidation() {
+                // create order
+                let info = modelReference.locationTimePayment
+                let contacts = modelReference.contacts
+                let submitedItems = createNewOrderItem(orderItems: modelReference.orderItems)
+                let calculations = modelReference.calculations
+                
+                let submitedOrder = SubmitedOrder(info: info, items: submitedItems, contacts: contacts, calculations: calculations)
+                self.submitedOrder = submitedOrder
+                self.modelReference?.ordersHistory.append(submitedOrder)
+                
+                showPhoneAlert = false
+                showDeliveryAlert = false
+                
+                withAnimation(.easeInOut) {
+                    orderSubmited = true
+                }
             }
         }
     }
@@ -90,6 +100,22 @@ class CartViewModel: ObservableObject {
         }
         
         return submitedItems
+    }
+    
+    func cartValidation() -> Bool {
+        if let infoIndex = modelReference!.locationTimePayment.firstIndex(where: { $0.title == "Доставка" }) {
+            showDeliveryAlert = modelReference!.locationTimePayment[infoIndex].subtitle == ""
+        } else {
+            print("Could not find current index in modelReference!.locationTimePayment array! Should never happen")
+        }
+        
+        if let contactsIndex = modelReference!.contacts.firstIndex(where: { $0.title == "Телефон для зв‘язку" }) {
+            showPhoneAlert = modelReference!.contacts[contactsIndex].answer == ""
+        } else {
+            print("Could not find current index in modelReference!.contacts array! Should never happen")
+        }
+        
+        return !showDeliveryAlert && !showPhoneAlert
     }
     
     func catchAdditionItemsTitles(orderItem: Food) -> String {
@@ -111,19 +137,4 @@ class CartViewModel: ObservableObject {
         return tempStr
     }
     
-}
-
-struct SubmitedOrder: Identifiable {
-    var id = UUID().uuidString
-    var info: [Info]
-    var items: [SubmitedItem]
-    var calculations: [Calculation]
-}
-
-struct SubmitedItem: Identifiable {
-    var id: UUID
-    var title: String
-    var additions: String
-    var count: String
-    var price: String
 }

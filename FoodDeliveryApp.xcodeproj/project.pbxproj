@@ -67,6 +67,7 @@
 		8444BC2629CF320500C98896 /* LocationSearchResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2529CF320500C98896 /* LocationSearchResultRow.swift */; };
 		8444BC2829CF398500C98896 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2729CF398500C98896 /* LocationSearchViewModel.swift */; };
 		8444BC2A29D43AA400C98896 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2929D43AA400C98896 /* TimePickerView.swift */; };
+		8444BC2C29D48C0500C98896 /* SubmitedOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444BC2B29D48C0500C98896 /* SubmitedOrder.swift */; };
 		844A90E729C87AD7004EB336 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A90E629C87AD7004EB336 /* MapView.swift */; };
 		844A912129C9D5F5004EB336 /* LocationsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912029C9D5F5004EB336 /* LocationsDataService.swift */; };
 		844A912329C9D61D004EB336 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A912229C9D61D004EB336 /* Location.swift */; };
@@ -161,6 +162,7 @@
 		8444BC2529CF320500C98896 /* LocationSearchResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultRow.swift; sourceTree = "<group>"; };
 		8444BC2729CF398500C98896 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 		8444BC2929D43AA400C98896 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		8444BC2B29D48C0500C98896 /* SubmitedOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitedOrder.swift; sourceTree = "<group>"; };
 		844A90E629C87AD7004EB336 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		844A912029C9D5F5004EB336 /* LocationsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsDataService.swift; sourceTree = "<group>"; };
 		844A912229C9D61D004EB336 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				843AFDC929B0F0C000026273 /* Food.swift */,
 				84769A7729B8C633009AF71F /* OrderItem.swift */,
 				844A912229C9D61D004EB336 /* Location.swift */,
+				8444BC2B29D48C0500C98896 /* SubmitedOrder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				843AFD9429B0E51A00026273 /* BlobView.swift in Sources */,
 				843AFD7829B0CF9100026273 /* View + Extension.swift in Sources */,
 				843AFD6529B0CE2200026273 /* NavigationBar.swift in Sources */,
+				8444BC2C29D48C0500C98896 /* SubmitedOrder.swift in Sources */,
 				843AFDA829B0E68C00026273 /* SignUpView.swift in Sources */,
 				843AFD7129B0CF0F00026273 /* TabItemPreferenceKey.swift in Sources */,
 				843AFDCA29B0F0C000026273 /* Food.swift in Sources */,

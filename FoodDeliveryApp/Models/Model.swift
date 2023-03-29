@@ -64,20 +64,9 @@ class Model: ObservableObject {
             Category(title: "Sushi", icon: "sushi-icon"),
         ]
     }
-//    func getCategories() {
-//        categories = [
-//            Category(title: "Burger", icon: "heart.circle.fill"),
-//            Category(title: "Pizza", icon: "eyedropper"),
-//            Category(title: "Soup", icon: "laptopcomputer"),
-//            Category(title: "Salat", icon: "iphone"),
-//            Category(title: "Bar", icon: "eyedropper"),
-//            Category(title: "Sushi", icon: "laptopcomputer"),
-//        ]
-//    }
     
     func getMenu() {
         fullMenu = [
-            Food(title: "Ранкова булочка з рваною індичкою", weight: "Вага 540 г", text: "Рвана індичка, турецький йогурт, соус чермула, свіжі овочі та дайкон", image: "burg_0", price: 270.00, category: "Burger", options: [Addition(id: 1, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 1, title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])], countSelected: 0),
             Food(title: "Ранкова булочка з м’ясом", weight: "Вага 540 г", text: "З телятиною, овочами, чедером, яйцем, фетою, айолі та солодким чилі-соусом", image: "burg_1", price: 265.00, category: "Burger", options: [Addition(id: 1, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 2, title: "Бекон", values: [AdditionItem(title: "5гр", price: "15"), AdditionItem(title: "10гр", price: "25")])], countSelected: 0),
             Food(title: "Ранкова булочка з хрусткою куркою", weight: "Вага 340 г", text: "З  хрусткою курочкою тонкацу, овочами, фетою, айолі та солодким чилі-соусом", image: "burg_2", price: 265.00, category: "Burger", options: [Addition(id: 3, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")]), Addition(id: 4, title: "Бекон", values: [AdditionItem(title: "3гр", price: "10"), AdditionItem(title: "7гр", price: "15")])], countSelected: 0),
             Food(title: "Ранкова булочка з сиром", weight: "Вага 430 г", text: "З халумі, камамбером, фетою, айолі та джемом з чорної смородини", image: "burg_3", price: 235.00, category: "Burger", options: [Addition(id: 5, title: "Гострий", values: [AdditionItem(title: "Так"), AdditionItem(title: "Ні")])], countSelected: 0),
@@ -107,8 +96,8 @@ class Model: ObservableObject {
     
     func getInfo() {
         locationTimePayment = [
-            Info(title: "Доставка", subtitle: "Вкажіть адресу доставки", icon: "location", infoTab: .location),
-            Info(title: "Час отримання", subtitle: "Бер 12, 11:10 - 11:25", icon: "clock", infoTab: .time),
+            Info(title: "Доставка", subtitle: "", icon: "location", infoTab: .location),
+            Info(title: "Час отримання", subtitle: "Найближчий час - 1,5 години", icon: "clock", infoTab: .time),
             Info(title: "Cпосіб оплати", subtitle: "Готівкою при одержанні", icon: "creditcard", infoTab: .payment)
         ]
     }

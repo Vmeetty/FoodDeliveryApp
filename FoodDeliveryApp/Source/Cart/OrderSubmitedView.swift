@@ -90,7 +90,7 @@ struct OrderSubmitedView: View {
 
 struct OrderSubmitedView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderSubmitedView(submitedOrder: SubmitedOrder(info: [Info(title: "Delivery", subtitle: "Sikorskogo 4d", icon: "location", infoTab: .location), Info(title: "Delivery", subtitle: "Sikorskogo 4d", icon: "location", infoTab: .location), Info(title: "Delivery", subtitle: "Sikorskogo 4d", icon: "location", infoTab: .location)], items: [SubmitedItem(id: UUID(), title: "MIAMI", additions: "1,2,3", count: "4", price: "679")], calculations: [Calculation(title: "Price", value: "679")]))
+        OrderSubmitedView(submitedOrder: SubmitedOrder(info: [Info(title: "Delivery", subtitle: "Sikorskogo 4d", icon: "location", infoTab: .location), Info(title: "Delivery", subtitle: "Sikorskogo 4d", icon: "location", infoTab: .location), Info(title: "Delivery", subtitle: "Sikorskogo 4d", icon: "location", infoTab: .location)], items: [SubmitedItem(id: UUID(), title: "MIAMI", additions: "1,2,3", count: "4", price: "679")], contacts: [], calculations: [Calculation(title: "Price", value: "679")]))
             .environmentObject(Model())
     }
 }

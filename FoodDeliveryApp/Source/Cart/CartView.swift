@@ -100,7 +100,7 @@ struct CartView: View {
                     if index == 1 {
                         TimePickerView(infoItem: $model.locationTimePayment[index])
                     } else {
-                        OrderInfoItem(infoItem: $model.locationTimePayment[index])
+                        OrderInfoItem(infoItem: $model.locationTimePayment[index], showAlert: $viewModel.showDeliveryAlert)
                             .padding(.vertical, 10)
                             .onTapGesture {
                                 switch item.infoTab {
@@ -150,7 +150,7 @@ struct CartView: View {
             ForEach(Array(model.contacts.enumerated()), id: \.offset) { index, contact in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderContactsItem(title: contact.title, answer: $model.contacts[index].answer)
+                    OrderContactsItem(title: contact.title, answer: $model.contacts[index].answer, showAlert: $viewModel.showPhoneAlert)
                         .padding(.vertical, 10)
                 }
             }

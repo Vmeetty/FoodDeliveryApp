@@ -115,11 +115,11 @@ struct HomeView: View {
                 ForEach(Array(model.categories.enumerated()), id: \.offset) { index, category in
                     CategoryItem(category: category, selectedId: $model.categories[viewModel.selectedCategoryIndex].id)
                         .onTapGesture {
-                            withAnimation {
-                                if viewModel.selectedCategoryIndex != index {
+                            if viewModel.selectedCategoryIndex != index {
+                                withAnimation {
                                     viewModel.selectedCategoryIndex = index
-                                    viewModel.changeMenuBy(category)
                                 }
+                                viewModel.changeMenuBy(category)
                             }
                         }
                 }
