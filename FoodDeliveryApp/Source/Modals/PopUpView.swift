@@ -25,8 +25,6 @@ struct PopUpView: View {
             
             Group {
                 switch model.selectedPopUpView {
-                case .date:
-                    DeliveryTimeView()
                 case .payment:
                     PaymentTypeView()
                 default:

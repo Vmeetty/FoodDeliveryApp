@@ -43,6 +43,7 @@ class Model: ObservableObject {
     @Published var calculations: [Calculation] = []
     @Published var rateValue: Int = 0
     @Published var ordersHistory: [SubmitedOrder] = []
+    @Published var date = Date()
     
     init() {
         getCategories()

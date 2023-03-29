@@ -16,7 +16,7 @@ struct FeaturedItem: View {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(course.title)
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.bold)
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(.linearGradient(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))

@@ -97,21 +97,23 @@ struct CartView: View {
             ForEach(Array(model.locationTimePayment.enumerated()), id: \.offset) { index, item in
                 VStack {
                     if index != 0 { Divider() }
-                    OrderInfoItem(infoItem: $model.locationTimePayment[index])
-                        .padding(.vertical, 10)
-                        .onTapGesture {
-                            switch item.infoTab {
-                            case .location:
-                                model.selectedPopUpView = .location
-                                showMap()
-                            case .time:
-                                model.selectedPopUpView = .date
-                                showPop()
-                            case .payment:
-                                model.selectedPopUpView = .payment
-                                showPop()
+                    if index == 1 {
+                        TimePickerView(infoItem: $model.locationTimePayment[index])
+                    } else {
+                        OrderInfoItem(infoItem: $model.locationTimePayment[index])
+                            .padding(.vertical, 10)
+                            .onTapGesture {
+                                switch item.infoTab {
+                                case .location:
+                                    model.selectedPopUpView = .location
+                                    showMap()
+                                case .payment:
+                                    model.selectedPopUpView = .payment
+                                    showPop()
+                                default: break
+                                }
                             }
-                        }
+                    }
                 }
             }
         }
