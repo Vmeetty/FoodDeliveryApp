@@ -18,7 +18,7 @@ struct TabBarItemModel: Identifiable {
 var tabBarItems = [
     TabBarItemModel(title: "Меню", imageName: "menucard.fill", tab: .home, color: .teal),
     TabBarItemModel(title: "Акції", imageName: "star.fill", tab: .explore, color: .blue),
-    TabBarItemModel(title: "Корзина", imageName: "cart.fill", tab: .notifications, color: .pink),
+    TabBarItemModel(title: "Кошик", imageName: "cart.fill", tab: .notifications, color: .pink),
     TabBarItemModel(title: "Історія", imageName: "bag.fill", tab: .library, color: .yellow)
 ]
 

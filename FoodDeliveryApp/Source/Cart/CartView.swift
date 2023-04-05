@@ -17,7 +17,7 @@ struct CartView: View {
             
             Group {
                 if model.orderItems.isEmpty {
-                    Text("В корзині нічого немає")
+                    Text("Кошик порожній")
                         .font(.title2)
                         .foregroundColor(.white)
                         .frame(maxHeight: .infinity, alignment: .center)
@@ -38,7 +38,7 @@ struct CartView: View {
                 Color.clear.frame(height: 70)
             }
             .overlay {
-                NavigationBar(hasScrolled: .constant(true), title: "Корзина")
+                NavigationBar(hasScrolled: .constant(true), title: "Кошик")
             }
             .background(
                 Image("Blob 1")
